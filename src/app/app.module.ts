@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
-  MatAutocompleteModule,
-  MatCardModule,
+  MatAutocompleteModule, MatButtonModule,
+  MatCardModule, MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
@@ -15,14 +15,18 @@ import {
   MatSidenavModule, MatTableModule
 } from '@angular/material';
 import { ShoeslistComponent } from './shoeslist/shoeslist.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { OrdersComponent } from './orders/orders.component';
+import { ClientdialogComponent } from './clientdialog/clientdialog.component';
+import { CreateorderdialogComponent } from './createorderdialog/createorderdialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ShoeslistComponent,
-    OrdersComponent
+    OrdersComponent,
+    ClientdialogComponent,
+    CreateorderdialogComponent
   ],
   imports: [
     BrowserModule,
@@ -37,10 +41,13 @@ import { OrdersComponent } from './orders/orders.component';
     MatInputModule,
     FormsModule,
     MatIconModule,
-    MatTableModule
-
+    MatTableModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatButtonModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ClientdialogComponent, CreateorderdialogComponent]
 })
 export class AppModule { }
