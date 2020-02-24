@@ -1,0 +1,34 @@
+<!--<div *ngFor="let shoe of shoes">
+  <article>
+    <h1>{{shoe.model}}</h1>
+    <img style="width: 14%; float: left" src="{{configuration.picturepath}}{{shoe.photoPath}}" alt=""/>
+    <p style="float: left"> Ціна :{{shoe.price}}</p>
+    <p style="float: left"> Чиста ціна :{{shoe.cost}}</p>
+  </article>
+  <hr style="float: left">
+</div>-->
+<label>Модель</label>
+<mat-form-field style="left: 1%" class="example-form-field">
+  <input matInput type="text" [(ngModel)]="value" (input)="onInput(value)">
+  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''; onInput(value)" >
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<p></p>
+<div *ngFor="let shoe of shoes">
+  <mat-card style="float: left; border: 10px solid lightgray" class="example-card">
+    <mat-card-header>
+      <mat-card-title>{{shoe.model}} {{shoe.color}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image *ngIf="!shoe.imported; else isimported" src="{{configuration.picturepath}}{{shoe.photoPath}}" >
+    <ng-template #isimported><img mat-card-image style="height: 100px;
+    width: 80px;
+   object-fit: cover" src="{{shoe.photoPath}}"></ng-template>
+    <mat-card-content>
+      <p> Ціна :{{shoe.price}}</p>
+      <p> Чиста ціна :{{shoe.cost}}</p>
+    </mat-card-content>
+  </mat-card>
+
+</div>

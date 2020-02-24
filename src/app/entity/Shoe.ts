@@ -7,5 +7,4 @@ export class Shoe {
   photoPath: string;
   cost: string;
   imported: boolean;
-
 }

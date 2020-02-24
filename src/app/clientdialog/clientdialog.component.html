@@ -1,0 +1,38 @@
+<form class="example-form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+  <mat-form-field style="float: left" class="example-full-width">
+    <mat-label>Ім'я</mat-label>
+    <input formControlName="firstName" matInput>
+  </mat-form-field>
+
+  <mat-form-field style="float: left; margin-left: 3%" class="example-full-width">
+    <mat-label>Прізвище</mat-label>
+    <input formControlName="lastName" matInput>
+  </mat-form-field>
+
+  <mat-form-field style="float: left; margin-left: 3%" class="example-full-width">
+    <mat-label>По батькові</mat-label>
+    <input formControlName="middleName" matInput>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Телефон</mat-label>
+    <input formControlName="phone" matInput>
+  </mat-form-field>
+
+  <div align="center">
+    <p></p>
+    <button mat-raised-button color="warn" type="submit">Зберегти</button>
+    <p></p>
+    <button mat-stroked-button (click)="onNoClick()">Відміна</button>
+  </div>
+
+</form>
+<!--
+
+
+name: string;
+lastName: string;
+middleName: string;
+telephones: string[];
+comment: string;-->

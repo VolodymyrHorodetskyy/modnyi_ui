@@ -12,5 +12,8 @@ export class Ordered {
   prePayment: string;
   nameAndSurname = this.client.name + ' ' + this.client.lastName + ' ' + this.client.phone;
   address: string;
+  size: number;
+  postComment: string;
+  nameAndSurnameNP: string;
 
 }

@@ -11,7 +11,7 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatListModule,
+  MatListModule, MatSelectModule,
   MatSidenavModule, MatTableModule
 } from '@angular/material';
 import { ShoeslistComponent } from './shoeslist/shoeslist.component';
@@ -44,7 +44,9 @@ import { CreateorderdialogComponent } from './createorderdialog/createorderdialo
     MatTableModule,
     MatDialogModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatAutocompleteModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],
