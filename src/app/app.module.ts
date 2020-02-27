@@ -7,18 +7,19 @@ import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatAutocompleteModule, MatButtonModule,
-  MatCardModule, MatDialogModule,
+  MatCardModule, MatDialogModule, MatDividerModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatListModule, MatSelectModule,
-  MatSidenavModule, MatTableModule
+  MatListModule, MatPaginatorModule, MatSelectModule,
+  MatSidenavModule, MatSortModule, MatTableModule
 } from '@angular/material';
 import { ShoeslistComponent } from './shoeslist/shoeslist.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { OrdersComponent } from './orders/orders.component';
 import { ClientdialogComponent } from './clientdialog/clientdialog.component';
 import { CreateorderdialogComponent } from './createorderdialog/createorderdialog.component';
+import { EditorderdialogComponent } from './editorderdialog/editorderdialog.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CreateorderdialogComponent } from './createorderdialog/createorderdialo
     ShoeslistComponent,
     OrdersComponent,
     ClientdialogComponent,
-    CreateorderdialogComponent
+    CreateorderdialogComponent,
+    EditorderdialogComponent
   ],
   imports: [
     BrowserModule,
@@ -46,10 +48,13 @@ import { CreateorderdialogComponent } from './createorderdialog/createorderdialo
     ReactiveFormsModule,
     MatButtonModule,
     MatAutocompleteModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSortModule,
+    MatDividerModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ClientdialogComponent, CreateorderdialogComponent]
+  entryComponents: [ClientdialogComponent, CreateorderdialogComponent, EditorderdialogComponent]
 })
 export class AppModule { }

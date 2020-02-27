@@ -23,10 +23,10 @@ export class CreateorderdialogComponent implements OnInit {
     middleName: new FormControl(''),
     status: new FormControl(''),
     address: new FormControl(''),
-    phone: new FormControl(''),
-    size: new FormControl(''),
-    shoe: new FormControl(''),
-    comment: new FormControl(''),
+    phone: new FormControl('', Validators.required),
+    size: new FormControl('', Validators.required),
+    shoe: new FormControl('', Validators.required),
+    notes: new FormControl(''),
     postComment: new FormControl(''),
     price: new FormControl('', Validators.required),
     prepayment: new FormControl('', Validators.required)
@@ -51,35 +51,34 @@ export class CreateorderdialogComponent implements OnInit {
         ttn: data.ttn,
         address: data.address,
         postComment: data.postComment,
-        phone: data.client.phone,
+        phone: data.client != null ? data.client.phone : '',
         status: data.status,
-        name: data.client.name,
-        lastName: data.client.lastName,
-        middlename: data.client.middleName
+        name: data.client != null ? data.client.name : '',
+        lastName: data.client != null ? data.client.lastName : '',
+        middlename: data.client != null ? data.client.middleName : '',
+        size: data.size,
+        shoe: data.orderedShoes != null ? data.orderedShoes[0].id : ''
       });
-
-      /*this.createForm.controls['address'].setValue(data.address);
-      this.createForm.controls['status'].setValue(data.status);
-      this.createForm.controls['shoe'].setValue(data.orderedShoes[0].model + ' ' + data.orderedShoes[0].color);
-      this.createForm.controls['size'].setValue(data.size);*/
     }, error1 => {
       this.handleError(error1);
     });
+  }
+
+  onShoeChange(value) {
+    const shoe = this.shoes.find(shoe => shoe.id === value);
+    this.createForm.patchValue({
+      price: shoe.price
+  });
   }
 
   private handleError(error: HttpErrorResponse) {
     this.errorValue = error.error.message;
   }
 
-  test() {
-    console.log(this.createForm.getRawValue());
-  }
-
   onButtonSave() {
     this.rest.saveOrder(this.createForm.value).subscribe(data => {
       this.dialogRef.close();
     });
-    console.log(this.createForm.value);
   }
 
 }

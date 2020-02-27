@@ -15,5 +15,6 @@ export class Ordered {
   size: number;
   postComment: string;
   nameAndSurnameNP: string;
+  price: string;
 
 }

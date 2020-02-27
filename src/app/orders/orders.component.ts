@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {RestService} from '../rest/rest.service';
 import {Ordered} from '../entity/Ordered';
-import {MatDialog} from '@angular/material';
-import {ClientdialogComponent} from '../clientdialog/clientdialog.component';
+import {MatDialog, PageEvent} from '@angular/material';
 import {CreateorderdialogComponent} from '../createorderdialog/createorderdialog.component';
+import {EditorderdialogComponent} from '../editorderdialog/editorderdialog.component';
+import {GetAllOrderedResponse} from '../entity/GetAllOrderedResponse';
 
 @Component({
   selector: 'app-orders',
@@ -13,19 +14,19 @@ import {CreateorderdialogComponent} from '../createorderdialog/createorderdialog
 export class OrdersComponent implements OnInit {
 
   orders: Ordered[];
-  displayedColumns: string[] = ['ttn', 'notes', 'nameAndSurname', 'phone', 'status'];
+  getAllOrdered: GetAllOrderedResponse;
+  displayedColumns: string[] = ['ttn', 'notes', 'nameAndSurname', 'phone', 'address', 'shoe', 'size', 'status'];
+  pageEvent: PageEvent;
+  value: '';
 
   constructor(private rest: RestService, public dialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.rest.getOrders().subscribe(orders => {
-      this.orders = orders;
-    });
+    this.updateOrders();
   }
 
-  onCreateOrderClick(){
-    console.log('here');
+  onCreateOrderClick() {
     const dialogRef = this.dialog.open(CreateorderdialogComponent, {
       /*
             disableClose: true
@@ -33,21 +34,40 @@ export class OrdersComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.animal = result;
+      this.updateOrders(this.pageEvent.pageIndex, this.pageEvent.pageSize, '');
     });
   }
 
-  onClientClick(client) {
-    const dialogRef = this.dialog.open(ClientdialogComponent, {
-      disableClose: true,
-      data: client
-    });
+  onRowClick(event, ordered) {
+    if (!event.toElement.className.includes('ttn')) {
+      this.dialog.open(EditorderdialogComponent, {
+        data: ordered
+      });
+    }
+    /*  const dialogRef = this.dialog.open(ClientdialogComponent, {
+        disableClose: true,
+        data: ordered
+      });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.animal = result;
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        // this.animal = result;
+      });*/
+  }
+
+  updatePage(pageEvent?: PageEvent) {
+    this.updateOrders(pageEvent.pageIndex, pageEvent.pageSize, '');
+  }
+
+  updateOrders(page = 0, size = 10, ttn = '') {
+    this.rest.getOrders(page, size, ttn).subscribe(getAllOrdered => {
+      this.orders = getAllOrdered.orderedList;
+      this.getAllOrdered = getAllOrdered;
     });
+  }
+
+  onTTNInput(ttn) {
+    this.updateOrders(this.pageEvent != null ? this.pageEvent.pageIndex : 0, this.pageEvent != null ? this.pageEvent.pageSize : 10, ttn);
   }
 
 }

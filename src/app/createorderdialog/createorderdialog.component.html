@@ -27,24 +27,25 @@
 
   <mat-form-field style="display:inline-block; margin-right: 1em;" class="example-full-width">
     <mat-label>Адрес</mat-label>
-    <textarea matInput formControlName="address"></textarea>
+    <textarea matAutosizeMinRows=5 matAutosizeMaxRows=20
+              matInput formControlName="address"></textarea>
   </mat-form-field>
 
   <mat-form-field style="display:inline-block; margin-right: 1em;" class="example-full-width">
     <mat-label>Коментарій</mat-label>
-    <textarea matInput formControlName="comment"></textarea>
+    <textarea matInput formControlName="notes"></textarea>
   </mat-form-field>
 
   <mat-form-field style="display:inline-block; margin-right: 1em;">
     <mat-label> Модель взуття</mat-label>
-    <mat-select formControlName="shoe">
+    <mat-select  (selectionChange)="onShoeChange($event.value)" formControlName="shoe">
       <mat-option *ngFor="let shoe of shoes" [value]="shoe.id">
         {{shoe.model}} {{shoe.color}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field  style="display:inline-block; margin-right: 1em;" class="example-full-width">
+  <mat-form-field style="display:inline-block; margin-right: 1em;" class="example-full-width">
     <mat-label>Комент з НП</mat-label>
     <input matInput [attr.disabled]="true" formControlName="postComment">
   </mat-form-field>
@@ -71,9 +72,9 @@
 
   <p></p>
   <div align="center">
-    <button style="margin-right: 1em;" mat-stroked-button (click)="onNP()">Нова пошта</button>
-    <button style="margin-right: 1em;" mat-raised-button color="warn" type="submit">Зберегти</button>
-    <button style="float: right" mat-stroked-button (click)="onDenyClick()">Відміна</button>
+    <button style="margin-right: 1em;" mat-stroked-button (click)="onNP()" type="button">Нова пошта</button>
+    <button style="margin-right: 1em;" mat-raised-button color="warn" type="submit" [disabled]="!createForm.valid">Зберегти</button>
+    <button style="float: right" mat-stroked-button (click)="onDenyClick()" type="button">Відміна</button>
   </div>
 
 </form>
