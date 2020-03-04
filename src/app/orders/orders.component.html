@@ -1,17 +1,36 @@
 <p></p>
-
-<mat-form-field class="example-form-field">
-  <button  style="margin-left: 2%; margin-top: 1%" mat-raised-button color="warn"
-          (click)="onCreateOrderClick()">Створити
-  </button>
-
+<button style="margin-left: 2%; margin-top: 1%;display:inline-block; margin-right: 5em;" mat-raised-button color="warn"
+        (click)="onCreateOrderClick()">Створити
+</button>
+<mat-form-field style="display:inline-block; margin-right: 5em;" class="example-form-field">
   <mat-label>ТТН</mat-label>
-  <input (input)="onTTNInput(value)" matInput type="text" [(ngModel)]="value">
-  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+  <input (input)="updateOnFilters()" matInput type="text" [(ngModel)]="ttn">
+  <button mat-button *ngIf="ttn" matSuffix mat-icon-button aria-label="Clear" (click)="ttn=''; updateOnFilters()">
     <mat-icon>close</mat-icon>
   </button>
-
 </mat-form-field>
+<mat-form-field style="display:inline-block; margin-right: 5em;" class="example-form-field">
+  <mat-label>Телефон</mat-label>
+  <input (input)="updateOnFilters()" matInput type="text" [(ngModel)]="phone">
+  <button mat-button *ngIf="phone" matSuffix mat-icon-button aria-label="Clear" (click)="phone=''; updateOnFilters()">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
+
+<mat-checkbox style="display:inline-block; margin-right: 3em;" [(ngModel)]="withoutTTN" (change)="updateOnFilters()">Без
+  ТТН
+</mat-checkbox>
+
+
+<mat-form-field style="display:inline-block; margin-right: 5em;">
+  <mat-label> Сортувати</mat-label>
+  <mat-select (selectionChange)="updateOnFilters()" [(ngModel)]="orderByValue">
+    <mat-option *ngFor="let orderBy of orderByAr" [value]="orderBy.orderBy">
+      {{orderBy.orderByUkr}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
 
 <div class="example-container mat-elevation-z8">
   <table mat-table [dataSource]="orders" style="width: 100%" matSort>

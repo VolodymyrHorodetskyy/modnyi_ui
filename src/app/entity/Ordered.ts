@@ -16,5 +16,6 @@ export class Ordered {
   postComment: string;
   nameAndSurnameNP: string;
   price: string;
+  fullPayment: boolean;
 
 }

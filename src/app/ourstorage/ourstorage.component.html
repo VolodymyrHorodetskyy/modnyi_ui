@@ -1,0 +1,8 @@
+<button style="margin-left: 2%; margin-top: 1%;display:inline-block; margin-right: 5em;" mat-raised-button color="warn"
+        (click)="onCreateOrderClick()">Створити
+</button>
+<mat-list role="list">
+  <div *ngFor="let record of storageRecords">
+    <mat-list-item role="listitem">{{record.shoe.model}} {{record.shoe.color}} {{record.size}}</mat-list-item>
+  </div>
+</mat-list>

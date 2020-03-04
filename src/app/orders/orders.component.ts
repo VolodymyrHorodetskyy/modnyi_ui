@@ -17,7 +17,14 @@ export class OrdersComponent implements OnInit {
   getAllOrdered: GetAllOrderedResponse;
   displayedColumns: string[] = ['ttn', 'notes', 'nameAndSurname', 'phone', 'address', 'shoe', 'size', 'status'];
   pageEvent: PageEvent;
-  value: '';
+  ttn: '';
+  phone: '';
+  withoutTTN: false;
+  orderByAr: { orderBy: string, orderByUkr: string }[] = [
+    {orderBy: 'dateCreated', orderByUkr: 'Дата створення'},
+    {orderBy: 'dateEdited', orderByUkr: 'Дата зміни'}
+  ];
+  orderByValue: string;
 
   constructor(private rest: RestService, public dialog: MatDialog) {
   }
@@ -34,40 +41,38 @@ export class OrdersComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.updateOrders(this.pageEvent.pageIndex, this.pageEvent.pageSize, '');
+      this.updateOnFilters();
     });
   }
 
   onRowClick(event, ordered) {
+    let dialogRef;
     if (!event.toElement.className.includes('ttn')) {
-      this.dialog.open(EditorderdialogComponent, {
+      dialogRef = this.dialog.open(EditorderdialogComponent, {
         data: ordered
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        this.updateOnFilters();
       });
     }
-    /*  const dialogRef = this.dialog.open(ClientdialogComponent, {
-        disableClose: true,
-        data: ordered
-      });
-
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-        // this.animal = result;
-      });*/
   }
 
   updatePage(pageEvent?: PageEvent) {
-    this.updateOrders(pageEvent.pageIndex, pageEvent.pageSize, '');
+    this.updateOnFilters();
   }
 
-  updateOrders(page = 0, size = 10, ttn = '') {
-    this.rest.getOrders(page, size, ttn).subscribe(getAllOrdered => {
+  updateOrders(page = 0, size = 10, ttn = '', phone = '', withoutTTN = false, orderByValue: string) {
+    this.rest.getOrders(page, size, ttn, phone, withoutTTN, orderByValue).subscribe(getAllOrdered => {
       this.orders = getAllOrdered.orderedList;
       this.getAllOrdered = getAllOrdered;
     });
   }
 
-  onTTNInput(ttn) {
-    this.updateOrders(this.pageEvent != null ? this.pageEvent.pageIndex : 0, this.pageEvent != null ? this.pageEvent.pageSize : 10, ttn);
+  updateOnFilters() {
+    this.updateOrders(this.pageEvent != null ?
+      this.pageEvent.pageIndex : 0, this.pageEvent != null ?
+      this.pageEvent.pageSize : 10, this.ttn, this.phone, this.withoutTTN, this.orderByValue);
   }
+
 
 }

@@ -7,7 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatAutocompleteModule, MatButtonModule,
-  MatCardModule, MatDialogModule, MatDividerModule,
+  MatCardModule, MatCheckboxModule, MatDialogModule, MatDividerModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
@@ -20,6 +20,8 @@ import { OrdersComponent } from './orders/orders.component';
 import { ClientdialogComponent } from './clientdialog/clientdialog.component';
 import { CreateorderdialogComponent } from './createorderdialog/createorderdialog.component';
 import { EditorderdialogComponent } from './editorderdialog/editorderdialog.component';
+import { OurstorageComponent } from './ourstorage/ourstorage.component';
+import { CreatestoragerecordComponent } from './createstoragerecord/createstoragerecord.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { EditorderdialogComponent } from './editorderdialog/editorderdialog.comp
     OrdersComponent,
     ClientdialogComponent,
     CreateorderdialogComponent,
-    EditorderdialogComponent
+    EditorderdialogComponent,
+    OurstorageComponent,
+    CreatestoragerecordComponent
   ],
   imports: [
     BrowserModule,
@@ -51,10 +55,12 @@ import { EditorderdialogComponent } from './editorderdialog/editorderdialog.comp
     MatSelectModule,
     MatSortModule,
     MatDividerModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCheckboxModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ClientdialogComponent, CreateorderdialogComponent, EditorderdialogComponent]
+  entryComponents: [ClientdialogComponent, CreateorderdialogComponent, EditorderdialogComponent, CreatestoragerecordComponent]
 })
 export class AppModule { }
