@@ -30,7 +30,7 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.updateOrders();
+    this.updateOnFilters()
   }
 
   onCreateOrderClick() {
