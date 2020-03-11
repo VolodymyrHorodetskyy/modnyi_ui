@@ -66,7 +66,7 @@ export class CreateorderdialogComponent implements OnInit {
         lastName: data.client != null ? data.client.lastName : '',
         middleName: data.client != null ? data.client.middleName : '',
         size: data.size,
-        shoe: data.orderedShoes != null ? data.orderedShoes[0].id : '',
+        shoe: data.orderedShoes != null && data.orderedShoes.length > 0 ? data.orderedShoes[0].id : '',
         price: data.price,
         prepayment: data.prePayment
       });
