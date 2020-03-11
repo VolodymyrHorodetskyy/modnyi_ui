@@ -7,7 +7,7 @@ import {Injectable} from '@angular/core';
 export class Configuration {
 
   picturepath = 'http://127.0.0.1:8887/';
-  serverpath = 'http://localhost:8090';
+  serverpath = 'http://localhost:8080';
 
 
 }
