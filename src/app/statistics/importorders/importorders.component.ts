@@ -30,5 +30,11 @@ export class ImportordersComponent implements OnInit {
     });
   }
 
+  onIssueOrders() {
+    this.rest.getIssueOrders().subscribe(data => {
+      this.response = data.result;
+    });
+  }
+
 }
 

@@ -4,7 +4,9 @@
 </mat-form-field>
 
 <button mat-raised-button color="primary" (click)="onImportClick()">Імпортувати</button>
+<button mat-raised-button color="primary" (click)="onIssueOrders()">Помилки</button>
 <button mat-raised-button color="primary" (click)="onNeedDeliveryClick()">Відправки</button>
+
 
 <mat-list role="list">
   <mat-list-item role="listitem" *ngFor="let string of responses">{{string}}</mat-list-item>
