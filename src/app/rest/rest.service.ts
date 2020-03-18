@@ -68,8 +68,8 @@ export class RestService {
       this.getHttpOptions());
   }
 
-  public needDelivery() {
-    return this.http.get<StringResponse>(this.configuration.serverpath + '/statistic/needDeliveryFromDB', this.getHttpOptions());
+  public needDelivery(updateFromDb = false) {
+    return this.http.get<StringResponse>(this.configuration.serverpath + '/statistic/needDeliveryFromDB?updateStatuses=' + updateFromDb, this.getHttpOptions());
   }
 
   public getIssueOrders() {

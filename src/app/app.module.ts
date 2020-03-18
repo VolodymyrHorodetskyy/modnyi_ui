@@ -11,7 +11,7 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatListModule, MatPaginatorModule, MatSelectModule,
+  MatListModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule,
   MatSidenavModule, MatSortModule, MatTableModule
 } from '@angular/material';
 import { ShoeslistComponent } from './shoeslist/shoeslist.component';
@@ -64,7 +64,8 @@ import { StatisticpageComponent } from './statistics/statisticpage/statisticpage
     MatDividerModule,
     MatPaginatorModule,
     MatCheckboxModule,
-    MatListModule
+    MatListModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent],
