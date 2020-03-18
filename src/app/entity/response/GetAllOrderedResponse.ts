@@ -1,5 +1,5 @@
-import {Ordered} from './Ordered';
-import {PaginationInfo} from './PaginationInfo';
+import {Ordered} from '../Ordered';
+import {PaginationInfo} from '../PaginationInfo';
 
 export class GetAllOrderedResponse {
 

@@ -4,7 +4,7 @@ import {Ordered} from '../entity/Ordered';
 import {MatDialog, PageEvent} from '@angular/material';
 import {CreateorderdialogComponent} from '../createorderdialog/createorderdialog.component';
 import {EditorderdialogComponent} from '../editorderdialog/editorderdialog.component';
-import {GetAllOrderedResponse} from '../entity/GetAllOrderedResponse';
+import {GetAllOrderedResponse} from '../entity/response/GetAllOrderedResponse';
 
 @Component({
   selector: 'app-orders',

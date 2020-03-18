@@ -22,6 +22,10 @@ import { CreateorderdialogComponent } from './createorderdialog/createorderdialo
 import { EditorderdialogComponent } from './editorderdialog/editorderdialog.component';
 import { OurstorageComponent } from './ourstorage/ourstorage.component';
 import { CreatestoragerecordComponent } from './createstoragerecord/createstoragerecord.component';
+import { NeeddeliveryComponent } from './statistics/needdelivery/needdelivery.component';
+import { ImportordersComponent } from './statistics/importorders/importorders.component';
+import { StatisticpageComponent } from './statistics/statisticpage/statisticpage.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +36,10 @@ import { CreatestoragerecordComponent } from './createstoragerecord/createstorag
     CreateorderdialogComponent,
     EditorderdialogComponent,
     OurstorageComponent,
-    CreatestoragerecordComponent
+    CreatestoragerecordComponent,
+    NeeddeliveryComponent,
+    ImportordersComponent,
+    StatisticpageComponent
   ],
   imports: [
     BrowserModule,

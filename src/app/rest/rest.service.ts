@@ -4,9 +4,10 @@ import {Configuration} from '../configuration';
 import {Shoe} from '../entity/Shoe';
 import {Ordered} from '../entity/Ordered';
 import {FromNPToOrderRequest} from '../entity/FromNPToOrderRequest';
-import {GetAllOrderedResponse} from '../entity/GetAllOrderedResponse';
+import {GetAllOrderedResponse} from '../entity/response/GetAllOrderedResponse';
 import {StatusDto} from '../entity/StatusDto';
 import {StorageRecord} from '../entity/StorageRecord';
+import {StringResponse} from '../entity/response/StringResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -58,6 +59,19 @@ export class RestService {
   public checkShoeIsPresentInStorage(shoeId, size) {
     return this.http.get<boolean>(this.configuration.serverpath + '/storage/isExists?shoeId=' + shoeId + '&size=' + size);
   }
+
+  public importTTNS(ttns2: string) {
+    const ttns3 = ttns2.split('\n').join(' ');
+    return this.http.post<StringResponse>(this.configuration.serverpath + '/order/importOrdersByTTNsString', {
+        ttns: ttns3
+      },
+      this.getHttpOptions());
+  }
+
+  public needDelivery() {
+    return this.http.get<StringResponse>(this.configuration.serverpath + '/statistic/needDeliveryFromDB', this.getHttpOptions());
+  }
+
 
   getHttpOptions() {
     return {
