@@ -15,7 +15,5 @@
   <mat-list-item role="listitem" *ngFor="let string of responses">{{string}}</mat-list-item>
 </mat-list>
 
-<label for="clipboard-example-textarea">Text to be copied</label>
 <textarea id="clipboard-example-textarea" cols="30" rows="10" [(ngModel)]="response"></textarea>
-<!--<button [cdkCopyToClipboard]="response">Copy to clipboard</button>-->
-<!--<mat-label *ngFor="let string of response">{{string}}</mat-label>-->
+

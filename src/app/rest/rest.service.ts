@@ -76,6 +76,17 @@ export class RestService {
     return this.http.get<StringResponse>(this.configuration.serverpath + '/statistic/getIssueOrdered', this.getHttpOptions());
   }
 
+  public getNeedToBePayed(updateStatuses = false, fileToUpload: File) {
+    console.log(fileToUpload);
+    const formData: FormData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name);
+    const headers = new HttpHeaders()
+      .append('Access-Control-Allow-Headers', 'Content-Type')
+      .append('Access-Control-Allow-Methods', 'POST')
+      .append('reportProgress', 'true')
+    return this.http.post<StringResponse>(this.configuration.serverpath + '/statistic/needToPayedFromFile?updateStatuses=' + updateStatuses,
+      formData, {headers});
+  }
 
   getHttpOptions() {
     return {

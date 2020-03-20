@@ -25,6 +25,8 @@ import { CreatestoragerecordComponent } from './createstoragerecord/createstorag
 import { NeeddeliveryComponent } from './statistics/needdelivery/needdelivery.component';
 import { ImportordersComponent } from './statistics/importorders/importorders.component';
 import { StatisticpageComponent } from './statistics/statisticpage/statisticpage.component';
+import { NeedtobepayedComponent } from './finance/needtobepayed/needtobepayed.component';
+import { FinanceComponent } from './finance/finance.component';
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { StatisticpageComponent } from './statistics/statisticpage/statisticpage
     CreatestoragerecordComponent,
     NeeddeliveryComponent,
     ImportordersComponent,
-    StatisticpageComponent
+    StatisticpageComponent,
+    NeedtobepayedComponent,
+    FinanceComponent
   ],
   imports: [
     BrowserModule,
