@@ -27,6 +27,8 @@ import { ImportordersComponent } from './statistics/importorders/importorders.co
 import { StatisticpageComponent } from './statistics/statisticpage/statisticpage.component';
 import { NeedtobepayedComponent } from './finance/needtobepayed/needtobepayed.component';
 import { FinanceComponent } from './finance/finance.component';
+import { CanceledComponent } from './canceled/canceled.component';
+import { GetreturnedComponent } from './canceled/getreturned/getreturned.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { FinanceComponent } from './finance/finance.component';
     ImportordersComponent,
     StatisticpageComponent,
     NeedtobepayedComponent,
-    FinanceComponent
+    FinanceComponent,
+    CanceledComponent,
+    GetreturnedComponent
   ],
   imports: [
     BrowserModule,

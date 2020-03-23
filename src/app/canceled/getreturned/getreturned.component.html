@@ -1,0 +1,5 @@
+<button mat-raised-button color="primary" (click)="showReturnedClick()">Показати повернення</button>
+<mat-checkbox class="example-margin" [(ngModel)]="excludeDeliveryFile">Виключити з доставки якщо є в поверненнях</mat-checkbox>
+
+<textarea id="clipboard-example-textarea" cols="30" rows="10" [(ngModel)]="returned"></textarea>
+<mat-spinner *ngIf="!loaded"></mat-spinner>
