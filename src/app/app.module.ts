@@ -17,11 +17,11 @@ import {
 import { ShoeslistComponent } from './shoeslist/shoeslist.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { OrdersComponent } from './orders/orders.component';
-import { ClientdialogComponent } from './clientdialog/clientdialog.component';
-import { CreateorderdialogComponent } from './createorderdialog/createorderdialog.component';
-import { EditorderdialogComponent } from './editorderdialog/editorderdialog.component';
+import { ClientdialogComponent } from './dialogs/clientdialog/clientdialog.component';
+import { CreateorderdialogComponent } from './dialogs/createorderdialog/createorderdialog.component';
+import { EditorderdialogComponent } from './dialogs/editorderdialog/editorderdialog.component';
 import { OurstorageComponent } from './ourstorage/ourstorage.component';
-import { CreatestoragerecordComponent } from './createstoragerecord/createstoragerecord.component';
+import { CreatestoragerecordComponent } from './dialogs/createstoragerecord/createstoragerecord.component';
 import { NeeddeliveryComponent } from './statistics/needdelivery/needdelivery.component';
 import { ImportordersComponent } from './statistics/importorders/importorders.component';
 import { StatisticpageComponent } from './statistics/statisticpage/statisticpage.component';
@@ -29,6 +29,7 @@ import { NeedtobepayedComponent } from './finance/needtobepayed/needtobepayed.co
 import { FinanceComponent } from './finance/finance.component';
 import { CanceledComponent } from './canceled/canceled.component';
 import { GetreturnedComponent } from './canceled/getreturned/getreturned.component';
+import { CancelorderComponent } from './cancelorder/cancelorder.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { GetreturnedComponent } from './canceled/getreturned/getreturned.compone
     NeedtobepayedComponent,
     FinanceComponent,
     CanceledComponent,
-    GetreturnedComponent
+    GetreturnedComponent,
+    CancelorderComponent
   ],
   imports: [
     BrowserModule,
@@ -77,6 +79,6 @@ import { GetreturnedComponent } from './canceled/getreturned/getreturned.compone
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ClientdialogComponent, CreateorderdialogComponent, EditorderdialogComponent, CreatestoragerecordComponent]
+  entryComponents: [ClientdialogComponent, CreateorderdialogComponent, EditorderdialogComponent, CreatestoragerecordComponent, CancelorderComponent]
 })
 export class AppModule { }

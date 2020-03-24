@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {RestService} from '../rest/rest.service';
 import {Ordered} from '../entity/Ordered';
 import {MatDialog, PageEvent} from '@angular/material';
-import {CreateorderdialogComponent} from '../createorderdialog/createorderdialog.component';
-import {EditorderdialogComponent} from '../editorderdialog/editorderdialog.component';
+import {CreateorderdialogComponent} from '../dialogs/createorderdialog/createorderdialog.component';
+import {EditorderdialogComponent} from '../dialogs/editorderdialog/editorderdialog.component';
 import {GetAllOrderedResponse} from '../entity/response/GetAllOrderedResponse';
 
 @Component({

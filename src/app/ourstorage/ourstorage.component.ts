@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {CreateorderdialogComponent} from '../createorderdialog/createorderdialog.component';
-import {CreatestoragerecordComponent} from '../createstoragerecord/createstoragerecord.component';
+import {CreateorderdialogComponent} from '../dialogs/createorderdialog/createorderdialog.component';
+import {CreatestoragerecordComponent} from '../dialogs/createstoragerecord/createstoragerecord.component';
 import {RestService} from '../rest/rest.service';
 import {MatDialog} from '@angular/material';
 import {StorageRecord} from '../entity/StorageRecord';

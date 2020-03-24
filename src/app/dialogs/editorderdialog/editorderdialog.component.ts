@@ -1,13 +1,14 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {OrdersComponent} from '../orders/orders.component';
-import {Client} from '../entity/Client';
-import {Ordered} from '../entity/Ordered';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {OrdersComponent} from '../../orders/orders.component';
+import {Client} from '../../entity/Client';
+import {Ordered} from '../../entity/Ordered';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Shoe} from '../entity/Shoe';
-import {RestService} from '../rest/rest.service';
-import {EditOrderedRequest} from '../entity/EditOrderedRequest';
-import {StatusDto} from '../entity/StatusDto';
+import {Shoe} from '../../entity/Shoe';
+import {RestService} from '../../rest/rest.service';
+import {EditOrderedRequest} from '../../entity/EditOrderedRequest';
+import {StatusDto} from '../../entity/StatusDto';
+import {CancelorderComponent} from '../../cancelorder/cancelorder.component';
 
 @Component({
   selector: 'app-editorderdialog',
@@ -39,7 +40,7 @@ export class EditorderdialogComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<OrdersComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Ordered,
-              public rest: RestService) {
+              public rest: RestService, public dialog: MatDialog) {
     console.log(data);
     this.editForm.patchValue({
       address: data.address,
@@ -62,7 +63,6 @@ export class EditorderdialogComponent implements OnInit {
   }
 
 
-
   onShoeChange(value) {
     console.log(this.editForm.get('price').value);
     const shoe = this.shoes.find(shoe => shoe.id === value);
@@ -82,6 +82,10 @@ export class EditorderdialogComponent implements OnInit {
 
   onDenyClick(): void {
     this.dialogRef.close();
+  }
+
+  onCancelOrderClick(){
+    this.dialog.open(CancelorderComponent);
   }
 
   onButtonUpdate() {

@@ -11,7 +11,7 @@ export class ImportordersComponent implements OnInit {
   ttns: string;
   responses: string[];
   response: string;
-  loaded = true;
+  loaded = false;
 
   constructor(public rest: RestService) {
   }
@@ -20,14 +20,21 @@ export class ImportordersComponent implements OnInit {
   }
 
   onImportClick() {
+    this.loaded = true;
     this.rest.importTTNS(this.ttns).subscribe(data => {
+      this.loaded = false;
       this.response = data.result;
+    }, error => {
+      this.loaded = false;
+      this.response = error;
     });
   }
 
   onIssueOrders() {
+    this.loaded = true;
     this.rest.getIssueOrders().subscribe(data => {
       this.response = data.result;
+      this.loaded = false;
     });
   }
 

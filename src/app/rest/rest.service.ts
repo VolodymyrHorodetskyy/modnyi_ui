@@ -61,11 +61,17 @@ export class RestService {
   }
 
   public importTTNS(ttns2: string) {
-    const ttns3 = ttns2.split('\n').join(' ');
+    let ttns3;
+    if (ttns2 != null) {
+      ttns3 = ttns2.split('\n').join(' ');
+    } else {
+      ttns3 = '';
+    }
     return this.http.post<StringResponse>(this.configuration.serverpath + '/order/importOrdersByTTNsString', {
         ttns: ttns3
       },
       this.getHttpOptions());
+
   }
 
   public needDelivery(updateFromDb = false) {
@@ -90,6 +96,16 @@ export class RestService {
   public getReturned(excludeFromDeliveryFile = false) {
     return this.http.get<StringResponse>(this.configuration.serverpath + '/statistic/returned?setNotForDelivery=' + excludeFromDeliveryFile
       , this.getHttpOptions());
+  }
+
+  public getCanceled(updateStatuses = false) {
+    return this.http.get<StringResponse>(this.configuration.serverpath +
+      '/statistic/canceled?updateStatuses=' + updateStatuses, this.getHttpOptions());
+  }
+
+  public returnOrders(updateStatuses = false) {
+    return this.http.get<StringResponse>(this.configuration.serverpath +
+      '/order/returnCargo?updateStatuses=' + updateStatuses, this.getHttpOptions());
   }
 
   getHttpOptions() {

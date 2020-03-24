@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Shoe} from '../entity/Shoe';
-import {RestService} from '../rest/rest.service';
+import {Shoe} from '../../entity/Shoe';
+import {RestService} from '../../rest/rest.service';
 import {MatDialogRef} from '@angular/material';
-import {OrdersComponent} from '../orders/orders.component';
-import {OurstorageComponent} from '../ourstorage/ourstorage.component';
-import {StorageRecord} from '../entity/StorageRecord';
+import {OrdersComponent} from '../../orders/orders.component';
+import {OurstorageComponent} from '../../ourstorage/ourstorage.component';
+import {StorageRecord} from '../../entity/StorageRecord';
 
 @Component({
   selector: 'app-createstoragerecord',

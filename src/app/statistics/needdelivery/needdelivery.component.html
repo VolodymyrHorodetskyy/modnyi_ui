@@ -1,6 +1,10 @@
-<button mat-raised-button color="primary" (click)="onNeedDeliveryClick()">Відправки</button>
-<mat-checkbox class="example-margin" [(ngModel)]="needStatusedUpdate">Обновити Статуси</mat-checkbox>
+<button mat-raised-button color="primary" (click)="onNeedDeliveryClick()" style="float: left; margin-right: 1%">
+  Відправки
+</button>
+<mat-checkbox class="example-margin" [(ngModel)]="needStatusedUpdate" style="float: left;  margin-right: 1%">Обновити
+  Статуси
+</mat-checkbox>
 
-<textarea id="clipboard-example-textarea" cols="30" rows="10" [(ngModel)]="response"></textarea>
+<textarea id="clipboard-example-textarea" cols="30" rows="10" [(ngModel)]="response" style="float: left"></textarea>
 
 <mat-spinner *ngIf="!loaded"></mat-spinner>

@@ -1,11 +1,11 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {RestService} from '../rest/rest.service';
+import {RestService} from '../../rest/rest.service';
 import {MatDialog, MatDialogRef} from '@angular/material';
-import {OrdersComponent} from '../orders/orders.component';
+import {OrdersComponent} from '../../orders/orders.component';
 import {HttpErrorResponse} from '@angular/common/http';
-import {Shoe} from '../entity/Shoe';
-import {StatusDto} from '../entity/StatusDto';
+import {Shoe} from '../../entity/Shoe';
+import {StatusDto} from '../../entity/StatusDto';
 
 @Component({
   selector: 'app-createorderdialog',

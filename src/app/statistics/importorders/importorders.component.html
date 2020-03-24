@@ -6,13 +6,10 @@
 <button mat-raised-button color="primary" (click)="onImportClick()">Імпортувати</button>
 <button mat-raised-button color="primary" (click)="onIssueOrders()">Помилки</button>
 
-
-<mat-spinner *ngIf="!loaded"></mat-spinner>
-
+<mat-spinner *ngIf="loaded"></mat-spinner>
 
 <mat-list role="list">
   <mat-list-item role="listitem" *ngFor="let string of responses">{{string}}</mat-list-item>
 </mat-list>
 
 <textarea id="clipboard-example-textarea" cols="30" rows="10" [(ngModel)]="response"></textarea>
-

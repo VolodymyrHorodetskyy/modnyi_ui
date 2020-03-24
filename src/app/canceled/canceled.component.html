@@ -1,1 +1,6 @@
-<app-getreturned></app-getreturned>
+
+<button style="float: left; margin-right: 1%" mat-raised-button color="primary" (click)="showCanceledClick()">Показати відмови</button>
+<button style="float: left; margin-right: 1%" mat-raised-button color="primary" (click)="makeReturnClick()">Зробити повернення</button>
+
+<textarea style="float: left;" id="clipboard-example-textarea" cols="30" rows="10" [(ngModel)]="canceled"></textarea>
+<mat-spinner style="float: left;" *ngIf="loaded"></mat-spinner>
