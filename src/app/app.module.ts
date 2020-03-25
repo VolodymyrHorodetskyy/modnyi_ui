@@ -29,7 +29,7 @@ import { NeedtobepayedComponent } from './finance/needtobepayed/needtobepayed.co
 import { FinanceComponent } from './finance/finance.component';
 import { CanceledComponent } from './canceled/canceled.component';
 import { GetreturnedComponent } from './canceled/getreturned/getreturned.component';
-import { CancelorderComponent } from './cancelorder/cancelorder.component';
+import { CancelorderComponent } from './dialogs/cancelorder/cancelorder.component';
 
 
 @NgModule({

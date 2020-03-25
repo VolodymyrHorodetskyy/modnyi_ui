@@ -1,0 +1,21 @@
+<form class="example-form" [formGroup]="cancelOrderForm" (ngSubmit)="onButtonCancelOrder()">
+
+
+  <mat-form-field style="display:inline-block; margin-right: 1em;" >
+    <mat-label>Favorite food</mat-label>
+    <mat-select formControlName="reason">
+      <mat-option *ngFor="let reason of reasons" [value]="reason">
+        {{reason}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field style="display:inline-block; margin-right: 1em;" class="example-full-width">
+    <mat-label>Комент</mat-label>
+    <input formControlName="comment" matInput>
+  </mat-form-field>
+
+  <button [disabled]="!cancelOrderForm.valid" style="margin-right: 1em;" mat-raised-button color="warn" type="submit" >
+    Зробити
+  </button>
+</form>

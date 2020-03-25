@@ -8,6 +8,7 @@ import {GetAllOrderedResponse} from '../entity/response/GetAllOrderedResponse';
 import {StatusDto} from '../entity/StatusDto';
 import {StorageRecord} from '../entity/StorageRecord';
 import {StringResponse} from '../entity/response/StringResponse';
+import {CancelOrderRequest} from '../entity/CancelOrderRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -106,6 +107,14 @@ export class RestService {
   public returnOrders(updateStatuses = false) {
     return this.http.get<StringResponse>(this.configuration.serverpath +
       '/order/returnCargo?updateStatuses=' + updateStatuses, this.getHttpOptions());
+  }
+
+  public getReasons() {
+    return this.http.get<string[]>(this.configuration.serverpath + '/order/getReasons');
+  }
+
+  public cancelOrder(request: CancelOrderRequest) {
+    return this.http.patch(this.configuration.serverpath + '/order/cancelOrder', request, this.getHttpOptions());
   }
 
   getHttpOptions() {

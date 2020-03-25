@@ -8,7 +8,8 @@ import {Shoe} from '../../entity/Shoe';
 import {RestService} from '../../rest/rest.service';
 import {EditOrderedRequest} from '../../entity/EditOrderedRequest';
 import {StatusDto} from '../../entity/StatusDto';
-import {CancelorderComponent} from '../../cancelorder/cancelorder.component';
+import {CancelorderComponent} from '../cancelorder/cancelorder.component';
+import {config} from 'rxjs';
 
 @Component({
   selector: 'app-editorderdialog',
@@ -41,7 +42,6 @@ export class EditorderdialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<OrdersComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Ordered,
               public rest: RestService, public dialog: MatDialog) {
-    console.log(data);
     this.editForm.patchValue({
       address: data.address,
       postComment: data.postComment,
@@ -84,8 +84,14 @@ export class EditorderdialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  onCancelOrderClick(){
-    this.dialog.open(CancelorderComponent);
+  onCancelOrderClick() {
+    const dialogRef = this.dialog.open(CancelorderComponent, {
+      data: this.data.id.toString()
+    });
+    dialogRef.afterClosed().subscribe(result => {
+        this.dialogRef.close();
+      }
+    );
   }
 
   onButtonUpdate() {
