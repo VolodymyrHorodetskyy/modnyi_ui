@@ -12,7 +12,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule,
-  MatSidenavModule, MatSortModule, MatTableModule
+  MatSidenavModule, MatSortModule, MatTableModule, MatDatepickerModule, MatNativeDateModule
 } from '@angular/material';
 import { ShoeslistComponent } from './shoeslist/shoeslist.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -30,6 +30,8 @@ import { FinanceComponent } from './finance/finance.component';
 import { CanceledComponent } from './canceled/canceled.component';
 import { GetreturnedComponent } from './canceled/getreturned/getreturned.component';
 import { CancelorderComponent } from './dialogs/cancelorder/cancelorder.component';
+import { EarningsComponent } from './earnings/earnings.component';
+import {DatePipe} from '@angular/common';
 
 
 @NgModule({
@@ -49,7 +51,8 @@ import { CancelorderComponent } from './dialogs/cancelorder/cancelorder.componen
     FinanceComponent,
     CanceledComponent,
     GetreturnedComponent,
-    CancelorderComponent
+    CancelorderComponent,
+    EarningsComponent
   ],
   imports: [
     BrowserModule,
@@ -75,9 +78,11 @@ import { CancelorderComponent } from './dialogs/cancelorder/cancelorder.componen
     MatPaginatorModule,
     MatCheckboxModule,
     MatListModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
   entryComponents: [ClientdialogComponent, CreateorderdialogComponent, EditorderdialogComponent, CreatestoragerecordComponent, CancelorderComponent]
 })

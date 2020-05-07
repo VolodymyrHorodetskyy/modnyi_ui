@@ -8,6 +8,7 @@ import {CanceledComponent} from './canceled/canceled.component';
 import {NeeddeliveryComponent} from './statistics/needdelivery/needdelivery.component';
 import {ImportordersComponent} from './statistics/importorders/importorders.component';
 import {GetreturnedComponent} from './canceled/getreturned/getreturned.component';
+import {EarningsComponent} from './earnings/earnings.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: 'finance', component: FinanceComponent},
   {path: 'canceled', component: CanceledComponent},
   {path: 'delivery', component: NeeddeliveryComponent},
-  {path: 'returned', component: GetreturnedComponent }
+  {path: 'returned', component: GetreturnedComponent},
+  {path: 'earnings', component: EarningsComponent}
 ];
 
 @NgModule({

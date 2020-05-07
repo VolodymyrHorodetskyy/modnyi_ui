@@ -9,6 +9,7 @@ import {StatusDto} from '../entity/StatusDto';
 import {StorageRecord} from '../entity/StorageRecord';
 import {StringResponse} from '../entity/response/StringResponse';
 import {CancelOrderRequest} from '../entity/CancelOrderRequest';
+import {from} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -115,6 +116,16 @@ export class RestService {
 
   public cancelOrder(request: CancelOrderRequest) {
     return this.http.patch(this.configuration.serverpath + '/order/cancelOrder', request, this.getHttpOptions());
+  }
+
+  public getEarnings(dateFrom = '', dateTo = '') {
+    if (dateFrom == null) {
+      dateFrom = '';
+    }
+    if (dateTo == null) {
+      dateTo = '';
+    }
+    return this.http.get(this.configuration.serverpath + 'finance/getEarningString?from=' + dateFrom + '&to=' + dateTo);
   }
 
   getHttpOptions() {
