@@ -26,6 +26,7 @@ export class EarningsComponent implements OnInit {
     this.rest.getEarnings(this.datePipe.transform(this.earningForm.value.dateFrom, 'yyyy-MM-dd HH:mm'),
       this.datePipe.transform(this.earningForm.value.dateTo, 'yyyy-MM-dd HH:mm'))
       .subscribe(value => {
+        // @ts-ignore
         this.response = value.result;
       });
   }
