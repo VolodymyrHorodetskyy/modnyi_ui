@@ -20,8 +20,6 @@ import { OrdersComponent } from './orders/orders.component';
 import { ClientdialogComponent } from './dialogs/clientdialog/clientdialog.component';
 import { CreateorderdialogComponent } from './dialogs/createorderdialog/createorderdialog.component';
 import { EditorderdialogComponent } from './dialogs/editorderdialog/editorderdialog.component';
-import { OurstorageComponent } from './ourstorage/ourstorage.component';
-import { CreatestoragerecordComponent } from './dialogs/createstoragerecord/createstoragerecord.component';
 import { NeeddeliveryComponent } from './statistics/needdelivery/needdelivery.component';
 import { ImportordersComponent } from './statistics/importorders/importorders.component';
 import { StatisticpageComponent } from './statistics/statisticpage/statisticpage.component';
@@ -42,8 +40,6 @@ import {DatePipe} from '@angular/common';
     ClientdialogComponent,
     CreateorderdialogComponent,
     EditorderdialogComponent,
-    OurstorageComponent,
-    CreatestoragerecordComponent,
     NeeddeliveryComponent,
     ImportordersComponent,
     StatisticpageComponent,
@@ -84,6 +80,6 @@ import {DatePipe} from '@angular/common';
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
-  entryComponents: [ClientdialogComponent, CreateorderdialogComponent, EditorderdialogComponent, CreatestoragerecordComponent, CancelorderComponent]
+  entryComponents: [ClientdialogComponent, CreateorderdialogComponent, EditorderdialogComponent, CancelorderComponent]
 })
 export class AppModule { }

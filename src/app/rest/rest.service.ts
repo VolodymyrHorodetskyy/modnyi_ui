@@ -128,6 +128,10 @@ export class RestService {
     return this.http.get(this.configuration.serverpath + 'finance/getEarningString?from=' + dateFrom + '&to=' + dateTo);
   }
 
+  public getCancelOrderReason(id) {
+    return this.http.get(this.configuration.serverpath + '/order/getCanceledOrder?id=' + id);
+  }
+
   getHttpOptions() {
     return {
       headers: new HttpHeaders({

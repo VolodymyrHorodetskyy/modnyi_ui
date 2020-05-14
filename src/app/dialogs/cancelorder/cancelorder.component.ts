@@ -18,13 +18,23 @@ export class CancelorderComponent implements OnInit {
     comment: new FormControl('')
   });
 
-  constructor(public dialogRefCancelOrder: MatDialogRef<CancelorderComponent>, public rest: RestService, @Inject(MAT_DIALOG_DATA) public id: number) {
+  constructor(public dialogRefCancelOrder: MatDialogRef<CancelorderComponent>,
+              public rest: RestService, @Inject(MAT_DIALOG_DATA) public id: number) {
   }
 
   ngOnInit() {
     this.rest.getReasons().subscribe(data => {
       this.reasons = data;
     });
+    this.rest.getCancelOrderReason(this.id).subscribe(data => {
+      if (data != null) {
+        this.cancelOrderForm.patchValue({
+          reason: data.reason,
+          comment: data.comment
+        });
+      }
+    });
+
   }
 
   onButtonCancelOrder() {
