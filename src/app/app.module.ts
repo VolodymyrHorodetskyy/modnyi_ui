@@ -1,10 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatAutocompleteModule, MatButtonModule,
   MatCardModule, MatCheckboxModule, MatDialogModule, MatDividerModule,
@@ -14,22 +14,26 @@ import {
   MatListModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule,
   MatSidenavModule, MatSortModule, MatTableModule, MatDatepickerModule, MatNativeDateModule
 } from '@angular/material';
-import { ShoeslistComponent } from './shoeslist/shoeslist.component';
+import {ShoeslistComponent} from './shoeslist/shoeslist.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { OrdersComponent } from './orders/orders.component';
-import { ClientdialogComponent } from './dialogs/clientdialog/clientdialog.component';
-import { CreateorderdialogComponent } from './dialogs/createorderdialog/createorderdialog.component';
-import { EditorderdialogComponent } from './dialogs/editorderdialog/editorderdialog.component';
-import { NeeddeliveryComponent } from './statistics/needdelivery/needdelivery.component';
-import { ImportordersComponent } from './statistics/importorders/importorders.component';
-import { StatisticpageComponent } from './statistics/statisticpage/statisticpage.component';
-import { NeedtobepayedComponent } from './finance/needtobepayed/needtobepayed.component';
-import { FinanceComponent } from './finance/finance.component';
-import { CanceledComponent } from './canceled/canceled.component';
-import { GetreturnedComponent } from './canceled/getreturned/getreturned.component';
-import { CancelorderComponent } from './dialogs/cancelorder/cancelorder.component';
-import { EarningsComponent } from './earnings/earnings.component';
+import {OrdersComponent} from './orders/orders.component';
+import {ClientdialogComponent} from './dialogs/clientdialog/clientdialog.component';
+import {CreateorderdialogComponent} from './dialogs/createorderdialog/createorderdialog.component';
+import {EditorderdialogComponent} from './dialogs/editorderdialog/editorderdialog.component';
+import {NeeddeliveryComponent} from './statistics/needdelivery/needdelivery.component';
+import {ImportordersComponent} from './statistics/importorders/importorders.component';
+import {StatisticpageComponent} from './statistics/statisticpage/statisticpage.component';
+import {NeedtobepayedComponent} from './finance/needtobepayed/needtobepayed.component';
+import {FinanceComponent} from './finance/finance.component';
+import {CanceledComponent} from './canceled/canceled.component';
+import {GetreturnedComponent} from './canceled/getreturned/getreturned.component';
+import {CancelorderComponent} from './dialogs/cancelorder/cancelorder.component';
+import {EarningsComponent} from './earnings/earnings.component';
 import {DatePipe} from '@angular/common';
+import {EditshoeComponent} from './dialogs/editshoe/editshoe.component';
+import { YesnodialogComponent } from './dialogs/yesnodialog/yesnodialog.component';
+import { PatternsComponent } from './dialogs/patterns/patterns.component';
+import { CreatepatternComponent } from './dialogs/createpattern/createpattern.component';
 
 
 @NgModule({
@@ -48,7 +52,11 @@ import {DatePipe} from '@angular/common';
     CanceledComponent,
     GetreturnedComponent,
     CancelorderComponent,
-    EarningsComponent
+    EarningsComponent,
+    EditshoeComponent,
+    YesnodialogComponent,
+    PatternsComponent,
+    CreatepatternComponent
   ],
   imports: [
     BrowserModule,
@@ -80,6 +88,8 @@ import {DatePipe} from '@angular/common';
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
-  entryComponents: [ClientdialogComponent, CreateorderdialogComponent, EditorderdialogComponent, CancelorderComponent]
+  entryComponents: [ClientdialogComponent, CreateorderdialogComponent, EditorderdialogComponent, CancelorderComponent,
+    EditshoeComponent, YesnodialogComponent, PatternsComponent, CreatepatternComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

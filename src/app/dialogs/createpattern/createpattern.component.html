@@ -1,0 +1,7 @@
+<form class="example-form" [formGroup]="createPattern" (ngSubmit)="savePattern()">
+  <mat-form-field class="example-full-width">
+    <mat-label>Паттерн</mat-label>
+    <input formControlName="pattern" matInput>
+  </mat-form-field>
+  <button mat-raised-button color="primary">Створити</button>
+</form>

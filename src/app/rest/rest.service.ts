@@ -50,14 +50,6 @@ export class RestService {
     return this.http.get<StatusDto[]>(this.configuration.serverpath + '/order/getStatuses');
   }
 
-  public createStorageRecord(createstoragerequest) {
-    return this.http.post<StorageRecord>(this.configuration.serverpath + '/storage', createstoragerequest, this.getHttpOptions());
-  }
-
-  public getStorageRecords() {
-    return this.http.get<StorageRecord[]>(this.configuration.serverpath + '/storage', this.getHttpOptions());
-  }
-
   public checkShoeIsPresentInStorage(shoeId, size) {
     return this.http.get<boolean>(this.configuration.serverpath + '/storage/isExists?shoeId=' + shoeId + '&size=' + size);
   }
@@ -130,6 +122,26 @@ export class RestService {
 
   public getCancelOrderReason(id) {
     return this.http.get(this.configuration.serverpath + '/order/getCanceledOrder?id=' + id);
+  }
+
+  public createShoe(createShoeRequest) {
+    return this.http.post(this.configuration.serverpath + '/shoe', createShoeRequest);
+  }
+
+  public updateShoe(updateShoeRequest) {
+    return this.http.patch(this.configuration.serverpath + '/shoe', updateShoeRequest);
+  }
+
+  public deleteShoe(id) {
+    return this.http.delete(this.configuration.serverpath + 'shoe?id=' + id);
+  }
+
+  public addPattern(createPattern) {
+    return this.http.patch(this.configuration.serverpath + 'shoe/addPattern', createPattern, this.getHttpOptions());
+  }
+
+  public deletePattern(deletePattern) {
+    return this.http.patch(this.configuration.serverpath + 'shoe/removePattern', deletePattern);
   }
 
   getHttpOptions() {

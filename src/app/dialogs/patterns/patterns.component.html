@@ -1,0 +1,7 @@
+<div *ngFor="let value of patterns;let i = index" [attr.data-index]="i">
+  <input value="{{value}}" matInput>
+  <button mat-button (click)="onDelete(value)">Видалити</button>
+</div>
+
+<!--<button mat-raised-button color="primary" (click)="onCreate()">Зберегти</button>-->
+

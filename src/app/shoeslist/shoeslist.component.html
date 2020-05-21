@@ -1,12 +1,5 @@
-<!--<div *ngFor="let shoe of shoes">
-  <article>
-    <h1>{{shoe.model}}</h1>
-    <img style="width: 14%; float: left" src="{{configuration.picturepath}}{{shoe.photoPath}}" alt=""/>
-    <p style="float: left"> Ціна :{{shoe.price}}</p>
-    <p style="float: left"> Чиста ціна :{{shoe.cost}}</p>
-  </article>
-  <hr style="float: left">
-</div>-->
+<button (click)="onCreateOrEdit()" style="margin-right: 1em"  mat-raised-button color="primary">Створити</button>
+
 <label>Модель</label>
 <mat-form-field style="left: 1%" class="example-form-field">
   <input matInput type="text" [(ngModel)]="value" (input)="onInput(value)">
@@ -16,19 +9,42 @@
 </mat-form-field>
 
 <p></p>
-<div *ngFor="let shoe of shoes">
-  <mat-card style="float: left; border: 10px solid lightgray" class="example-card">
-    <mat-card-header>
-      <mat-card-title>{{shoe.model}} {{shoe.color}}</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image *ngIf="!shoe.imported; else isimported" src="{{configuration.picturepath}}{{shoe.photoPath}}" >
-    <ng-template #isimported><img mat-card-image style="height: 100px;
-    width: 80px;
-   object-fit: cover" src="{{shoe.photoPath}}"></ng-template>
-    <mat-card-content>
-      <p> Ціна :{{shoe.price}}</p>
-      <p> Чиста ціна :{{shoe.cost}}</p>
-    </mat-card-content>
-  </mat-card>
 
-</div>
+<table mat-table [dataSource]="shoes" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="model">
+    <th mat-header-cell *matHeaderCellDef> Модель </th>
+    <td mat-cell *matCellDef="let element"> {{element.model}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="color">
+    <th mat-header-cell *matHeaderCellDef> Колір </th>
+    <td mat-cell *matCellDef="let element"> {{element.color}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef> Ціна </th>
+    <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="cost">
+    <th mat-header-cell *matHeaderCellDef> Собівартість </th>
+    <td mat-cell *matCellDef="let element"> {{element.cost}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="patterns">
+    <th mat-header-cell *matHeaderCellDef> Патерни </th>
+    <td mat-cell *matCellDef="let element"> {{element.patterns}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell  *matHeaderCellDef > Дії </mat-header-cell>
+    <mat-cell *matCellDef="let row" >
+      <button (click)="addPattern(row)" mat-button >Додати паттерн</button>
+      <button (click)="removePattern(row)" mat-button >Видалити паттерн</button>
+    </mat-cell>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row (dblclick)="onCreateOrEdit(row)" *matRowDef="let row; columns: columnsToDisplay;"></tr>
+</table>

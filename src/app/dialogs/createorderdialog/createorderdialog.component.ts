@@ -1,7 +1,7 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {RestService} from '../../rest/rest.service';
-import {MatDialog, MatDialogRef} from '@angular/material';
+import {MatDialogRef} from '@angular/material';
 import {OrdersComponent} from '../../orders/orders.component';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Shoe} from '../../entity/Shoe';
@@ -102,25 +102,6 @@ export class CreateorderdialogComponent implements OnInit {
       this.createForm.controls['prepayment'].enable();
     }
     console.log(event);
-  }
-
-  onShoeAndSizeChange() {
-    const shoeId = this.createForm.controls['shoe'].value;
-    const size = this.createForm.controls['size'].value;
-    if (!this.isEmpty(shoeId) && !this.isEmpty(size)) {
-      this.rest.checkShoeIsPresentInStorage(shoeId, size).subscribe(data => {
-        if (data) {
-          this.createForm.controls['fromStorage'].enable();
-          this.errorValue = 'Доступні на складі';
-        } else {
-          this.createForm.controls['fromStorage'].disable();
-          this.errorValue = '';
-        }
-      });
-    } else {
-      this.createForm.controls['fromStorage'].disable();
-      this.errorValue = '';
-    }
   }
 
   isEmpty(str) {

@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {RestService} from '../rest/rest.service';
-import {Shoe} from '../entity/Shoe';
-import {Configuration} from '../configuration';
+import {MatDialog} from '@angular/material';
+import {EditshoeComponent} from '../dialogs/editshoe/editshoe.component';
+import {CreatepatternComponent} from '../dialogs/createpattern/createpattern.component';
+import {PatternsComponent} from '../dialogs/patterns/patterns.component';
 
 @Component({
   selector: 'app-shoeslist',
@@ -10,10 +12,12 @@ import {Configuration} from '../configuration';
 })
 export class ShoeslistComponent implements OnInit {
 
-  shoes: Shoe[];
+  shoes;
   value = '';
+  columnsToDisplay = ['model', 'color', 'price', 'cost', 'patterns', 'actions'];
 
-  constructor(public rest: RestService, public configuration: Configuration) {
+
+  constructor(public rest: RestService, public matDialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -27,5 +31,39 @@ export class ShoeslistComponent implements OnInit {
       this.shoes = shoes;
     });
   }
+
+  onCreateOrEdit(shoe = null) {
+    const dialogRef = this.matDialog.open(EditshoeComponent, {
+      data: shoe
+    });
+    dialogRef.afterClosed().subscribe(value1 => {
+      this.rest.getItems(null).subscribe(shoes => {
+        this.shoes = shoes;
+      });
+    });
+  }
+
+  addPattern(row) {
+    const dialogRef = this.matDialog.open(CreatepatternComponent, {
+      data: row.id
+    });
+    dialogRef.afterClosed().subscribe(value1 => {
+      this.rest.getItems(null).subscribe(shoes => {
+        this.shoes = shoes;
+      });
+    });
+  }
+
+  removePattern(row) {
+    const diaalogRef = this.matDialog.open(PatternsComponent, {
+      data: {id: row.id, patterns: row.patterns}
+    });
+    diaalogRef.afterClosed().subscribe(value1 => {
+      this.rest.getItems(null).subscribe(shoes => {
+        this.shoes = shoes;
+      });
+    });
+  }
+
 
 }

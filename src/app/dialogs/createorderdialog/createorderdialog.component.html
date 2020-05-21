@@ -39,7 +39,7 @@
 
   <mat-form-field style="display:inline-block; margin-right: 1em;">
     <mat-label> Модель взуття</mat-label>
-    <mat-select (selectionChange)="onShoeChange($event.value); onShoeAndSizeChange()" formControlName="shoe">
+    <mat-select (selectionChange)="onShoeChange($event.value)" formControlName="shoe">
       <mat-option *ngFor="let shoe of shoes" [value]="shoe.id">
         {{shoe.model}} {{shoe.color}}
       </mat-option>
@@ -48,7 +48,7 @@
 
   <mat-form-field style="display:inline-block; margin-right: 1em;" class="example-full-width">
     <mat-label>Розмір</mat-label>
-    <input formControlName="size" (input)="onShoeAndSizeChange()" matInput>
+    <input formControlName="size"  matInput>
   </mat-form-field>
 
   <mat-checkbox [disabled]="true" formControlName="fromStorage"
