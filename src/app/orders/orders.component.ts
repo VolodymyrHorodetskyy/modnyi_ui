@@ -30,7 +30,7 @@ export class OrdersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.updateOnFilters()
+    this.updateOnFilters();
   }
 
   onCreateOrderClick() {
@@ -58,6 +58,7 @@ export class OrdersComponent implements OnInit {
   }
 
   updatePage(pageEvent?: PageEvent) {
+    this.pageEvent = pageEvent;
     this.updateOnFilters();
   }
 
@@ -69,6 +70,7 @@ export class OrdersComponent implements OnInit {
   }
 
   updateOnFilters() {
+    console.log(this.pageEvent);
     this.updateOrders(this.pageEvent != null ?
       this.pageEvent.pageIndex : 0, this.pageEvent != null ?
       this.pageEvent.pageSize : 10, this.ttn, this.phone, this.withoutTTN, this.orderByValue);
