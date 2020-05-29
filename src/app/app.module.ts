@@ -20,9 +20,8 @@ import {OrdersComponent} from './orders/orders.component';
 import {ClientdialogComponent} from './dialogs/clientdialog/clientdialog.component';
 import {CreateorderdialogComponent} from './dialogs/createorderdialog/createorderdialog.component';
 import {EditorderdialogComponent} from './dialogs/editorderdialog/editorderdialog.component';
-import {NeeddeliveryComponent} from './statistics/needdelivery/needdelivery.component';
-import {ImportordersComponent} from './statistics/importorders/importorders.component';
-import {StatisticpageComponent} from './statistics/statisticpage/statisticpage.component';
+import {NeeddeliveryComponent} from './needdelivery/needdelivery.component';
+import {ImportordersComponent} from './importorders/importorders.component';
 import {NeedtobepayedComponent} from './finance/needtobepayed/needtobepayed.component';
 import {FinanceComponent} from './finance/finance.component';
 import {CanceledComponent} from './canceled/canceled.component';
@@ -34,6 +33,7 @@ import {EditshoeComponent} from './dialogs/editshoe/editshoe.component';
 import { YesnodialogComponent } from './dialogs/yesnodialog/yesnodialog.component';
 import { PatternsComponent } from './dialogs/patterns/patterns.component';
 import { CreatepatternComponent } from './dialogs/createpattern/createpattern.component';
+import { StatisticComponent } from './statistic/statistic.component';
 
 
 @NgModule({
@@ -46,8 +46,7 @@ import { CreatepatternComponent } from './dialogs/createpattern/createpattern.co
     EditorderdialogComponent,
     NeeddeliveryComponent,
     ImportordersComponent,
-    StatisticpageComponent,
-    NeedtobepayedComponent,
+   NeedtobepayedComponent,
     FinanceComponent,
     CanceledComponent,
     GetreturnedComponent,
@@ -56,7 +55,8 @@ import { CreatepatternComponent } from './dialogs/createpattern/createpattern.co
     EditshoeComponent,
     YesnodialogComponent,
     PatternsComponent,
-    CreatepatternComponent
+    CreatepatternComponent,
+    StatisticComponent
   ],
   imports: [
     BrowserModule,

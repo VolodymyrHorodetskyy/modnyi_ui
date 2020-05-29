@@ -4,10 +4,11 @@ import {ShoeslistComponent} from './shoeslist/shoeslist.component';
 import {OrdersComponent} from './orders/orders.component';
 import {FinanceComponent} from './finance/finance.component';
 import {CanceledComponent} from './canceled/canceled.component';
-import {NeeddeliveryComponent} from './statistics/needdelivery/needdelivery.component';
-import {ImportordersComponent} from './statistics/importorders/importorders.component';
+import {NeeddeliveryComponent} from './needdelivery/needdelivery.component';
+import {ImportordersComponent} from './importorders/importorders.component';
 import {GetreturnedComponent} from './canceled/getreturned/getreturned.component';
 import {EarningsComponent} from './earnings/earnings.component';
+import {StatisticComponent} from './statistic/statistic.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   {path: 'canceled', component: CanceledComponent},
   {path: 'delivery', component: NeeddeliveryComponent},
   {path: 'returned', component: GetreturnedComponent},
-  {path: 'earnings', component: EarningsComponent}
+  {path: 'earnings', component: EarningsComponent},
+  {path: 'statistic', component: StatisticComponent}
 ];
 
 @NgModule({

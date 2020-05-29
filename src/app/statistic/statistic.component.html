@@ -1,0 +1,31 @@
+<form [formGroup]="soldShoeForm" (ngSubmit)="onSubmit()" class="example-form">
+<mat-form-field>
+  <mat-label>Від</mat-label>
+  <input formControlName="dateFrom" matInput [matDatepicker]="picker">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>До</mat-label>
+  <input formControlName="dateTo" matInput [matDatepicker]="picker2">
+  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+  <mat-datepicker #picker2></mat-datepicker>
+</mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Статус</mat-label>
+    <mat-select formControlName="status">
+      <mat-option>Всі</mat-option>
+      <mat-option *ngFor="let status of statuses" [value]="status.status">
+        {{status.status}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button type="submit" mat-raised-button color="primary">Показати</button>
+</form>
+
+<textarea id="clipboard-example-textarea" cols="30" rows="10" [(ngModel)]="response"></textarea>
+
+<mat-spinner *ngIf="loaded"></mat-spinner>
