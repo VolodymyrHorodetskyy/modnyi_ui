@@ -2,7 +2,6 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {RestService} from '../../rest/rest.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
-import {Ordered} from '../../entity/Ordered';
 import {CancelOrderRequest} from '../../entity/CancelOrderRequest';
 
 @Component({

@@ -32,7 +32,6 @@ export class CreateorderdialogComponent implements OnInit {
     size: new FormControl('', Validators.required),
     shoe: new FormControl('', Validators.required),
     notes: new FormControl(''),
-    postComment: new FormControl(''),
     price: new FormControl('', Validators.required),
     prepayment: new FormControl('', Validators.required),
     fullpayment: new FormControl(''),

@@ -1,17 +1,17 @@
 <form [formGroup]="soldShoeForm" (ngSubmit)="onSubmit()" class="example-form">
-<mat-form-field>
-  <mat-label>Від</mat-label>
-  <input formControlName="dateFrom" matInput [matDatepicker]="picker">
-  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-</mat-form-field>
+  <mat-form-field>
+    <mat-label>Від</mat-label>
+    <input formControlName="dateFrom" matInput [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
 
-<mat-form-field>
-  <mat-label>До</mat-label>
-  <input formControlName="dateTo" matInput [matDatepicker]="picker2">
-  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-  <mat-datepicker #picker2></mat-datepicker>
-</mat-form-field>
+  <mat-form-field>
+    <mat-label>До</mat-label>
+    <input formControlName="dateTo" matInput [matDatepicker]="picker2">
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
 
   <mat-form-field>
     <mat-label>Статус</mat-label>
@@ -26,6 +26,39 @@
   <button type="submit" mat-raised-button color="primary">Показати</button>
 </form>
 
-<textarea id="clipboard-example-textarea" cols="30" rows="10" [(ngModel)]="response"></textarea>
-
+<textarea id="clipboard-example-textarea" *ngIf="showResponse" style="margin-left: 3%" cols="30" rows="10"
+          [(ngModel)]="response"></textarea>
 <mat-spinner *ngIf="loaded"></mat-spinner>
+
+<mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="shoe">
+    <mat-header-cell *matHeaderCellDef> Взуття</mat-header-cell>
+    <mat-cell *matCellDef="let stat"> {{stat.shoe.model}} {{stat.shoe.color}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="receivedamount">
+    <mat-header-cell *matHeaderCellDef> Кількість отримань</mat-header-cell>
+    <mat-cell *matCellDef="let stat"> {{stat.receivedAmount}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="deniedamount">
+    <mat-header-cell *matHeaderCellDef> Кількість відмов</mat-header-cell>
+    <mat-cell *matCellDef="let stat"> {{stat.deniedAmount}}  </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="receivedpercentage">
+    <mat-header-cell *matHeaderCellDef> Відсоток отримань</mat-header-cell>
+    <mat-cell *matCellDef="let stat"> {{stat.receivedPercentage}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="generalamount">
+    <mat-header-cell *matHeaderCellDef> Загальна кількість</mat-header-cell>
+    <mat-cell *matCellDef="let stat"> {{stat.generalAmount}} </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+
+

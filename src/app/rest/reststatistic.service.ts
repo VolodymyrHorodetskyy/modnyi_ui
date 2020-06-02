@@ -19,4 +19,8 @@ export class ReststatisticService {
     return this.http.get(url);
   }
 
+  public getStatShoe(dateFrom, dateTo) {
+    return this.http.get(this.configuration.serverpath + 'statistic/getReceivedShoePercentage?from=' + dateFrom + '&to=' + dateTo);
+  }
+
 }
