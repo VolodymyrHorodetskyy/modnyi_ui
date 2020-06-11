@@ -1,7 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
 import {OrdersComponent} from '../../orders/orders.component';
-import {Client} from '../../entity/Client';
 import {Ordered} from '../../entity/Ordered';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Shoe} from '../../entity/Shoe';
@@ -9,7 +8,7 @@ import {RestService} from '../../rest/rest.service';
 import {EditOrderedRequest} from '../../entity/EditOrderedRequest';
 import {StatusDto} from '../../entity/StatusDto';
 import {CancelorderComponent} from '../cancelorder/cancelorder.component';
-import {config} from 'rxjs';
+import {RestorderService} from '../../rest/restorder.service';
 
 @Component({
   selector: 'app-editorderdialog',
@@ -41,7 +40,7 @@ export class EditorderdialogComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<OrdersComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Ordered,
-              public rest: RestService, public dialog: MatDialog) {
+              public rest: RestService, private restOrder: RestorderService, public dialog: MatDialog) {
     this.editForm.patchValue({
       address: data.address,
       postComment: data.postComment,
@@ -64,7 +63,6 @@ export class EditorderdialogComponent implements OnInit {
 
 
   onShoeChange(value) {
-    console.log(this.editForm.get('price').value);
     const shoe = this.shoes.find(shoe => shoe.id === value);
     this.editForm.patchValue({
       price: shoe.price
@@ -98,7 +96,7 @@ export class EditorderdialogComponent implements OnInit {
     const request: EditOrderedRequest = this.editForm.value;
     request.full_payment = this.fullPaymentCheckBox;
     console.log(request.full_payment);
-    this.rest.updateOrder(this.data.id, request).subscribe(value => {
+    this.restOrder.updateOrder(this.data.id, request).subscribe(value => {
       this.dialogRef.close();
     });
   }

@@ -1,0 +1,12 @@
+<form [formGroup]="saveShoe" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Взуття</mat-label>
+    <mat-select formControlName="shoeId">
+      <mat-option *ngFor="let shoe of shoes" [value]="shoe.id">
+        {{shoe.model}} {{shoe.color}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button type="submit" color="primary">Добавити</button>
+
+</form>

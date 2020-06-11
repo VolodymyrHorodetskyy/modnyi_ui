@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {RestService} from '../rest/rest.service';
 import {Ordered} from '../entity/Ordered';
 import {MatDialog, PageEvent} from '@angular/material';
 import {CreateorderdialogComponent} from '../dialogs/createorderdialog/createorderdialog.component';
 import {EditorderdialogComponent} from '../dialogs/editorderdialog/editorderdialog.component';
 import {GetAllOrderedResponse} from '../entity/response/GetAllOrderedResponse';
+import {RestorderService} from '../rest/restorder.service';
+import {ShoesdialogComponent} from '../dialogs/shoesdialog/shoesdialog.component';
 
 @Component({
   selector: 'app-orders',
@@ -15,7 +16,7 @@ export class OrdersComponent implements OnInit {
 
   orders: Ordered[];
   getAllOrdered: GetAllOrderedResponse;
-  displayedColumns: string[] = ['ttn', 'notes', 'nameAndSurname', 'phone', 'address', 'shoe', 'size', 'status'];
+  displayedColumns: string[] = ['ttn', 'notes', 'nameAndSurname', 'phone', 'address', 'shoe', 'size', 'status', 'actions'];
   pageEvent: PageEvent;
   ttn: '';
   phone: '';
@@ -26,7 +27,7 @@ export class OrdersComponent implements OnInit {
   ];
   orderByValue: string;
 
-  constructor(private rest: RestService, public dialog: MatDialog) {
+  constructor(private rest: RestorderService, public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -47,7 +48,7 @@ export class OrdersComponent implements OnInit {
 
   onRowClick(event, ordered) {
     let dialogRef;
-    if (!event.toElement.className.includes('ttn')) {
+    if (!event.toElement.className.includes('ttn') && !event.toElement.className.includes('button')) {
       dialogRef = this.dialog.open(EditorderdialogComponent, {
         data: ordered
       });
@@ -70,10 +71,18 @@ export class OrdersComponent implements OnInit {
   }
 
   updateOnFilters() {
-    console.log(this.pageEvent);
     this.updateOrders(this.pageEvent != null ?
       this.pageEvent.pageIndex : 0, this.pageEvent != null ?
       this.pageEvent.pageSize : 10, this.ttn, this.phone, this.withoutTTN, this.orderByValue);
+  }
+
+  shoeShoesClick(order) {
+    const dialogRef = this.dialog.open(ShoesdialogComponent, {
+      data: order
+    });
+    dialogRef.afterClosed().subscribe(value => {
+      this.updateOnFilters();
+    });
   }
 
 

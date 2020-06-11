@@ -6,6 +6,7 @@ import {OrdersComponent} from '../../orders/orders.component';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Shoe} from '../../entity/Shoe';
 import {StatusDto} from '../../entity/StatusDto';
+import {RestorderService} from '../../rest/restorder.service';
 
 @Component({
   selector: 'app-createorderdialog',
@@ -38,7 +39,8 @@ export class CreateorderdialogComponent implements OnInit {
     fromStorage: new FormControl('')
   });
 
-  constructor(public rest: RestService, public dialogRef: MatDialogRef<OrdersComponent>, public formBuilder: FormBuilder) {
+  constructor(private restOrder: RestorderService, private rest: RestService,
+              public dialogRef: MatDialogRef<OrdersComponent>, public formBuilder: FormBuilder) {
   }
 
   onDenyClick(): void {
@@ -55,7 +57,7 @@ export class CreateorderdialogComponent implements OnInit {
   }
 
   onNP() {
-    this.rest.getOrderedNP(null, this.createForm.controls['ttn'].value).subscribe(data => {
+    this.restOrder.getOrderedNP(null, this.createForm.controls['ttn'].value).subscribe(data => {
       this.createForm.patchValue({
         ttn: data.ttn,
         address: data.address,
@@ -87,7 +89,7 @@ export class CreateorderdialogComponent implements OnInit {
   }
 
   onButtonSave() {
-    this.rest.saveOrder(this.createForm.value).subscribe(data => {
+    this.restOrder.saveOrder(this.createForm.value).subscribe(data => {
       this.dialogRef.close();
     }, error => {
       this.errorValue = error.error.message;
@@ -103,7 +105,4 @@ export class CreateorderdialogComponent implements OnInit {
     console.log(event);
   }
 
-  isEmpty(str) {
-    return (!str || 0 === str.length);
-  }
 }

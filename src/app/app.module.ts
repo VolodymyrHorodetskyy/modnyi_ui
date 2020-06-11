@@ -34,6 +34,7 @@ import { YesnodialogComponent } from './dialogs/yesnodialog/yesnodialog.componen
 import { PatternsComponent } from './dialogs/patterns/patterns.component';
 import { CreatepatternComponent } from './dialogs/createpattern/createpattern.component';
 import { StatisticComponent } from './statistic/statistic.component';
+import {ShoesdialogComponent} from './dialogs/shoesdialog/shoesdialog.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { StatisticComponent } from './statistic/statistic.component';
     YesnodialogComponent,
     PatternsComponent,
     CreatepatternComponent,
-    StatisticComponent
+    StatisticComponent,
+    ShoesdialogComponent
   ],
   imports: [
     BrowserModule,
@@ -89,7 +91,7 @@ import { StatisticComponent } from './statistic/statistic.component';
   providers: [DatePipe],
   bootstrap: [AppComponent],
   entryComponents: [ClientdialogComponent, CreateorderdialogComponent, EditorderdialogComponent, CancelorderComponent,
-    EditshoeComponent, YesnodialogComponent, PatternsComponent, CreatepatternComponent]
+    EditshoeComponent, YesnodialogComponent, PatternsComponent, CreatepatternComponent, ShoesdialogComponent]
 })
 export class AppModule {
 }
