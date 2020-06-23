@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Configuration} from '../configuration';
 import {GetAllOrderedResponse} from '../entity/response/GetAllOrderedResponse';
 import {FromNPToOrderRequest} from '../entity/FromNPToOrderRequest';
@@ -34,10 +34,21 @@ export class RestorderService {
     return this.http.patch<Ordered>(this.configuration.serverpath + '/order/' + id, updateOrderRequest);
   }
 
-  public addShoeToOrder(addShoeToOrder){
-    return this.http.put<Ordered>(this.configuration.serverpath+ '/order/addShoeToOrder', addShoeToOrder);
+  public addShoeToOrder(addShoeToOrder) {
+    return this.http.put<Ordered>(this.configuration.serverpath + '/order/addShoeToOrder', addShoeToOrder);
   }
 
+  public makeAllPayed() {
+    return this.http.patch(this.configuration.serverpath + '/order/makeAllPayed', this.getHttpOptions());
+  }
+
+  getHttpOptions() {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+  }
 
 
 }

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RestService} from '../../rest/rest.service';
+import {RestorderService} from '../../rest/restorder.service';
 
 @Component({
   selector: 'app-needtobepayed',
@@ -8,24 +9,25 @@ import {RestService} from '../../rest/rest.service';
 })
 export class NeedtobepayedComponent implements OnInit {
 
-  fileToUpload: File = null;
   needStatusUpdate: boolean;
   response: string;
 
-  constructor(public rest: RestService) {
+  constructor(private rest: RestService, private orderRest: RestorderService) {
   }
 
   ngOnInit() {
   }
 
-  handleFileInput(files: FileList) {
-    this.fileToUpload = files.item(0);
-  }
-
   showNoPayed() {
-    this.rest.getNeedToBePayed(this.needStatusUpdate, this.fileToUpload)
+    this.rest.getNeedToBePayed(this.needStatusUpdate)
       .subscribe(data => {
         this.response = data.result;
       });
   }
+
+  makeAllPayed() {
+    this.orderRest.makeAllPayed().subscribe(value => {
+    });
+  }
+
 }

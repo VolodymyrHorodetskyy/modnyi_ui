@@ -1,12 +1,11 @@
-<div class="form-group">
-  <label for="file">Choose File</label>
-  <input type="file"
-         id="file"
-         (change)="handleFileInput($event.target.files)">
-</div>
+
 <mat-checkbox class="example-margin" [(ngModel)]="needStatusUpdate">Обновити Статуси</mat-checkbox>
 
 <button mat-raised-button color="primary" (click)="showNoPayed()">Визначити</button>
 
 
+
 <textarea id="clipboard-example-textarea" cols="30" rows="10" [(ngModel)]="response"></textarea>
+
+
+<button mat-raised-button (click)="makeAllPayed()"> Позначити всі як оплачені </button>

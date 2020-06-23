@@ -15,6 +15,12 @@
     <input formControlName="comment" matInput>
   </mat-form-field>
 
+  <mat-form-field style="display:inline-block; margin-right: 1em;" class="example-full-width">
+    <mat-label>Нова накладна</mat-label>
+    <input formControlName="newTTN" matInput>
+  </mat-form-field>
+
+
   <button [disabled]="!cancelOrderForm.valid" style="margin-right: 1em;" mat-raised-button color="warn" type="submit" >
     Зробити
   </button>

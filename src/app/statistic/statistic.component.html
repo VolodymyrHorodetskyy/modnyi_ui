@@ -26,7 +26,8 @@
   <button type="submit" mat-raised-button color="primary">Показати</button>
 </form>
 
-<textarea id="clipboard-example-textarea" *ngIf="showResponse" style="margin-left: 3%" cols="30" rows="10"
+<textarea id="clipboard-example-textarea"
+          *ngIf="showResponse" style="margin-left: 3%" cols="30" rows="10"
           [(ngModel)]="response"></textarea>
 <mat-spinner *ngIf="loaded"></mat-spinner>
 
