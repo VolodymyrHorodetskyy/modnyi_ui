@@ -58,14 +58,14 @@
   <mat-label style="display:inline-block; margin-right: 1em;">{{data.status}}</mat-label>
 
 
-<!--  <mat-form-field style="display:inline-block; margin-right: 1em;">
+ <mat-form-field *ngIf="data.withoutTTN"  style="display:inline-block; margin-right: 1em;">
     <mat-label> Статус</mat-label>
     <mat-select  formControlName="status">
       <mat-option *ngFor="let status of statuses" [value]="status.status">
         {{status.status}}
       </mat-option>
     </mat-select>
-  </mat-form-field>-->
+  </mat-form-field>
 
 
   <p></p>

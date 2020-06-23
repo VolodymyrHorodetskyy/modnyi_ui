@@ -17,5 +17,6 @@ export class Ordered {
   nameAndSurnameNP: string;
   price: string;
   fullPayment: boolean;
+  withoutTTN: boolean;
 
 }
