@@ -9,6 +9,7 @@ import {ImportordersComponent} from './importorders/importorders.component';
 import {GetreturnedComponent} from './canceled/getreturned/getreturned.component';
 import {EarningsComponent} from './earnings/earnings.component';
 import {StatisticComponent} from './statistic/statistic.component';
+import {NotificationsComponent} from './notifications/notifications.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'delivery', component: NeeddeliveryComponent},
   {path: 'returned', component: GetreturnedComponent},
   {path: 'earnings', component: EarningsComponent},
-  {path: 'statistic', component: StatisticComponent}
+  {path: 'statistic', component: StatisticComponent},
+  {path: 'notifications', component: NotificationsComponent}
 ];
 
 @NgModule({

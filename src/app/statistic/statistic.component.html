@@ -31,7 +31,7 @@
           [(ngModel)]="response"></textarea>
 <mat-spinner *ngIf="loaded"></mat-spinner>
 
-<mat-table *ngIf="dataSource" [dataSource]="dataSource" class="mat-elevation-z8">
+<mat-table *ngIf="dataSource" [dataSource]="dataSource" matSort (matSortChange)="sortData($event)" class="mat-elevation-z8">
   <ng-container matColumnDef="shoe">
     <mat-header-cell *matHeaderCellDef> Взуття</mat-header-cell>
     <mat-cell *matCellDef="let stat"> {{stat.shoe.model}} {{stat.shoe.color}} </mat-cell>
@@ -43,12 +43,12 @@
   </ng-container>
 
   <ng-container matColumnDef="deniedamount">
-    <mat-header-cell *matHeaderCellDef> Кількість відмов</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Кількість відмов</mat-header-cell>
     <mat-cell *matCellDef="let stat"> {{stat.deniedAmount}}  </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="receivedpercentage">
-    <mat-header-cell *matHeaderCellDef> Відсоток отримань</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Відсоток отримань</mat-header-cell>
     <mat-cell *matCellDef="let stat"> {{stat.receivedPercentage}} </mat-cell>
   </ng-container>
 

@@ -12,7 +12,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule,
-  MatSidenavModule, MatSortModule, MatTableModule, MatDatepickerModule, MatNativeDateModule
+  MatSidenavModule, MatSortModule, MatTableModule, MatDatepickerModule, MatNativeDateModule, MatBadgeModule, MatToolbarModule
 } from '@angular/material';
 import {ShoeslistComponent} from './shoeslist/shoeslist.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -35,6 +35,7 @@ import { PatternsComponent } from './dialogs/patterns/patterns.component';
 import { CreatepatternComponent } from './dialogs/createpattern/createpattern.component';
 import { StatisticComponent } from './statistic/statistic.component';
 import {ShoesdialogComponent} from './dialogs/shoesdialog/shoesdialog.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import {ShoesdialogComponent} from './dialogs/shoesdialog/shoesdialog.component'
     PatternsComponent,
     CreatepatternComponent,
     StatisticComponent,
-    ShoesdialogComponent
+    ShoesdialogComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +88,9 @@ import {ShoesdialogComponent} from './dialogs/shoesdialog/shoesdialog.component'
     MatListModule,
     MatProgressSpinnerModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatBadgeModule,
+    MatToolbarModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

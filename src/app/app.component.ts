@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {RestService} from './rest/rest.service';
+import {RestnotifService} from './rest/restnotif.service';
+import {RestorderService} from './rest/restorder.service';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +9,23 @@ import {RestService} from './rest/rest.service';
 })
 export class AppComponent implements OnInit {
 
-  title = 'modnyichobitokui';
+  amount;
+  showUpdate = true;
 
-
-
-  constructor(public rest: RestService) {
+  constructor(public restNotif: RestnotifService, public restOrder: RestorderService) {
   }
 
   ngOnInit() {
+    this.restNotif.getUnreadAmount().subscribe(value => {
+      this.amount = value;
+    });
+  }
 
+  update() {
+    this.showUpdate = false;
+    this.restOrder.updateStatuses().subscribe(value => {
+      this.showUpdate = true;
+    });
   }
 
 

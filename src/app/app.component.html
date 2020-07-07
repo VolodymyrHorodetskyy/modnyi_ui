@@ -1,3 +1,15 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span class="menu-spacer"></span>
+    <div>
+      <a mat-button [routerLink]="'/notifications'"> <span matBadgePosition="after" [matBadge]="restNotif.amountNotif"
+                                                               matBadgeOverlap="false">Сповіщення </span>
+      </a>
+      <a mat-button  disabled="{{!showUpdate}}" (click)="update()"> Обновити</a>
+
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
 <mat-sidenav-container class="example-container">
   <mat-sidenav mode="side" opened role="navigation">
     <mat-nav-list>

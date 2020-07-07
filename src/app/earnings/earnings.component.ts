@@ -15,6 +15,7 @@ export class EarningsComponent implements OnInit {
     dateFrom: new FormControl(''),
     dateTo: new FormControl('')
   });
+  loaded = false;
 
   constructor(public rest: RestService, public datePipe: DatePipe) {
   }
@@ -23,9 +24,11 @@ export class EarningsComponent implements OnInit {
   }
 
   onSubmit() {
+    this.loaded = true;
     this.rest.getEarnings(this.datePipe.transform(this.earningForm.value.dateFrom, 'yyyy-MM-dd HH:mm'),
       this.datePipe.transform(this.earningForm.value.dateTo, 'yyyy-MM-dd HH:mm'))
       .subscribe(value => {
+        this.loaded = false;
         // @ts-ignore
         this.response = value.result;
       });

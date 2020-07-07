@@ -42,6 +42,10 @@ export class RestorderService {
     return this.http.patch(this.configuration.serverpath + '/order/makeAllPayed', this.getHttpOptions());
   }
 
+  public updateStatuses() {
+    return this.http.patch(this.configuration.serverpath + '/order/updateStatuses', this.getHttpOptions());
+  }
+
   getHttpOptions() {
     return {
       headers: new HttpHeaders({
