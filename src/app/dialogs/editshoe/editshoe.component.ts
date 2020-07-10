@@ -18,11 +18,13 @@ export class EditshoeComponent implements OnInit {
     model: new FormControl('', Validators.required),
     color: new FormControl('', Validators.required),
     price: new FormControl('', Validators.required),
-    cost: new FormControl('', Validators.required)
+    cost: new FormControl('', Validators.required),
+    companyId: new FormControl('', Validators.required)
   });
 
   buttonTxt = 'Створити';
   isUpdate = false;
+  companies;
 
   constructor(public rest: RestService, public dialogRef: MatDialogRef<ShoeslistComponent>,
               @Inject(MAT_DIALOG_DATA) public data, public matDialog: MatDialog) {
@@ -36,9 +38,13 @@ export class EditshoeComponent implements OnInit {
         model: this.data.model,
         color: this.data.color,
         price: this.data.price,
-        cost: this.data.cost
+        cost: this.data.cost,
+        companyId: this.data.company.id
       });
     }
+    this.rest.getCompanies().subscribe(value => {
+      this.companies = value;
+    });
   }
 
   onSave() {

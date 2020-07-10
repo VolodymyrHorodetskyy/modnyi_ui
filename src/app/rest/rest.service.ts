@@ -111,6 +111,10 @@ export class RestService {
     return this.http.patch(this.configuration.serverpath + 'shoe/removePattern', deletePattern);
   }
 
+  public getCompanies() {
+    return this.http.get(this.configuration.serverpath + 'company');
+  }
+
   getHttpOptions() {
     return {
       headers: new HttpHeaders({
