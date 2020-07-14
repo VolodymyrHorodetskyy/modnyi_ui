@@ -27,6 +27,7 @@ export class CreateorderdialogComponent implements OnInit {
     name: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
     middleName: new FormControl(''),
+    mail: new FormControl(''),
     status: new FormControl('', Validators.required),
     address: new FormControl(''),
     phone: new FormControl('', Validators.required),

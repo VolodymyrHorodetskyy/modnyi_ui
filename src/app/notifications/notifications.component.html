@@ -1,9 +1,9 @@
 <mat-list *ngIf="notification != null">
-  <mat-list-item  *ngFor="let message of notification.content">
+  <mat-list-item *ngFor="let message of notification.content">
     <h3 matLine> {{message.messageType}} </h3>
     <p matLine>
-      <span> {{message.notif}} </span>
-        <span class="demo-2"> -- {{message.ttn}}  </span>
+      <span> {{message.topic}} </span>
+      <span class="demo-2">{{message.content}}  -- {{message.ttn}}  </span>
     </p>
     <mat-icon *ngIf="!message.read1" matListIcon>mark_email_unread</mat-icon>
     <mat-icon *ngIf="message.read1" matListIcon>mark_email_read</mat-icon>
