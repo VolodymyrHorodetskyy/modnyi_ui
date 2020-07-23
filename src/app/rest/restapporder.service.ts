@@ -24,7 +24,7 @@ export class RestapporderService {
     return this.http.get(this.configuration.serverpath + 'AppOrder/statuses');
   }
 
-  public changeStatusAndComment(changeStatusRequest) {
+  public changeAppOrder(changeStatusRequest) {
     return this.http.patch(this.configuration.serverpath + 'AppOrder/changeStatusAndComment', changeStatusRequest);
   }
 

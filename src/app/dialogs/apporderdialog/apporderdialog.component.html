@@ -7,12 +7,17 @@
 <p *ngFor="let product of item.products">{{product}}</p>
 <p>Сума: {{item.amount}}</p>
 <p>Статус: {{item.status}} </p>
-<p *ngIf="item.previousStatus"> {{item.previousStatus}}</p>
+<p *ngIf="item.previousStatus">Попередній: {{item.previousStatus}}</p>
+<p> ТТН: {{item.ttn}}</p>
 <mat-form-field appearance="fill">
   <mat-label>Статус</mat-label>
   <mat-select [(ngModel)]="statusSelected">
     <mat-option *ngFor="let status of statuses" value="{{status}}">{{status}}</mat-option>
   </mat-select>
+</mat-form-field>
+<mat-form-field class="example-full-width">
+  <mat-label>ТТН</mat-label>
+  <input matInput [(ngModel)]="ttn" >
 </mat-form-field>
 <mat-form-field style="margin-left: 2%" class="example-full-width">
   <mat-label>Комент</mat-label>

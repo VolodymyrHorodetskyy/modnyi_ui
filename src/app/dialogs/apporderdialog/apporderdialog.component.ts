@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialogRef, MatSnackBar} from '@angular/material';
 import {RestapporderService} from '../../rest/restapporder.service';
 import {AppordersComponent} from '../../apporders/apporders.component';
 
@@ -13,9 +13,10 @@ export class ApporderdialogComponent implements OnInit {
   statusSelected;
   statuses;
   comment;
+  ttn;
 
   constructor(@Inject(MAT_DIALOG_DATA) public item, private restAppOrder: RestapporderService,
-              public dialogRef: MatDialogRef<AppordersComponent>) {
+              public dialogRef: MatDialogRef<AppordersComponent>, private _snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -28,13 +29,22 @@ export class ApporderdialogComponent implements OnInit {
 
 
   onSave() {
-    this.restAppOrder.changeStatusAndComment({
+    this.restAppOrder.changeAppOrder({
       id: this.item.id,
       status: this.statusSelected,
-      comment: this.comment
+      comment: this.comment,
+      ttn: this.ttn
     }).subscribe(value => {
       this.dialogRef.close();
+      // @ts-ignore
+      if (value.message != null) {
+        this._snackBar.open(value.message, 'ттн додано', {
+          duration: 2000,
+          verticalPosition: 'top'
+        });
+      }
     });
+
   }
 
 }

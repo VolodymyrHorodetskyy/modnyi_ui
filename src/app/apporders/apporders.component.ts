@@ -33,7 +33,7 @@ export class AppordersComponent implements OnInit {
 
   ngOnInit() {
     this.initAppOrdersArrays();
-    var d = new Date();
+    const d = new Date();
     d.setDate(d.getDate() - 7);
     this.dateFrom = d;
   }
@@ -86,7 +86,6 @@ export class AppordersComponent implements OnInit {
       data: item
     });
     dialog.afterClosed().subscribe(value => {
-      console.log(value);
       this.initAppOrdersArrays();
     });
   }
@@ -94,7 +93,7 @@ export class AppordersComponent implements OnInit {
   onDropped(event, item) {
     const status = this.statuses[Number(event.container.id.substr(event.container.id.length - 1))];
     item.status = status;
-    this.restAppOrder.changeStatusAndComment({id: item.id, status: status}).subscribe(
+    this.restAppOrder.changeAppOrder({id: item.id, status: status}).subscribe(
     );
   }
 

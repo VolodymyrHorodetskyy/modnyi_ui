@@ -6,13 +6,27 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatAutocompleteModule, MatButtonModule,
-  MatCardModule, MatCheckboxModule, MatDialogModule, MatDividerModule,
+  MatAutocompleteModule,
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDialogModule,
+  MatDividerModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatListModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule,
-  MatSidenavModule, MatSortModule, MatTableModule, MatDatepickerModule, MatNativeDateModule, MatBadgeModule, MatToolbarModule
+  MatListModule,
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
+  MatSelectModule,
+  MatSidenavModule,
+  MatSortModule,
+  MatTableModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatBadgeModule,
+  MatToolbarModule,
+  MatSnackBarModule
 } from '@angular/material';
 import {ShoeslistComponent} from './shoeslist/shoeslist.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -65,7 +79,7 @@ import { ApporderdialogComponent } from './dialogs/apporderdialog/apporderdialog
     ShoesdialogComponent,
     NotificationsComponent,
     AppordersComponent,
-    ApporderdialogComponent
+    ApporderdialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,7 +110,8 @@ import { ApporderdialogComponent } from './dialogs/apporderdialog/apporderdialog
     MatNativeDateModule,
     MatBadgeModule,
     MatToolbarModule,
-    DragDropModule
+    DragDropModule,
+    MatSnackBarModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
