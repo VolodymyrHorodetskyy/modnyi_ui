@@ -48,11 +48,17 @@ export class AppordersComponent implements OnInit {
 
   initAppOrdersArrays(id = '', phoneAndNumber = '', from = '') {
     this.restAppOrder.getAppOrders(id, phoneAndNumber, from).subscribe(value => {
+      // @ts-ignore
       this.new = this.initArray(value.Новий);
+      // @ts-ignore
       this.waitingForPayment = this.initArray(value.Чекаємо_оплату);
+      // @ts-ignore
       this.prePayed = this.initArray(value.Передплачено);
+      // @ts-ignore
       this.fullPayment = this.initArray(value.Повна_оплата);
+      // @ts-ignore
       this.doNotAnswer = this.initArray(value.Не_Відповідає);
+      // @ts-ignore
       this.canceled = this.initArray(value.Скасовано);
     });
   }
