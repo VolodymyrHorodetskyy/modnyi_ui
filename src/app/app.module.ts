@@ -36,6 +36,9 @@ import { CreatepatternComponent } from './dialogs/createpattern/createpattern.co
 import { StatisticComponent } from './statistic/statistic.component';
 import {ShoesdialogComponent} from './dialogs/shoesdialog/shoesdialog.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { AppordersComponent } from './apporders/apporders.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { ApporderdialogComponent } from './dialogs/apporderdialog/apporderdialog.component';
 
 
 @NgModule({
@@ -60,7 +63,9 @@ import { NotificationsComponent } from './notifications/notifications.component'
     CreatepatternComponent,
     StatisticComponent,
     ShoesdialogComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    AppordersComponent,
+    ApporderdialogComponent
   ],
   imports: [
     BrowserModule,
@@ -90,12 +95,13 @@ import { NotificationsComponent } from './notifications/notifications.component'
     MatDatepickerModule,
     MatNativeDateModule,
     MatBadgeModule,
-    MatToolbarModule
+    MatToolbarModule,
+    DragDropModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
   entryComponents: [ClientdialogComponent, CreateorderdialogComponent, EditorderdialogComponent, CancelorderComponent,
-    EditshoeComponent, YesnodialogComponent, PatternsComponent, CreatepatternComponent, ShoesdialogComponent]
+    EditshoeComponent, YesnodialogComponent, PatternsComponent, CreatepatternComponent, ShoesdialogComponent, ApporderdialogComponent]
 })
 export class AppModule {
 }

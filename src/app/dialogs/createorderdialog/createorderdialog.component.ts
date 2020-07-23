@@ -41,7 +41,7 @@ export class CreateorderdialogComponent implements OnInit {
   });
 
   constructor(private restOrder: RestorderService, private rest: RestService,
-              public dialogRef: MatDialogRef<OrdersComponent>, public formBuilder: FormBuilder) {
+              public dialogRef: MatDialogRef<OrdersComponent>) {
   }
 
   onDenyClick(): void {

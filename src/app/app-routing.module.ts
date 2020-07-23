@@ -10,6 +10,7 @@ import {GetreturnedComponent} from './canceled/getreturned/getreturned.component
 import {EarningsComponent} from './earnings/earnings.component';
 import {StatisticComponent} from './statistic/statistic.component';
 import {NotificationsComponent} from './notifications/notifications.component';
+import {AppordersComponent} from './apporders/apporders.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'returned', component: GetreturnedComponent},
   {path: 'earnings', component: EarningsComponent},
   {path: 'statistic', component: StatisticComponent},
-  {path: 'notifications', component: NotificationsComponent}
+  {path: 'notifications', component: NotificationsComponent},
+  {path: 'apporders', component: AppordersComponent}
 ];
 
 @NgModule({

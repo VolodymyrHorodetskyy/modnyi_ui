@@ -3,7 +3,8 @@
     <h3 matLine> {{message.messageType}} </h3>
     <p matLine>
       <span> {{message.topic}} </span>
-      <span class="demo-2">{{message.content}}  -- {{message.ttn}}  </span>
+      <span class="demo-2">{{message.content}}  -- {{message.ttn}} {{message.createdDate.dayOfMonth}} {{message.createdDate.month}},
+        {{message.createdDate.hour}} {{message.createdDate.minute}}</span>
     </p>
     <mat-icon *ngIf="!message.read1" matListIcon>mark_email_unread</mat-icon>
     <mat-icon *ngIf="message.read1" matListIcon>mark_email_read</mat-icon>

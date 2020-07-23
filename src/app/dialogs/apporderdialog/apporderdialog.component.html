@@ -1,0 +1,22 @@
+<p>Ім'я: {{item.name}}</p>
+<p>Телефон: {{item.phone}}</p>
+<p>Мейл: {{item.mail}}</p>
+<p *ngIf="item.dontCall">Не дзвонити</p>
+<p></p>
+<h4>Замовлення</h4>
+<p *ngFor="let product of item.products">{{product}}</p>
+<p>Сума: {{item.amount}}</p>
+<p>Статус: {{item.status}} </p>
+<p *ngIf="item.previousStatus"> {{item.previousStatus}}</p>
+<mat-form-field appearance="fill">
+  <mat-label>Статус</mat-label>
+  <mat-select [(ngModel)]="statusSelected">
+    <mat-option *ngFor="let status of statuses" value="{{status}}">{{status}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field style="margin-left: 2%" class="example-full-width">
+  <mat-label>Комент</mat-label>
+  <textarea matInput [(ngModel)]="comment"></textarea>
+</mat-form-field>
+<button mat-raised-button color="primary" (click)="onSave()" style="margin-left: 2%">Зберегети</button>
+
