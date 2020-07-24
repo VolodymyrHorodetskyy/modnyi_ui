@@ -38,6 +38,7 @@ export class ApporderdialogComponent implements OnInit {
       this.dialogRef.close();
       // @ts-ignore
       if (value.message != null) {
+        // @ts-ignore
         this._snackBar.open(value.message, 'ттн додано', {
           duration: 2000,
           verticalPosition: 'top'
