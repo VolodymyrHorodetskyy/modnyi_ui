@@ -16,10 +16,10 @@ export class OrdersComponent implements OnInit {
 
   orders: Ordered[];
   getAllOrdered: GetAllOrderedResponse;
-  displayedColumns: string[] = ['ttn', 'notes', 'nameAndSurname', 'phone', 'address', 'shoe', 'size', 'status', 'actions'];
+  displayedColumns: string[] = ['ttn', 'notes', 'nameAndSurname', 'phone', 'address', 'shoe', 'size', 'status', 'dateCreated', 'actions'];
   pageEvent: PageEvent;
   ttn: '';
-  phone: '';
+  phoneOrName: '';
   withoutTTN: false;
   orderByAr: { orderBy: string, orderByUkr: string }[] = [
     {orderBy: 'dateCreated', orderByUkr: 'Дата створення'},
@@ -35,12 +35,7 @@ export class OrdersComponent implements OnInit {
   }
 
   onCreateOrderClick() {
-    const dialogRef = this.dialog.open(CreateorderdialogComponent, {
-      /*
-            disableClose: true
-      */
-    });
-
+    const dialogRef = this.dialog.open(CreateorderdialogComponent, {});
     dialogRef.afterClosed().subscribe(result => {
       this.updateOnFilters();
     });
@@ -63,17 +58,18 @@ export class OrdersComponent implements OnInit {
     this.updateOnFilters();
   }
 
-  updateOrders(page = 0, size = 10, ttn = '', phone = '', withoutTTN = false, orderByValue: string) {
-    this.rest.getOrders(page, size, ttn, phone, withoutTTN, orderByValue).subscribe(getAllOrdered => {
+  updateOrders(page = 0, size = 10, ttn = '', phoneOrName = '', withoutTTN = false, orderByValue: string) {
+    this.rest.getOrders(page, size, ttn, phoneOrName, withoutTTN, orderByValue).subscribe(getAllOrdered => {
       this.orders = getAllOrdered.orderedList;
       this.getAllOrdered = getAllOrdered;
+      console.log(this.orders);
     });
   }
 
   updateOnFilters() {
     this.updateOrders(this.pageEvent != null ?
       this.pageEvent.pageIndex : 0, this.pageEvent != null ?
-      this.pageEvent.pageSize : 10, this.ttn, this.phone, this.withoutTTN, this.orderByValue);
+      this.pageEvent.pageSize : 10, this.ttn, this.phoneOrName, this.withoutTTN, this.orderByValue);
   }
 
   shoeShoesClick(order) {

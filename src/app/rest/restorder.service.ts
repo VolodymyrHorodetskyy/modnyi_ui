@@ -16,7 +16,7 @@ export class RestorderService {
   public getOrders(page, size, ttn = '', phone = '', withoutTTN = false, orderBy: string) {
     return this.http.get<GetAllOrderedResponse>(
       this.configuration.serverpath + '/order?page=' + page +
-      '&size=+' + size + '&ttn=' + ttn + '&phone=' + phone + '&withoutTTN=' + withoutTTN + '&orderBy=' + orderBy);
+      '&size=+' + size + '&ttn=' + ttn + '&phoneOrName=' + phone + '&withoutTTN=' + withoutTTN + '&orderBy=' + orderBy);
   }
 
   public getOrderedNP(phone, ttn) {
