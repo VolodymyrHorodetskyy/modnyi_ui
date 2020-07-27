@@ -93,8 +93,9 @@ export class AppordersComponent implements OnInit {
   onDropped(event, item) {
     const status = this.statuses[Number(event.container.id.substr(event.container.id.length - 1))];
     item.status = status;
-    this.restAppOrder.changeAppOrder({id: item.id, status: status}).subscribe(
-    );
+    this.restAppOrder.changeAppOrder({id: item.id, status: status}).subscribe(value => {
+      this.initAppOrdersArrays();
+    });
   }
 
 }
