@@ -16,15 +16,15 @@ export class RestService {
 
   public getItems(model) {
     if (model === null) {
-      return this.http.get<Shoe[]>(this.configuration.serverpath + '/shoe?page=0&size=100');
+      return this.http.get<Shoe[]>(this.configuration.serverpath + 'shoe?page=0&size=100');
     } else {
-      return this.http.get<Shoe[]>(this.configuration.serverpath + '/shoe?model=' + model + '&page=0&size=100');
+      return this.http.get<Shoe[]>(this.configuration.serverpath + 'shoe?model=' + model + '&page=0&size=100');
     }
   }
 
 
   public getStatuses() {
-    return this.http.get<StatusDto[]>(this.configuration.serverpath + '/order/getStatuses');
+    return this.http.get<StatusDto[]>(this.configuration.serverpath + 'order/getStatuses');
   }
 
   public importTTNS(ttns2: string) {
@@ -34,7 +34,7 @@ export class RestService {
     } else {
       ttns3 = '';
     }
-    return this.http.post<StringResponse>(this.configuration.serverpath + '/order/importOrdersByTTNsString', {
+    return this.http.post<StringResponse>(this.configuration.serverpath + 'order/importOrdersByTTNsString', {
         ttns: ttns3
       },
       this.getHttpOptions());
@@ -42,20 +42,20 @@ export class RestService {
   }
 
   public needDelivery(updateFromDb = false) {
-    return this.http.get<StringResponse>(this.configuration.serverpath + '/statistic/needDeliveryFromDB?updateStatuses=' + updateFromDb, this.getHttpOptions());
+    return this.http.get<StringResponse>(this.configuration.serverpath + 'statistic/needDeliveryFromDB?updateStatuses=' + updateFromDb, this.getHttpOptions());
   }
 
   public getIssueOrders() {
-    return this.http.get<StringResponse>(this.configuration.serverpath + '/statistic/getIssueOrdered', this.getHttpOptions());
+    return this.http.get<StringResponse>(this.configuration.serverpath + 'statistic/getIssueOrdered', this.getHttpOptions());
   }
 
   public getNeedToBePayed(updateStatuses = false) {
-    return this.http.post<StringResponse>(this.configuration.serverpath + '/statistic/needToPayedFromFile?updateStatuses='
+    return this.http.post<StringResponse>(this.configuration.serverpath + 'statistic/needToPayedFromFile?updateStatuses='
       + updateStatuses, this.getHttpOptions());
   }
 
   public getReturned(excludeFromDeliveryFile = false) {
-    return this.http.get<StringResponse>(this.configuration.serverpath + '/statistic/returned?setNotForDelivery=' + excludeFromDeliveryFile
+    return this.http.get<StringResponse>(this.configuration.serverpath + 'statistic/returned?setNotForDelivery=' + excludeFromDeliveryFile
       , this.getHttpOptions());
   }
 
@@ -70,11 +70,11 @@ export class RestService {
   }
 
   public getReasons() {
-    return this.http.get<string[]>(this.configuration.serverpath + '/order/getReasons');
+    return this.http.get<string[]>(this.configuration.serverpath + 'order/getReasons');
   }
 
   public cancelOrder(request: CancelOrderRequest) {
-    return this.http.patch(this.configuration.serverpath + '/order/cancelOrder', request, this.getHttpOptions());
+    return this.http.patch(this.configuration.serverpath + 'order/cancelOrder', request, this.getHttpOptions());
   }
 
   public getEarnings(dateFrom = '', dateTo = '') {
@@ -88,15 +88,15 @@ export class RestService {
   }
 
   public getCancelOrderReason(id) {
-    return this.http.get(this.configuration.serverpath + '/order/getCanceledOrder?id=' + id);
+    return this.http.get(this.configuration.serverpath + 'order/getCanceledOrder?id=' + id);
   }
 
   public createShoe(createShoeRequest) {
-    return this.http.post(this.configuration.serverpath + '/shoe', createShoeRequest);
+    return this.http.post(this.configuration.serverpath + 'shoe', createShoeRequest);
   }
 
   public updateShoe(updateShoeRequest) {
-    return this.http.patch(this.configuration.serverpath + '/shoe', updateShoeRequest);
+    return this.http.patch(this.configuration.serverpath + 'shoe', updateShoeRequest);
   }
 
   public deleteShoe(id) {

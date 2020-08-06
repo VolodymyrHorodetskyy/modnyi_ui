@@ -17,7 +17,7 @@ export class RestapporderService {
     if (phoneAndName == null) {
       phoneAndName = '';
     }
-    return this.http.get(this.configuration.serverpath + '/AppOrder?id=' + id + '&phoneAndName=' + phoneAndName + '&from=' + from);
+    return this.http.get(this.configuration.serverpath + 'AppOrder?id=' + id + '&phoneAndName=' + phoneAndName + '&from=' + from);
   }
 
   public getStatuses() {

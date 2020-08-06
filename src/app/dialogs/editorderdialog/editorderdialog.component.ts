@@ -95,7 +95,6 @@ export class EditorderdialogComponent implements OnInit {
   onButtonUpdate() {
     const request: EditOrderedRequest = this.editForm.value;
     request.full_payment = this.fullPaymentCheckBox;
-    console.log(request.full_payment);
     this.restOrder.updateOrder(this.data.id, request).subscribe(value => {
       this.dialogRef.close();
     });

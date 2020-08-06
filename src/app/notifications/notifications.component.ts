@@ -15,7 +15,6 @@ export class NotificationsComponent implements OnInit {
 
   ngOnInit() {
     this.restNotif.getNotifications(0).subscribe(value => {
-      console.log(value);
       this.notification = value;
     });
   }

@@ -103,7 +103,6 @@ export class CreateorderdialogComponent implements OnInit {
     } else {
       this.createForm.controls['prepayment'].enable();
     }
-    console.log(event);
   }
 
 }

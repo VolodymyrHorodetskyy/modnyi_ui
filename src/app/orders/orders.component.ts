@@ -62,7 +62,6 @@ export class OrdersComponent implements OnInit {
     this.rest.getOrders(page, size, ttn, phoneOrName, withoutTTN, orderByValue).subscribe(getAllOrdered => {
       this.orders = getAllOrdered.orderedList;
       this.getAllOrdered = getAllOrdered;
-      console.log(this.orders);
     });
   }
 

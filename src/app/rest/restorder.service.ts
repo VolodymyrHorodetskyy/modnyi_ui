@@ -15,7 +15,7 @@ export class RestorderService {
 
   public getOrders(page, size, ttn = '', phone = '', withoutTTN = false, orderBy: string) {
     return this.http.get<GetAllOrderedResponse>(
-      this.configuration.serverpath + '/order?page=' + page +
+      this.configuration.serverpath + 'order?page=' + page +
       '&size=+' + size + '&ttn=' + ttn + '&phoneOrName=' + phone + '&withoutTTN=' + withoutTTN + '&orderBy=' + orderBy);
   }
 
@@ -23,7 +23,7 @@ export class RestorderService {
     const request: FromNPToOrderRequest = new FromNPToOrderRequest();
     request.phone = phone;
     request.ttn = ttn;
-    return this.http.post<Ordered>(this.configuration.serverpath + '/order/fromNP', request);
+    return this.http.post<Ordered>(this.configuration.serverpath + 'order/fromNP', request);
   }
 
   public saveOrder(createorderrequest) {
@@ -31,19 +31,19 @@ export class RestorderService {
   }
 
   public updateOrder(id, updateOrderRequest) {
-    return this.http.patch<Ordered>(this.configuration.serverpath + '/order/' + id, updateOrderRequest);
+    return this.http.patch<Ordered>(this.configuration.serverpath + 'order/' + id, updateOrderRequest);
   }
 
   public addShoeToOrder(addShoeToOrder) {
-    return this.http.put<Ordered>(this.configuration.serverpath + '/order/addShoeToOrder', addShoeToOrder);
+    return this.http.put<Ordered>(this.configuration.serverpath + 'order/addShoeToOrder', addShoeToOrder);
   }
 
   public makeAllPayed() {
-    return this.http.patch(this.configuration.serverpath + '/order/makeAllPayed', this.getHttpOptions());
+    return this.http.patch(this.configuration.serverpath + 'order/makeAllPayed', this.getHttpOptions());
   }
 
   public updateStatuses() {
-    return this.http.patch(this.configuration.serverpath + '/order/updateStatuses', this.getHttpOptions());
+    return this.http.patch(this.configuration.serverpath + 'order/updateStatuses', this.getHttpOptions());
   }
 
   getHttpOptions() {
