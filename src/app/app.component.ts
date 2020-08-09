@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RestnotifService} from './rest/restnotif.service';
 import {RestorderService} from './rest/restorder.service';
+import {RestapporderService} from './rest/restapporder.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ export class AppComponent implements OnInit {
   amount;
   showUpdate = true;
 
-  constructor(public restNotif: RestnotifService, public restOrder: RestorderService) {
+  constructor(public restNotif: RestnotifService, public restOrder: RestorderService, public restAppOrders: RestapporderService) {
   }
 
   ngOnInit() {

@@ -21,8 +21,13 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </td>
+    <td >
+      <button style="margin-left: 5%" (click)="updateAppOrders()" mat-raised-button color="primary">Оновити</button>
+    </td>
   </tr>
 </table>
+
+
 <div style="margin-left: 1%" cdkDropListGroup>
   <div class="example-container" [ngStyle]="{ width: widthOfCard }">
     <h2>Нові</h2>

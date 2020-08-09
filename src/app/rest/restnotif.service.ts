@@ -27,6 +27,12 @@ export class RestnotifService {
     return this.http.get(this.configuration.serverpath + 'notifications/unreadAmount');
   }
 
+  public updateUnreadAmount() {
+    this.getUnreadAmount().subscribe(value => {
+      this.amountNotif = value;
+    });
+  }
+
   getHttpOptions() {
     return {
       headers: new HttpHeaders({

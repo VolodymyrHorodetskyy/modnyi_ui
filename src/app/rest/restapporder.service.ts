@@ -7,6 +7,8 @@ import {Configuration} from '../configuration';
 })
 export class RestapporderService {
 
+  public newAppOrders = 0;
+
   constructor(private http: HttpClient, private configuration: Configuration) {
   }
 

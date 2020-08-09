@@ -32,10 +32,10 @@ export class AppordersComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.initAppOrdersArrays();
     const d = new Date();
     d.setDate(d.getDate() - 7);
     this.dateFrom = d;
+    this.onFilterChange();
   }
 
   onFilterChange() {
@@ -50,6 +50,7 @@ export class AppordersComponent implements OnInit {
     this.restAppOrder.getAppOrders(id, phoneAndNumber, from).subscribe(value => {
       // @ts-ignore
       this.new = this.initArray(value.Новий);
+      this.restAppOrder.newAppOrders = this.new.length;
       // @ts-ignore
       this.waitingForPayment = this.initArray(value.Чекаємо_оплату);
       // @ts-ignore
@@ -96,6 +97,10 @@ export class AppordersComponent implements OnInit {
     this.restAppOrder.changeAppOrder({id: item.id, status: status}).subscribe(value => {
       this.initAppOrdersArrays();
     });
+  }
+
+  updateAppOrders() {
+    this.onFilterChange();
   }
 
 }

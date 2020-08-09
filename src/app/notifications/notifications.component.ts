@@ -21,11 +21,9 @@ export class NotificationsComponent implements OnInit {
 
   makeRead(message) {
     this.restNotif.read(message.id).subscribe(value => {
-      this.restNotif.getUnreadAmount().subscribe(value1 => {
-        this.restNotif.amountNotif = value1;
-        this.restNotif.getNotifications(0).subscribe(value => {
-          this.notification = value;
-        });
+      this.restNotif.updateUnreadAmount();
+      this.restNotif.getNotifications(0).subscribe(value => {
+        this.notification = value;
       });
     });
   }
@@ -33,7 +31,8 @@ export class NotificationsComponent implements OnInit {
   updateNotif(event) {
     this.restNotif.getNotifications(event.pageIndex).subscribe(value => {
       this.notification = value;
-    });  }
+    });
+  }
 
 
 }

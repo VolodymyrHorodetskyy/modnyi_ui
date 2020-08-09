@@ -43,7 +43,8 @@ export class OrdersComponent implements OnInit {
 
   onRowClick(event, ordered) {
     let dialogRef;
-    if (!event.toElement.className.includes('ttn') && !event.toElement.className.includes('button')) {
+    if (!event.toElement.className.includes('ttn') && !event.toElement.className.includes('button')
+      && !event.toElement.className.includes('phone')) {
       dialogRef = this.dialog.open(EditorderdialogComponent, {
         data: ordered
       });

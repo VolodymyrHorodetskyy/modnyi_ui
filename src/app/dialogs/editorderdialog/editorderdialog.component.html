@@ -1,6 +1,6 @@
 <form class="example-form" [formGroup]="editForm" (ngSubmit)="onButtonUpdate()">
 
-  <mat-label style="display:inline-block; margin-right: 1em;">{{data.ttn}}<p>{{data.postComment}}</p></mat-label>
+  <mat-label style="display:inline-block; margin-right: 1em;">{{data.ttn}}<p>{{data.postComment}}</p><p>Сума повернення: {{data.returnSumNP}}</p></mat-label>
 
   <mat-form-field style="display:inline-block; margin-right: 1em;" class="example-full-width">
     <mat-label>Телефон</mat-label>
@@ -18,7 +18,10 @@
     <mat-label>По батькові</mat-label>
     <input formControlName="middleName" matInput>
   </mat-form-field>
-
+  <mat-form-field style="display:inline-block; margin-right: 1em;" class="example-full-width">
+    <mat-label>Пошта</mat-label>
+    <input formControlName="mail" matInput>
+  </mat-form-field>
   <mat-form-field style="display:inline-block; margin-right: 1em;" class="example-full-width">
     <mat-label>Адрес</mat-label>
     <textarea matInput formControlName="address"></textarea>
