@@ -25,6 +25,7 @@ export class ApporderdialogComponent implements OnInit {
     });
     this.statusSelected = this.item.status;
     this.comment = this.item.comment;
+    this.ttn = this.item.ttn;
   }
 
 
