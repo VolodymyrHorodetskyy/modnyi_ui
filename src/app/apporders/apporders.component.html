@@ -16,9 +16,17 @@
     <td>
       <mat-form-field appearance="fill">
         <mat-label>Від</mat-label>
-        <input (dateChange)="onFilterChange()" [(ngModel)]="dateFrom" matInput [matDatepicker]="picker">
+        <input (dateChange)="onFilterChange()" [(ngModel)]="dateFromForNotReady" matInput [matDatepicker]="picker">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field appearance="fill">
+        <mat-label>Від (для Повна оплата, передплата, скасовано)</mat-label>
+        <input (dateChange)="onFilterChange()" [(ngModel)]="dateFromForReady" matInput [matDatepicker]="picker2">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
     </td>
     <td >

@@ -15,7 +15,9 @@ export class AppordersComponent implements OnInit {
 
   id = '';
   phoneOrName = '';
-  dateFrom;
+  dateFromForNotReady;
+  dateFromForReady;
+
 
   statuses = ['Новий', 'Чекаємо_оплату', 'Передплачено', 'Повна_оплата', 'Не_Відповідає', 'Скасовано'];
 
@@ -32,22 +34,25 @@ export class AppordersComponent implements OnInit {
   }
 
   ngOnInit() {
-    const d = new Date();
+    let d = new Date();
     d.setDate(d.getDate() - 7);
-    this.dateFrom = d;
+    this.dateFromForNotReady = d;
+    d = new Date();
+    d.setDate(d.getDate() - 1);
+    this.dateFromForReady = d;
     this.onFilterChange();
   }
 
   onFilterChange() {
-    this.initAppOrdersArrays(this.id, this.phoneOrName, this.tranformDate(this.dateFrom));
+    this.initAppOrdersArrays(this.id, this.phoneOrName, this.tranformDate(this.dateFromForNotReady), this.tranformDate(this.dateFromForReady));
   }
 
   private tranformDate(date) {
     return this.datePipe.transform(date, 'yyyy-MM-dd HH:mm');
   }
 
-  initAppOrdersArrays(id = '', phoneAndNumber = '', from = '') {
-    this.restAppOrder.getAppOrders(id, phoneAndNumber, from).subscribe(value => {
+  initAppOrdersArrays(id = '', phoneAndNumber = '', fromForNotReady = '', fromForReady = '') {
+    this.restAppOrder.getAppOrders(id, phoneAndNumber, fromForNotReady, fromForReady).subscribe(value => {
       // @ts-ignore
       this.new = this.initArray(value.Новий);
       this.restAppOrder.newAppOrders = this.new.length;
