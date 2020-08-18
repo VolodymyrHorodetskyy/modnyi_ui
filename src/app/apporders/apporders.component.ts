@@ -93,7 +93,7 @@ export class AppordersComponent implements OnInit {
       data: item
     });
     dialog.afterClosed().subscribe(value => {
-      this.initAppOrdersArrays();
+      this.onFilterChange();
     });
   }
 
