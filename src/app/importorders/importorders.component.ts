@@ -13,6 +13,8 @@ export class ImportordersComponent implements OnInit {
   response: string;
   loaded = false;
 
+  importButtonDisable = false;
+
   constructor(public rest: RestService) {
   }
 
@@ -21,7 +23,9 @@ export class ImportordersComponent implements OnInit {
 
   onImportClick() {
     this.loaded = true;
+    this.importButtonDisable = true;
     this.rest.importTTNS(this.ttns).subscribe(data => {
+      this.importButtonDisable = false;
       this.loaded = false;
       this.response = data.result;
     }, error => {

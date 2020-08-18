@@ -3,7 +3,7 @@
   <textarea [(ngModel)]="ttns" matInput></textarea>
 </mat-form-field>
 
-<button mat-raised-button color="primary" (click)="onImportClick()">Імпортувати</button>
+<button mat-raised-button color="primary" (click)="onImportClick()" disabled="{{importButtonDisable}}">Імпортувати</button>
 <button mat-raised-button color="primary" (click)="onIssueOrders()">Помилки</button>
 
 <mat-spinner *ngIf="loaded"></mat-spinner>
