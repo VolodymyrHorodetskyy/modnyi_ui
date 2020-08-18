@@ -44,7 +44,8 @@ export class AppordersComponent implements OnInit {
   }
 
   onFilterChange() {
-    this.initAppOrdersArrays(this.id, this.phoneOrName, this.tranformDate(this.dateFromForNotReady), this.tranformDate(this.dateFromForReady));
+    this.initAppOrdersArrays(this.id, this.phoneOrName, this.tranformDate(this.dateFromForNotReady),
+      this.tranformDate(this.dateFromForReady));
   }
 
   private tranformDate(date) {

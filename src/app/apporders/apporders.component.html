@@ -29,7 +29,7 @@
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
     </td>
-    <td >
+    <td>
       <button style="margin-left: 5%" (click)="updateAppOrders()" mat-raised-button color="primary">Оновити</button>
     </td>
   </tr>
@@ -46,8 +46,11 @@
       class="example-list"
       cdkDropListSortingDisabled
       (cdkDropListDropped)="drop($event)">
-      <div [cdkDragDisabled]="true" (cdkDragDropped)="onDropped($event,item)" (dblclick)="onCardClick(item)" class="example-box"
-           *ngFor="let item of new" cdkDrag>{{item.id}}, {{item.name}}, {{item.phone}}
+      <div [cdkDragDisabled]="true" (cdkDragDropped)="onDropped($event,item)" (dblclick)="onCardClick(item)"
+           class="example-box"
+           *ngFor="let item of new" cdkDrag><h4 *ngIf="item.previousStatus == null" style="color: limegreen; margin-top: -2%">
+        Нова заявка</h4>
+        <p>{{item.id}}, {{item.name}}, {{item.phone}}</p>
         <p *ngFor="let product of item.products">{{product}}</p>Сума: {{item.amount}}
       </div>
     </div>
@@ -62,7 +65,8 @@
       class="example-list"
       cdkDropListSortingDisabled
       (cdkDropListDropped)="drop($event)">
-      <div [cdkDragDisabled]="true" (cdkDragDropped)="onDropped($event,item)" (dblclick)="onCardClick(item)" class="example-box"
+      <div [cdkDragDisabled]="true" (cdkDragDropped)="onDropped($event,item)" (dblclick)="onCardClick(item)"
+           class="example-box"
            *ngFor="let item of waitingForPayment" cdkDrag>
         {{item.id}}, {{item.name}}, {{item.phone}}
         <p *ngFor="let product of item.products">{{product}}</p>Сума: {{item.amount}}
@@ -79,7 +83,8 @@
       class="example-list"
       cdkDropListSortingDisabled
       (cdkDropListDropped)="drop($event)">
-      <div [cdkDragDisabled]="true" (cdkDragDropped)="onDropped($event,item)" (dblclick)="onCardClick(item)" class="example-box"
+      <div [cdkDragDisabled]="true" (cdkDragDropped)="onDropped($event,item)" (dblclick)="onCardClick(item)"
+           class="example-box"
            *ngFor="let item of prePayed" cdkDrag>
         {{item.id}}, {{item.name}}, {{item.phone}}
         <p *ngFor="let product of item.products">{{product}}</p>Сума: {{item.amount}}
@@ -96,7 +101,8 @@
       class="example-list"
       cdkDropListSortingDisabled
       (cdkDropListDropped)="drop($event)">
-      <div [cdkDragDisabled]="true" (cdkDragDropped)="onDropped($event,item)" (dblclick)="onCardClick(item)" class="example-box"
+      <div [cdkDragDisabled]="true" (cdkDragDropped)="onDropped($event,item)" (dblclick)="onCardClick(item)"
+           class="example-box"
            *ngFor="let item of fullPayment" cdkDrag>
         {{item.id}}, {{item.name}}, {{item.phone}}
         <p *ngFor="let product of item.products">{{product}}</p>Сума: {{item.amount}}
@@ -113,7 +119,8 @@
       class="example-list"
       cdkDropListSortingDisabled
       (cdkDropListDropped)="drop($event)">
-      <div [cdkDragDisabled]="true" (cdkDragDropped)="onDropped($event,item)" (dblclick)="onCardClick(item)" class="example-box"
+      <div [cdkDragDisabled]="true" (cdkDragDropped)="onDropped($event,item)" (dblclick)="onCardClick(item)"
+           class="example-box"
            *ngFor="let item of doNotAnswer" cdkDrag>
         {{item.id}}, {{item.name}}, {{item.phone}}
         <p *ngFor="let product of item.products">{{product}}</p>Сума: {{item.amount}}
@@ -130,7 +137,8 @@
       class="example-list"
       cdkDropListSortingDisabled
       (cdkDropListDropped)="drop($event)">
-      <div [cdkDragDisabled]="true" (cdkDragDropped)="onDropped($event,item)" (dblclick)="onCardClick(item)" class="example-box"
+      <div [cdkDragDisabled]="true" (cdkDragDropped)="onDropped($event,item)" (dblclick)="onCardClick(item)"
+           class="example-box"
            *ngFor="let item of canceled" cdkDrag>
         {{item.id}}, {{item.name}}, {{item.phone}}
         <p *ngFor="let product of item.products">{{product}}</p>Сума: {{item.amount}}
