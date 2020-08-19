@@ -55,9 +55,9 @@ export class AppordersComponent implements OnInit {
 
   initAppOrdersArrays(id = '', phoneAndNumber = '', fromForNotReady = '', fromForReady = '') {
     this.restAppOrder.getAppOrders(id, phoneAndNumber, fromForNotReady, fromForReady).subscribe(value => {
-      this.restAppOrder.newAppOrders = this.new.length;
       // @ts-ignore
       this.new = this.initArray(value.Новий);
+      this.restAppOrder.newAppOrders = this.new.length;
       // @ts-ignore
       this.inProcess = this.initArray(value.В_обробці);
       // @ts-ignore
