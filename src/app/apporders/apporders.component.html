@@ -57,8 +57,24 @@
   </div>
 
   <div class="example-container">
-    <h2>Чекає оплати</h2>
+    <h2>В обробці</h2>
+    <div
+      cdkDropList
+      [cdkDropListData]="inProcess"
+      class="example-list"
+      cdkDropListSortingDisabled
+      (cdkDropListDropped)="drop($event)">
+      <div [cdkDragDisabled]="true" (cdkDragDropped)="onDropped($event,item)" (dblclick)="onCardClick(item)"
+           class="example-box"
+           *ngFor="let item of inProcess" cdkDrag>
+        {{item.id}}, {{item.name}}, {{item.phone}}
+        <p *ngFor="let product of item.products">{{product}}</p>Сума: {{item.amount}}
+      </div>
+    </div>
+  </div>
 
+  <div class="example-container">
+    <h2>Чекає оплати</h2>
     <div
       cdkDropList
       [cdkDropListData]="waitingForPayment"
