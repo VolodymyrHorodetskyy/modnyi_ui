@@ -42,18 +42,32 @@
     <textarea matInput formControlName="notes"></textarea>
   </mat-form-field>
 
+
   <mat-form-field style="display:inline-block; margin-right: 1em;">
     <mat-label> Модель взуття</mat-label>
-    <mat-select (selectionChange)="onShoeChange($event.value)" formControlName="shoe">
+    <mat-select (selectionChange)="onShoeChange($event.value)" formControlName="shoe" #singleSelect>
+      <mat-option>
+        <ngx-mat-select-search [formControl]="bankFilterCtrl"></ngx-mat-select-search>
+      </mat-option>
+
       <mat-option *ngFor="let shoe of shoes" [value]="shoe.id">
         {{shoe.model}} {{shoe.color}}
       </mat-option>
     </mat-select>
   </mat-form-field>
 
+
+  <!--  <ngx-mat-select-search
+    formControlName="shoe"
+    placeholderLabel="Find bank..."
+    noEntriesFoundLabel="'no matching bank found'">
+
+
+    </ngx-mat-select-search>-->
+
   <mat-form-field style="display:inline-block; margin-right: 1em;" class="example-full-width">
     <mat-label>Розмір</mat-label>
-    <input formControlName="size"  matInput>
+    <input formControlName="size" matInput>
   </mat-form-field>
 
   <mat-checkbox [disabled]="true" formControlName="fromStorage"
@@ -76,7 +90,7 @@
 
   <mat-form-field style="display:inline-block; margin-right: 1em;">
     <mat-label> Статус</mat-label>
-    <mat-select  formControlName="status">
+    <mat-select formControlName="status">
       <mat-option *ngFor="let status of statuses" [value]="status.status">
         {{status.status}}
       </mat-option>

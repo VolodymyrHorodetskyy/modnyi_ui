@@ -42,6 +42,7 @@ export class EditorderdialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<OrdersComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Ordered,
               public rest: RestService, private restOrder: RestorderService, public dialog: MatDialog) {
+    console.log(data);
     this.editForm.patchValue({
       address: data.address,
       postComment: data.postComment,

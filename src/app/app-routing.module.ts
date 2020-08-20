@@ -11,6 +11,7 @@ import {EarningsComponent} from './earnings/earnings.component';
 import {StatisticComponent} from './statistic/statistic.component';
 import {NotificationsComponent} from './notifications/notifications.component';
 import {AppordersComponent} from './apporders/apporders.component';
+import {TestSearchComponent} from './test-search/test-search.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'earnings', component: EarningsComponent},
   {path: 'statistic', component: StatisticComponent},
   {path: 'notifications', component: NotificationsComponent},
-  {path: 'apporders', component: AppordersComponent}
+  {path: 'apporders', component: AppordersComponent},
+  {path: 'search', component: TestSearchComponent}
 ];
 
 @NgModule({

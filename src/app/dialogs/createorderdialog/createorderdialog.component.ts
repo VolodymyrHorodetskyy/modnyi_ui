@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {RestService} from '../../rest/rest.service';
-import {MatDialogRef} from '@angular/material';
+import {MatDialogRef, MatSelect} from '@angular/material';
 import {OrdersComponent} from '../../orders/orders.component';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Shoe} from '../../entity/Shoe';
@@ -21,6 +21,10 @@ export class CreateorderdialogComponent implements OnInit {
   fullPaymentCheckBox = false;
   statuses: StatusDto[];
   fromStorage;
+  public bankFilterCtrl: FormControl = new FormControl();
+
+  @ViewChild('singleSelect', { static: true }) singleSelect: MatSelect;
+
 
   createForm = new FormGroup({
     ttn: new FormControl(''),
