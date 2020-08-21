@@ -6,6 +6,7 @@ import {ShoeslistComponent} from '../../shoeslist/shoeslist.component';
 import {YesnodialogComponent} from '../yesnodialog/yesnodialog.component';
 import {PatternsComponent} from '../patterns/patterns.component';
 import {CreatepatternComponent} from '../createpattern/createpattern.component';
+import {NewshoepricedialogComponent} from '../newshoepricedialog/newshoepricedialog.component';
 
 @Component({
   selector: 'app-editshoe',
@@ -17,14 +18,14 @@ export class EditshoeComponent implements OnInit {
   shoeForm = new FormGroup({
     model: new FormControl('', Validators.required),
     color: new FormControl('', Validators.required),
-    price: new FormControl('', Validators.required),
-    cost: new FormControl('', Validators.required),
     companyId: new FormControl('', Validators.required)
   });
 
   buttonTxt = 'Створити';
   isUpdate = false;
   companies;
+  cost;
+  price;
 
   constructor(public rest: RestService, public dialogRef: MatDialogRef<ShoeslistComponent>,
               @Inject(MAT_DIALOG_DATA) public data, public matDialog: MatDialog) {
@@ -37,10 +38,10 @@ export class EditshoeComponent implements OnInit {
       this.shoeForm.patchValue({
         model: this.data.model,
         color: this.data.color,
-        price: this.data.price,
-        cost: this.data.cost,
         companyId: this.data.company.id
       });
+      this.cost = this.data.cost;
+      this.price = this.data.price;
     }
     this.rest.getCompanies().subscribe(value => {
       this.companies = value;

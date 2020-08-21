@@ -8,16 +8,9 @@
     <mat-label>Колір</mat-label>
     <input formControlName="color" matInput>
   </mat-form-field>
+  <mat-label style="display:inline-block; margin-right: 1em;">Ціна: {{price}}</mat-label>
+  <mat-label style="display:inline-block; margin-right: 1em;">Собівартість: {{cost}}</mat-label>
 
-  <mat-form-field style="margin-right: 1em" class="example-full-width">
-    <mat-label>Ціна</mat-label>
-    <input formControlName="price" matInput>
-  </mat-form-field>
-
-  <mat-form-field style="margin-right: 1em" class="example-full-width">
-    <mat-label>Собівартість</mat-label>
-    <input formControlName="cost" matInput>
-  </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Виробник</mat-label>
     <mat-select formControlName="companyId">
@@ -26,7 +19,7 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <button mat-raised-button style="margin-right: 1em" type="submit" [disabled]="!shoeForm.valid" color="primary">{{buttonTxt}}</button>
+  <button mat-raised-button style="margin-left: 1em" type="submit" [disabled]="!shoeForm.valid" color="primary">{{buttonTxt}}</button>
   <button mat-button color="warn" style="margin-right: 1em" (click)="onPatterns()" >Паттерни</button>
   <button mat-button color="primary" (click)="addCreate()">Додати паттерн</button>
   <button mat-raised-button style="margin-right: 1em" (click)="onDelete()">Видалити</button>

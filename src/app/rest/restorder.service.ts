@@ -46,6 +46,10 @@ export class RestorderService {
     return this.http.patch(this.configuration.serverpath + 'order/updateStatuses', this.getHttpOptions());
   }
 
+  public setNewShoePrice(createShoePriceRequest) {
+    return this.http.post(this.configuration.serverpath + 'shoePrice', createShoePriceRequest);
+  }
+
   getHttpOptions() {
     return {
       headers: new HttpHeaders({

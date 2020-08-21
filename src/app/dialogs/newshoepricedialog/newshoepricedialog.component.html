@@ -1,0 +1,13 @@
+<form class="example-form" [formGroup]="newShoePriceGroup" (ngSubmit)="onSave()">
+  <mat-form-field style="margin-right: 1em" class="example-full-width">
+    <mat-label>Ціна</mat-label>
+    <input formControlName="price" matInput>
+  </mat-form-field>
+  <mat-form-field style="margin-right: 1em" class="example-full-width">
+    <mat-label>Собівартість</mat-label>
+    <input formControlName="cost" matInput>
+  </mat-form-field>
+
+  <button mat-raised-button style="margin-left: 1em" color="primary" type="submit">Зберегти</button>
+
+</form>

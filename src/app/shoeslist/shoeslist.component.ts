@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material';
 import {EditshoeComponent} from '../dialogs/editshoe/editshoe.component';
 import {CreatepatternComponent} from '../dialogs/createpattern/createpattern.component';
 import {PatternsComponent} from '../dialogs/patterns/patterns.component';
+import {NewshoepricedialogComponent} from '../dialogs/newshoepricedialog/newshoepricedialog.component';
 
 @Component({
   selector: 'app-shoeslist',
@@ -21,15 +22,17 @@ export class ShoeslistComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.rest.getItems(null).subscribe(shoes => {
+    this.updateShoesList();
+  }
+
+  updateShoesList(model = null) {
+    this.rest.getItems(model).subscribe(shoes => {
       this.shoes = shoes;
     });
   }
 
   onInput(value) {
-    this.rest.getItems(value).subscribe(shoes => {
-      this.shoes = shoes;
-    });
+    this.updateShoesList(value);
   }
 
   onCreateOrEdit(shoe = null) {
@@ -37,9 +40,7 @@ export class ShoeslistComponent implements OnInit {
       data: shoe
     });
     dialogRef.afterClosed().subscribe(value1 => {
-      this.rest.getItems(null).subscribe(shoes => {
-        this.shoes = shoes;
-      });
+      this.updateShoesList();
     });
   }
 
@@ -48,9 +49,7 @@ export class ShoeslistComponent implements OnInit {
       data: row.id
     });
     dialogRef.afterClosed().subscribe(value1 => {
-      this.rest.getItems(null).subscribe(shoes => {
-        this.shoes = shoes;
-      });
+      this.updateShoesList();
     });
   }
 
@@ -59,11 +58,17 @@ export class ShoeslistComponent implements OnInit {
       data: {id: row.id, patterns: row.patterns}
     });
     diaalogRef.afterClosed().subscribe(value1 => {
-      this.rest.getItems(null).subscribe(shoes => {
-        this.shoes = shoes;
-      });
+      this.updateShoesList();
     });
   }
 
+  onSetPricesClick(id) {
+    const dialogRef = this.matDialog.open(NewshoepricedialogComponent, {
+      data: id
+    });
+    dialogRef.afterClosed().subscribe(value1 => {
+      this.updateShoesList();
+    });
+  }
 
 }

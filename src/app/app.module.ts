@@ -44,15 +44,17 @@ import {CancelorderComponent} from './dialogs/cancelorder/cancelorder.component'
 import {EarningsComponent} from './earnings/earnings.component';
 import {DatePipe} from '@angular/common';
 import {EditshoeComponent} from './dialogs/editshoe/editshoe.component';
-import { YesnodialogComponent } from './dialogs/yesnodialog/yesnodialog.component';
-import { PatternsComponent } from './dialogs/patterns/patterns.component';
-import { CreatepatternComponent } from './dialogs/createpattern/createpattern.component';
-import { StatisticComponent } from './statistic/statistic.component';
+import {YesnodialogComponent} from './dialogs/yesnodialog/yesnodialog.component';
+import {PatternsComponent} from './dialogs/patterns/patterns.component';
+import {CreatepatternComponent} from './dialogs/createpattern/createpattern.component';
+import {StatisticComponent} from './statistic/statistic.component';
 import {ShoesdialogComponent} from './dialogs/shoesdialog/shoesdialog.component';
-import { NotificationsComponent } from './notifications/notifications.component';
-import { AppordersComponent } from './apporders/apporders.component';
+import {NotificationsComponent} from './notifications/notifications.component';
+import {AppordersComponent} from './apporders/apporders.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-import { ApporderdialogComponent } from './dialogs/apporderdialog/apporderdialog.component';
+import {ApporderdialogComponent} from './dialogs/apporderdialog/apporderdialog.component';
+import {ChangeshoepriceComponent} from './changeshoeprice/changeshoeprice.component';
+import {NewshoepricedialogComponent} from './dialogs/newshoepricedialog/newshoepricedialog.component';
 
 
 @NgModule({
@@ -65,7 +67,7 @@ import { ApporderdialogComponent } from './dialogs/apporderdialog/apporderdialog
     EditorderdialogComponent,
     NeeddeliveryComponent,
     ImportordersComponent,
-   NeedtobepayedComponent,
+    NeedtobepayedComponent,
     FinanceComponent,
     CanceledComponent,
     GetreturnedComponent,
@@ -80,6 +82,8 @@ import { ApporderdialogComponent } from './dialogs/apporderdialog/apporderdialog
     NotificationsComponent,
     AppordersComponent,
     ApporderdialogComponent,
+    ChangeshoepriceComponent,
+    NewshoepricedialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -116,7 +120,8 @@ import { ApporderdialogComponent } from './dialogs/apporderdialog/apporderdialog
   providers: [DatePipe],
   bootstrap: [AppComponent],
   entryComponents: [ClientdialogComponent, CreateorderdialogComponent, EditorderdialogComponent, CancelorderComponent,
-    EditshoeComponent, YesnodialogComponent, PatternsComponent, CreatepatternComponent, ShoesdialogComponent, ApporderdialogComponent]
+    EditshoeComponent, YesnodialogComponent, PatternsComponent, CreatepatternComponent, ShoesdialogComponent, ApporderdialogComponent,
+    NewshoepricedialogComponent]
 })
 export class AppModule {
 }

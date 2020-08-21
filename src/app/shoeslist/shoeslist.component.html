@@ -40,6 +40,7 @@
   <ng-container matColumnDef="actions">
     <mat-header-cell  *matHeaderCellDef > Дії </mat-header-cell>
     <mat-cell *matCellDef="let row" >
+      <button mat-raised-button style="margin-left: 1em" color="primary" (click)="onSetPricesClick(row.id)">Нова ціна</button>
       <button (click)="addPattern(row)" mat-button >Додати паттерн</button>
       <button (click)="removePattern(row)" mat-button >Видалити паттерн</button>
     </mat-cell>
