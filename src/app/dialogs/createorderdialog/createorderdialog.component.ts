@@ -21,9 +21,8 @@ export class CreateorderdialogComponent implements OnInit {
   fullPaymentCheckBox = false;
   statuses: StatusDto[];
   fromStorage;
-  public bankFilterCtrl: FormControl = new FormControl();
 
-  @ViewChild('singleSelect', { static: true }) singleSelect: MatSelect;
+  @ViewChild('singleSelect', {static: true}) singleSelect: MatSelect;
 
 
   createForm = new FormGroup({
@@ -36,7 +35,7 @@ export class CreateorderdialogComponent implements OnInit {
     address: new FormControl(''),
     phone: new FormControl('', Validators.required),
     size: new FormControl('', Validators.required),
-    shoe: new FormControl('', Validators.required),
+    shoes: new FormControl('', Validators.required),
     notes: new FormControl(''),
     price: new FormControl('', Validators.required),
     prepayment: new FormControl('', Validators.required),
@@ -72,7 +71,7 @@ export class CreateorderdialogComponent implements OnInit {
         lastName: data.client != null ? data.client.lastName : '',
         middleName: data.client != null ? data.client.middleName : '',
         size: data.size,
-        shoe: data.orderedShoes != null && data.orderedShoes.length > 0 ? data.orderedShoes[0].id : '',
+        shoes: data.orderedShoes != null && data.orderedShoes.length > 0 ? data.orderedShoes[0].id : '',
         price: data.price,
         prepayment: data.prePayment
       });
@@ -82,10 +81,14 @@ export class CreateorderdialogComponent implements OnInit {
     });
   }
 
-  onShoeChange(value) {
-    const shoe = this.shoes.find(shoe => shoe.id === value);
+  onShoeChange() {
+    const shoes = this.createForm.controls['shoes'].value;
+    let price = 0;
+    for (const shoe of shoes) {
+      price += shoe.price;
+    }
     this.createForm.patchValue({
-      price: shoe.price
+      price: price
     });
   }
 
@@ -94,6 +97,12 @@ export class CreateorderdialogComponent implements OnInit {
   }
 
   onButtonSave() {
+    const shoes = this.createForm.controls['shoes'].value;
+    const shoesIds = [];
+    for (const shoe of shoes) {
+      shoesIds.push(shoe.id);
+    }
+    this.createForm.value.shoes = shoesIds;
     this.restOrder.saveOrder(this.createForm.value).subscribe(data => {
       this.dialogRef.close();
     }, error => {
@@ -107,6 +116,10 @@ export class CreateorderdialogComponent implements OnInit {
     } else {
       this.createForm.controls['prepayment'].enable();
     }
+  }
+
+  onSearchShoes(event) {
+    console.log(event);
   }
 
 }

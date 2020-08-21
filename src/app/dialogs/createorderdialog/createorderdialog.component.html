@@ -45,16 +45,18 @@
 
   <mat-form-field style="display:inline-block; margin-right: 1em;">
     <mat-label> Модель взуття</mat-label>
-    <mat-select (selectionChange)="onShoeChange($event.value)" formControlName="shoe" #singleSelect>
+    <mat-select (selectionChange)="onShoeChange()"  formControlName="shoes" [multiple]="true" #multiSelect>
       <mat-option>
-        <ngx-mat-select-search [formControl]="bankFilterCtrl"></ngx-mat-select-search>
+        <ngx-mat-select-search (input)="onSearchShoes($event.target.value)"></ngx-mat-select-search>
       </mat-option>
-
-      <mat-option *ngFor="let shoe of shoes" [value]="shoe.id">
+      <mat-option *ngFor="let shoe of shoes" [value]="shoe">
         {{shoe.model}} {{shoe.color}}
       </mat-option>
     </mat-select>
   </mat-form-field>
+  <ul *ngFor="let shoe of this.createForm.controls['shoes'].value">
+    <li>{{shoe.model}} {{shoe.color}}</li>
+  </ul>
 
 
   <!--  <ngx-mat-select-search
