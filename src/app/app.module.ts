@@ -54,7 +54,6 @@ import { AppordersComponent } from './apporders/apporders.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { ApporderdialogComponent } from './dialogs/apporderdialog/apporderdialog.component';
 import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
-import { TestSearchComponent } from './test-search/test-search.component';
 
 
 @NgModule({
@@ -81,8 +80,7 @@ import { TestSearchComponent } from './test-search/test-search.component';
     ShoesdialogComponent,
     NotificationsComponent,
     AppordersComponent,
-    ApporderdialogComponent,
-    TestSearchComponent,
+    ApporderdialogComponent
   ],
     imports: [
         BrowserModule,
