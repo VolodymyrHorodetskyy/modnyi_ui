@@ -55,6 +55,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {ApporderdialogComponent} from './dialogs/apporderdialog/apporderdialog.component';
 import {ChangeshoepriceComponent} from './changeshoeprice/changeshoeprice.component';
 import {NewshoepricedialogComponent} from './dialogs/newshoepricedialog/newshoepricedialog.component';
+import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
 
 
 @NgModule({
@@ -83,7 +84,7 @@ import {NewshoepricedialogComponent} from './dialogs/newshoepricedialog/newshoep
     AppordersComponent,
     ApporderdialogComponent,
     ChangeshoepriceComponent,
-    NewshoepricedialogComponent,
+    NewshoepricedialogComponent
   ],
   imports: [
     BrowserModule,
@@ -115,7 +116,8 @@ import {NewshoepricedialogComponent} from './dialogs/newshoepricedialog/newshoep
     MatBadgeModule,
     MatToolbarModule,
     DragDropModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgxMatSelectSearchModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
