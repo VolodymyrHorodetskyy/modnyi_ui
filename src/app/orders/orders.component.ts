@@ -16,7 +16,7 @@ export class OrdersComponent implements OnInit {
 
   orders: Ordered[];
   getAllOrdered: GetAllOrderedResponse;
-  displayedColumns: string[] = ['ttn', 'notes', 'nameAndSurname', 'phone', 'address', 'shoe', 'size', 'status', 'dateCreated', 'actions'];
+  displayedColumns: string[] = ['ttn', 'notes', 'nameAndSurname', 'phone', 'address', 'shoe', 'size', 'status', 'dateCreated'];
   pageEvent: PageEvent;
   ttn: '';
   phoneOrName: '';
@@ -72,14 +72,14 @@ export class OrdersComponent implements OnInit {
       this.pageEvent.pageSize : 10, this.ttn, this.phoneOrName, this.withoutTTN, this.orderByValue);
   }
 
-  shoeShoesClick(order) {
+/*  shoeShoesClick(order) {
     const dialogRef = this.dialog.open(ShoesdialogComponent, {
       data: order
     });
     dialogRef.afterClosed().subscribe(value => {
       this.updateOnFilters();
     });
-  }
+  }*/
 
 
 }
