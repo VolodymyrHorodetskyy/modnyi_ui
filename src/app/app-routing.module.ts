@@ -25,7 +25,7 @@ const routes: Routes = [
   {path: 'statistic', component: StatisticComponent},
   {path: 'notifications', component: NotificationsComponent},
   {path: 'apporders', component: AppordersComponent}
-];
+  ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

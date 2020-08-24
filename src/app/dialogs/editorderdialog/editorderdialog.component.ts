@@ -20,7 +20,7 @@ export class EditorderdialogComponent implements OnInit {
   shoes: Shoe[];
   fullPaymentCheckBox = false;
   statuses: StatusDto[];
-
+  shoeModel: Shoe[] = [];
 
   editForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -31,7 +31,7 @@ export class EditorderdialogComponent implements OnInit {
     address: new FormControl(''),
     phone: new FormControl('', Validators.required),
     size: new FormControl('', Validators.required),
-    shoe: new FormControl('', Validators.required),
+    shoes: new FormControl('', Validators.required),
     notes: new FormControl(''),
     postComment: new FormControl(''),
     price: new FormControl('', Validators.required),
@@ -42,6 +42,38 @@ export class EditorderdialogComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<OrdersComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Ordered,
               public rest: RestService, private restOrder: RestorderService, public dialog: MatDialog) {
+  }
+
+
+  onShoeChange() {
+    const shoes = this.editForm.controls['shoes'].value;
+    let price = 0;
+    for (const shoe of shoes) {
+      price += shoe.price;
+    }
+    this.editForm.patchValue({
+      price: price
+    });
+  }
+
+  ngOnInit() {
+    this.rest.getItems('').subscribe(data => {
+      this.shoes = data;
+      const selectedShoe = [];
+      for (const shoe of this.shoes) {
+        for (const oShoe of this.data.orderedShoes) {
+          if (shoe.id === oShoe.id) {
+            selectedShoe.push(shoe);
+          }
+        }
+      }
+      // @ts-ignore
+      this.editForm.controls['shoes'].value = selectedShoe;
+    });
+    this.rest.getStatuses().subscribe(data => {
+      this.statuses = data;
+    });
+    const data = this.data;
     this.editForm.patchValue({
       address: data.address,
       postComment: data.postComment,
@@ -53,7 +85,7 @@ export class EditorderdialogComponent implements OnInit {
       lastName: data.client != null ? data.client.lastName : '',
       middleName: data.client != null ? data.client.middleName : '',
       size: data.size,
-      shoe: data.orderedShoes != null && data.orderedShoes.length > 0 ? data.orderedShoes[0].id : '',
+      shoes: data.orderedShoes,
       notes: data.notes,
       price: data.price,
       prepayment: data.prePayment,
@@ -62,23 +94,6 @@ export class EditorderdialogComponent implements OnInit {
       this.fullPaymentCheckBox = data.fullPayment;
       this.editForm.controls['prepayment'].disable();
     }
-  }
-
-
-  onShoeChange(value) {
-    const shoe = this.shoes.find(shoe => shoe.id === value);
-    this.editForm.patchValue({
-      price: shoe.price
-    });
-  }
-
-  ngOnInit() {
-    this.rest.getItems('').subscribe(data => {
-      this.shoes = data;
-    });
-    this.rest.getStatuses().subscribe(data => {
-      this.statuses = data;
-    });
   }
 
   onDenyClick(): void {
@@ -98,6 +113,12 @@ export class EditorderdialogComponent implements OnInit {
   onButtonUpdate() {
     const request: EditOrderedRequest = this.editForm.value;
     request.full_payment = this.fullPaymentCheckBox;
+    const shoes = this.editForm.controls['shoes'].value;
+    const shoesIds = [];
+    for (const shoe of shoes) {
+      shoesIds.push(shoe.id);
+    }
+    this.editForm.value.shoes = shoesIds;
     this.restOrder.updateOrder(this.data.id, request).subscribe(value => {
       this.dialogRef.close();
     });
@@ -109,6 +130,12 @@ export class EditorderdialogComponent implements OnInit {
     } else {
       this.editForm.controls['prepayment'].enable();
     }
+  }
+
+  onSearchShoes(text) {
+    this.rest.getItems(text).subscribe(value1 => {
+      this.shoes = value1;
+    });
   }
 
 }
