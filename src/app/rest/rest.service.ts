@@ -18,7 +18,7 @@ export class RestService {
     if (model === null) {
       return this.http.get<Shoe[]>(this.configuration.serverpath + 'shoe?page=0&size=100');
     } else {
-      return this.http.get<Shoe[]>(this.configuration.serverpath + 'shoe?model=' + model + '&page=0&size=100');
+      return this.http.get<Shoe[]>(this.configuration.serverpath + 'shoe?modelAndColor=' + model + '&page=0&size=100');
     }
   }
 

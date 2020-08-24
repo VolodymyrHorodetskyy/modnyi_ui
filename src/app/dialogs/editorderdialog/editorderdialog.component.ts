@@ -74,7 +74,6 @@ export class EditorderdialogComponent implements OnInit {
       this.statuses = data;
     });
     const data = this.data;
-    console.log(data);
     this.editForm.patchValue({
       address: data.address,
       postComment: data.postComment,
@@ -95,7 +94,6 @@ export class EditorderdialogComponent implements OnInit {
       this.fullPaymentCheckBox = data.fullPayment;
       this.editForm.controls['prepayment'].disable();
     }
-    console.log(this.editForm.controls['shoes'].value);
   }
 
   onDenyClick(): void {
@@ -134,8 +132,10 @@ export class EditorderdialogComponent implements OnInit {
     }
   }
 
-  onSearchShoes(event) {
-    console.log(event);
+  onSearchShoes(text) {
+    this.rest.getItems(text).subscribe(value1 => {
+      this.shoes = value1;
+    });
   }
 
 }

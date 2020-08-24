@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {RestService} from '../../rest/rest.service';
 import {MatDialogRef, MatSelect} from '@angular/material';
 import {OrdersComponent} from '../../orders/orders.component';
@@ -118,8 +118,18 @@ export class CreateorderdialogComponent implements OnInit {
     }
   }
 
-  onSearchShoes(event) {
-    console.log(event);
+  onSearchShoes(text) {
+    this.rest.getItems(text).subscribe(value1 => {
+      this.shoes = value1;
+    });
+  }
+
+  triggerEvent(event) {
+    if (!event) {
+      this.rest.getItems('').subscribe(value1 => {
+        this.shoes = value1;
+      });
+    }
   }
 
 }
