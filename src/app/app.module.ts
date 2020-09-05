@@ -56,6 +56,7 @@ import {ApporderdialogComponent} from './dialogs/apporderdialog/apporderdialog.c
 import {ChangeshoepriceComponent} from './changeshoeprice/changeshoeprice.component';
 import {NewshoepricedialogComponent} from './dialogs/newshoepricedialog/newshoepricedialog.component';
 import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
+import { CanceledordersComponent } from './canceledorders/canceledorders.component';
 
 
 @NgModule({
@@ -84,7 +85,8 @@ import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
     AppordersComponent,
     ApporderdialogComponent,
     ChangeshoepriceComponent,
-    NewshoepricedialogComponent
+    NewshoepricedialogComponent,
+    CanceledordersComponent
   ],
   imports: [
     BrowserModule,

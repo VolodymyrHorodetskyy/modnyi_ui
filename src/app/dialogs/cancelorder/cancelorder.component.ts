@@ -15,7 +15,8 @@ export class CancelorderComponent implements OnInit {
   cancelOrderForm = new FormGroup({
     reason: new FormControl('', Validators.required),
     comment: new FormControl(''),
-    newTTN: new FormControl('')
+    newTTN: new FormControl(''),
+    returnTTN: new FormControl('')
   });
 
   constructor(public dialogRefCancelOrder: MatDialogRef<CancelorderComponent>,

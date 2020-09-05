@@ -74,7 +74,12 @@ export class RestService {
   }
 
   public cancelOrder(request: CancelOrderRequest) {
-    return this.http.patch(this.configuration.serverpath + 'order/cancelOrder', request, this.getHttpOptions());
+    return this.http.patch(this.configuration.serverpath + 'CancelOrder/cancelOrder', request, this.getHttpOptions());
+  }
+
+  public getCanceledOrders(page, size, phoneOrName, ttn, manual) {
+    return this.http.get(this.configuration.serverpath + '/CancelOrder?page=' + page + '&size=' + size +
+      '&phoneOrName=' + phoneOrName + '&ttn=' + ttn + '&manual=' + manual);
   }
 
   public getEarnings(dateFrom = '', dateTo = '') {
@@ -114,6 +119,7 @@ export class RestService {
   public getCompanies() {
     return this.http.get(this.configuration.serverpath + 'company');
   }
+
 
   getHttpOptions() {
     return {
