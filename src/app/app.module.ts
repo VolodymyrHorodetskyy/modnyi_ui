@@ -56,7 +56,8 @@ import {ApporderdialogComponent} from './dialogs/apporderdialog/apporderdialog.c
 import {ChangeshoepriceComponent} from './changeshoeprice/changeshoeprice.component';
 import {NewshoepricedialogComponent} from './dialogs/newshoepricedialog/newshoepricedialog.component';
 import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
-import { CanceledordersComponent } from './canceledorders/canceledorders.component';
+import {CanceledordersComponent} from './canceledorders/canceledorders.component';
+import {SetcanceledreasonComponent} from './dialogs/setcanceledreason/setcanceledreason.component';
 
 
 @NgModule({
@@ -86,7 +87,8 @@ import { CanceledordersComponent } from './canceledorders/canceledorders.compone
     ApporderdialogComponent,
     ChangeshoepriceComponent,
     NewshoepricedialogComponent,
-    CanceledordersComponent
+    CanceledordersComponent,
+    SetcanceledreasonComponent
   ],
   imports: [
     BrowserModule,
@@ -125,7 +127,7 @@ import { CanceledordersComponent } from './canceledorders/canceledorders.compone
   bootstrap: [AppComponent],
   entryComponents: [ClientdialogComponent, CreateorderdialogComponent, EditorderdialogComponent, CancelorderComponent,
     EditshoeComponent, YesnodialogComponent, PatternsComponent, CreatepatternComponent, ShoesdialogComponent, ApporderdialogComponent,
-    NewshoepricedialogComponent]
+    NewshoepricedialogComponent, SetcanceledreasonComponent]
 })
 export class AppModule {
 }

@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
     this.restNotif.getUnreadAmount().subscribe(value => {
       this.amount = value;
     });
+    this.restAppOrders.setAmounts();
   }
 
   update() {

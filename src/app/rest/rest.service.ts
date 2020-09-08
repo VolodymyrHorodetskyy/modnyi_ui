@@ -77,9 +77,13 @@ export class RestService {
     return this.http.patch(this.configuration.serverpath + 'CancelOrder/cancelOrder', request, this.getHttpOptions());
   }
 
-  public getCanceledOrders(page, size, phoneOrName, ttn, manual) {
-    return this.http.get(this.configuration.serverpath + '/CancelOrder?page=' + page + '&size=' + size +
-      '&phoneOrName=' + phoneOrName + '&ttn=' + ttn + '&manual=' + manual);
+  public getCanceledOrders(page, size, phoneOrName, ttn, manual, withoutReason) {
+    return this.http.get(this.configuration.serverpath + 'CancelOrder?page=' + page + '&size=' + size +
+      '&phoneOrName=' + phoneOrName + '&ttn=' + ttn + '&manual=' + manual + '&withoutReason=' + withoutReason);
+  }
+
+  public setCanceled(setCanceledRequest) {
+    return this.http.patch(this.configuration.serverpath + 'CancelOrder/setReason', setCanceledRequest, this.getHttpOptions());
   }
 
   public getEarnings(dateFrom = '', dateTo = '') {
@@ -92,8 +96,12 @@ export class RestService {
     return this.http.get(this.configuration.serverpath + 'finance/getEarningString?from=' + dateFrom + '&to=' + dateTo);
   }
 
+  public getCancelOrderReasonByOrderId(orderId) {
+    return this.http.get(this.configuration.serverpath + 'CancelOrder/getCanceledOrderByOrderId?id=' + orderId);
+  }
+
   public getCancelOrderReason(id) {
-    return this.http.get(this.configuration.serverpath + 'order/getCanceledOrder?id=' + id);
+    return this.http.get(this.configuration.serverpath + 'CancelOrder/getCanceledOrder?id=' + id);
   }
 
   public createShoe(createShoeRequest) {

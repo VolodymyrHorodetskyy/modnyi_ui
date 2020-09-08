@@ -8,6 +8,7 @@ import {Configuration} from '../configuration';
 export class RestapporderService {
 
   public newAppOrders = 0;
+  public canceledWithoutReason = 0;
 
   constructor(private http: HttpClient, private configuration: Configuration) {
   }
@@ -33,5 +34,14 @@ export class RestapporderService {
 
   public addComment(addCommentRequest) {
     return this.http.patch(this.configuration.serverpath + 'AppOrder/addCommnet', addCommentRequest);
+  }
+
+  public setAmounts() {
+    return this.http.get(this.configuration.serverpath + 'statistic/getAmountsInfo').subscribe(value => {
+      // @ts-ignore
+      this.newAppOrders = value.newAppOrders;
+      // @ts-ignore
+      this.canceledWithoutReason = value.canceledWithoutReason;
+    });
   }
 }

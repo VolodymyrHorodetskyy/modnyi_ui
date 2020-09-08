@@ -27,7 +27,7 @@ export class CancelorderComponent implements OnInit {
     this.rest.getReasons().subscribe(data => {
       this.reasons = data;
     });
-    this.rest.getCancelOrderReason(this.id).subscribe(data => {
+    this.rest.getCancelOrderReasonByOrderId(this.id).subscribe(data => {
       if (data != null) {
         this.cancelOrderForm.patchValue({
           // @ts-ignore
@@ -35,11 +35,12 @@ export class CancelorderComponent implements OnInit {
           // @ts-ignore
           comment: data.comment,
           // @ts-ignore
-          newTTN: data.ttn
+          newTTN: data.newTtn,
+          // @ts-ignore
+          returnTTN: data.returnTtt
         });
       }
     });
-
   }
 
   onButtonCancelOrder() {
