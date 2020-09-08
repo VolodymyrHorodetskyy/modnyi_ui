@@ -15,6 +15,7 @@ export class AppordersComponent implements OnInit {
 
   id = '';
   phoneOrName = '';
+  comment = '';
   dateFromForNotReady;
   dateFromForReady;
 
@@ -45,7 +46,7 @@ export class AppordersComponent implements OnInit {
   }
 
   onFilterChange() {
-    this.initAppOrdersArrays(this.id, this.phoneOrName, this.tranformDate(this.dateFromForNotReady),
+    this.initAppOrdersArrays(this.id, this.phoneOrName, this.comment, this.tranformDate(this.dateFromForNotReady),
       this.tranformDate(this.dateFromForReady));
   }
 
@@ -53,8 +54,8 @@ export class AppordersComponent implements OnInit {
     return this.datePipe.transform(date, 'yyyy-MM-dd HH:mm');
   }
 
-  initAppOrdersArrays(id = '', phoneAndNumber = '', fromForNotReady = '', fromForReady = '') {
-    this.restAppOrder.getAppOrders(id, phoneAndNumber, fromForNotReady, fromForReady).subscribe(value => {
+  initAppOrdersArrays(id = '', phoneAndNumber = '', comment = '', fromForNotReady = '', fromForReady = '') {
+    this.restAppOrder.getAppOrders(id, phoneAndNumber, comment, fromForNotReady, fromForReady).subscribe(value => {
       // @ts-ignore
       this.new = this.initArray(value.Новий);
       this.restAppOrder.newAppOrders = this.new.length;

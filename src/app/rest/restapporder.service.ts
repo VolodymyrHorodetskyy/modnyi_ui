@@ -13,15 +13,15 @@ export class RestapporderService {
   constructor(private http: HttpClient, private configuration: Configuration) {
   }
 
-  public getAppOrders(id, phoneAndName, fromForNotReady, fromForReady) {
+  public getAppOrders(id, phoneAndName, comment, fromForNotReady, fromForReady) {
     if (id == null) {
       id = '';
     }
     if (phoneAndName == null) {
       phoneAndName = '';
     }
-    return this.http.get(this.configuration.serverpath + 'AppOrder?id=' + id + '&phoneAndName=' + phoneAndName + '&fromForNotReady='
-      + fromForNotReady + '&fromForReady=' + fromForReady);
+    return this.http.get(this.configuration.serverpath + 'AppOrder?id=' + id + '&phoneAndName=' + phoneAndName + '&comment=' + comment +
+      '&fromForNotReady=' + fromForNotReady + '&fromForReady=' + fromForReady);
   }
 
   public getStatuses() {
