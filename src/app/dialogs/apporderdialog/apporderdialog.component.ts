@@ -2,6 +2,8 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef, MatSnackBar} from '@angular/material';
 import {RestapporderService} from '../../rest/restapporder.service';
 import {AppordersComponent} from '../../apporders/apporders.component';
+import {RestuserService} from '../../rest/restuser.service';
+import {ReststatisticService} from '../../rest/reststatistic.service';
 
 @Component({
   selector: 'app-apporderdialog',
@@ -14,18 +16,33 @@ export class ApporderdialogComponent implements OnInit {
   statuses;
   comment;
   ttn;
+  users;
+  userId;
+  response;
 
   constructor(@Inject(MAT_DIALOG_DATA) public item, private restAppOrder: RestapporderService,
-              public dialogRef: MatDialogRef<AppordersComponent>, private _snackBar: MatSnackBar) {
+              public dialogRef: MatDialogRef<AppordersComponent>, private _snackBar: MatSnackBar, private userRest: RestuserService,
+              public restStat: ReststatisticService) {
   }
 
   ngOnInit() {
     this.restAppOrder.getStatuses().subscribe(value => {
       this.statuses = value;
     });
+    this.userRest.getAllUsers().subscribe(value => {
+      this.users = value;
+      if (this.item.user != null) {
+        this.userId = this.item.user.id;
+      } else {
+        this.userId = this.users[0].id;
+      }
+    });
     this.statusSelected = this.item.status;
     this.comment = this.item.comment;
     this.ttn = this.item.ttn;
+    this.restStat.getOrdersAndAppOrdersByPhone(this.item.id).subscribe(value => {
+      this.response = value.result;
+    });
   }
 
 
@@ -34,7 +51,8 @@ export class ApporderdialogComponent implements OnInit {
       id: this.item.id,
       status: this.statusSelected,
       comment: this.comment,
-      ttn: this.ttn
+      ttn: this.ttn,
+      userId: this.userId
     }).subscribe(value => {
       this.dialogRef.close();
       // @ts-ignore
