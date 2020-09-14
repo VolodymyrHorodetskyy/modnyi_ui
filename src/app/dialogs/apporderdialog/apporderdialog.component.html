@@ -1,14 +1,24 @@
-<p>Ім'я: {{item.name}}</p>
-<p>Телефон: {{item.phone}}</p>
-<p>Мейл: {{item.mail}}</p>
-<p *ngIf="item.dontCall">Не дзвонити</p>
-<p></p>
-<h4>Замовлення</h4>
-<p *ngFor="let product of item.products">{{product}}</p>
-<p>Сума: {{item.amount}}</p>
-<p>Статус: {{item.status}} </p>
-<p *ngIf="item.previousStatus">Попередній: {{item.previousStatus}}</p>
-<p> ТТН: {{item.ttn}}</p>
+<div style="display: flex;">
+  <div>
+    <p>Ім'я: {{item.name}}</p>
+    <p>Телефон: {{item.phone}}</p>
+    <p *ngIf="item.mail != null">Мейл: {{item.mail}}</p>
+    <p *ngIf="item.dontCall">Не дзвонити</p>
+    <p></p>
+    <h4>Замовлення</h4>
+    <p *ngFor="let product of item.products">{{product}}</p>
+    <p>Сума: {{item.amount}}</p>
+    <p>Статус: {{item.status}} </p>
+    <p *ngIf="item.previousStatus">Попередній: {{item.previousStatus}}</p>
+    <p> ТТН: {{item.ttn}}</p>
+  </div>
+  <div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Знайдено</mat-label>
+      <textarea [(ngModel)]="response" matInput></textarea>
+    </mat-form-field>
+  </div>
+</div>
 <mat-form-field appearance="fill">
   <mat-label>Статус</mat-label>
   <mat-select [(ngModel)]="statusSelected">
@@ -17,11 +27,18 @@
 </mat-form-field>
 <mat-form-field style="margin-left: 2%" class="example-full-width">
   <mat-label>ТТН</mat-label>
-  <input matInput [(ngModel)]="ttn" >
+  <input matInput [(ngModel)]="ttn">
 </mat-form-field>
 <mat-form-field style="margin-left: 2%" class="example-full-width">
   <mat-label>Комент</mat-label>
   <textarea matInput [(ngModel)]="comment"></textarea>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+  <mat-label>Оператор</mat-label>
+  <mat-select [(ngModel)]="userId">
+    <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
+  </mat-select>
 </mat-form-field>
 <button mat-raised-button color="primary" (click)="onSave()" style="margin-left: 2%">Зберегети</button>
 

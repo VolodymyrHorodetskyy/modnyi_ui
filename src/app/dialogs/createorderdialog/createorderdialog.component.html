@@ -58,15 +58,6 @@
     <li>{{shoe.model}} {{shoe.color}}</li>
   </ul>
 
-
-  <!--  <ngx-mat-select-search
-    formControlName="shoe"
-    placeholderLabel="Find bank..."
-    noEntriesFoundLabel="'no matching bank found'">
-
-
-    </ngx-mat-select-search>-->
-
   <mat-form-field style="display:inline-block; margin-right: 1em;" class="example-full-width">
     <mat-label>Розмір</mat-label>
     <input formControlName="size" matInput>
@@ -96,6 +87,13 @@
       <mat-option *ngFor="let status of statuses" [value]="status.status">
         {{status.status}}
       </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Оператор</mat-label>
+    <mat-select formControlName="userId">
+      <mat-option *ngFor="let user of users" [value]="user.id">{{user.name}}</mat-option>
     </mat-select>
   </mat-form-field>
 

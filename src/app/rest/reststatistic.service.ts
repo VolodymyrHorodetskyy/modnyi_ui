@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Configuration} from '../configuration';
-import {from} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +20,10 @@ export class ReststatisticService {
 
   public getStatShoe(dateFrom, dateTo, field = null, direction = null) {
     return this.http.get(this.configuration.serverpath + 'statistic/getReceivedShoePercentage?from=' + dateFrom + '&to=' + dateTo);
+  }
+
+  public getOrdersAndAppOrdersByPhone(id) {
+    return this.http.get(this.configuration.serverpath + 'statistic/getOrdersAndAppOrdersByPhone?id=' + id);
   }
 
 }

@@ -9,6 +9,7 @@ import {EditOrderedRequest} from '../../entity/EditOrderedRequest';
 import {StatusDto} from '../../entity/StatusDto';
 import {CancelorderComponent} from '../cancelorder/cancelorder.component';
 import {RestorderService} from '../../rest/restorder.service';
+import {RestuserService} from '../../rest/restuser.service';
 
 @Component({
   selector: 'app-editorderdialog',
@@ -21,6 +22,7 @@ export class EditorderdialogComponent implements OnInit {
   fullPaymentCheckBox = false;
   statuses: StatusDto[];
   shoeModel: Shoe[] = [];
+  users;
 
   editForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -36,12 +38,14 @@ export class EditorderdialogComponent implements OnInit {
     postComment: new FormControl(''),
     price: new FormControl('', Validators.required),
     prepayment: new FormControl('', Validators.required),
-    fullpayment: new FormControl('')
+    fullpayment: new FormControl(''),
+    userId: new FormControl('')
   });
 
   constructor(public dialogRef: MatDialogRef<OrdersComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Ordered,
-              public rest: RestService, private restOrder: RestorderService, public dialog: MatDialog) {
+              public rest: RestService, private restOrder: RestorderService, public dialog: MatDialog,
+              private userRest: RestuserService) {
   }
 
 
@@ -73,6 +77,9 @@ export class EditorderdialogComponent implements OnInit {
     this.rest.getStatuses().subscribe(data => {
       this.statuses = data;
     });
+    this.userRest.getAllUsers().subscribe(value => {
+      this.users = value;
+    });
     const data = this.data;
     this.editForm.patchValue({
       address: data.address,
@@ -89,6 +96,8 @@ export class EditorderdialogComponent implements OnInit {
       notes: data.notes,
       price: data.price,
       prepayment: data.prePayment,
+      // @ts-ignore
+      userId: data.user != null ? data.user.id : 1
     });
     if (data.fullPayment) {
       this.fullPaymentCheckBox = data.fullPayment;

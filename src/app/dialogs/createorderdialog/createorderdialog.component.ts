@@ -7,6 +7,7 @@ import {HttpErrorResponse} from '@angular/common/http';
 import {Shoe} from '../../entity/Shoe';
 import {StatusDto} from '../../entity/StatusDto';
 import {RestorderService} from '../../rest/restorder.service';
+import {RestuserService} from '../../rest/restuser.service';
 
 @Component({
   selector: 'app-createorderdialog',
@@ -21,6 +22,7 @@ export class CreateorderdialogComponent implements OnInit {
   fullPaymentCheckBox = false;
   statuses: StatusDto[];
   fromStorage;
+  users;
 
   @ViewChild('singleSelect', {static: true}) singleSelect: MatSelect;
 
@@ -40,11 +42,12 @@ export class CreateorderdialogComponent implements OnInit {
     price: new FormControl('', Validators.required),
     prepayment: new FormControl('', Validators.required),
     fullpayment: new FormControl(''),
-    fromStorage: new FormControl('')
+    fromStorage: new FormControl(''),
+    userId: new FormControl('', Validators.required)
   });
 
   constructor(private restOrder: RestorderService, private rest: RestService,
-              public dialogRef: MatDialogRef<OrdersComponent>) {
+              public dialogRef: MatDialogRef<OrdersComponent>, private userRest: RestuserService) {
   }
 
   onDenyClick(): void {
@@ -57,6 +60,9 @@ export class CreateorderdialogComponent implements OnInit {
     });
     this.rest.getStatuses().subscribe(data => {
       this.statuses = data;
+    });
+    this.userRest.getAllUsers().subscribe(value => {
+      this.users = value;
     });
   }
 
