@@ -41,6 +41,7 @@ export class ApporderdialogComponent implements OnInit {
     this.comment = this.item.comment;
     this.ttn = this.item.ttn;
     this.restStat.getOrdersAndAppOrdersByPhone(this.item.id).subscribe(value => {
+      // @ts-ignore
       this.response = value.result;
     });
   }
