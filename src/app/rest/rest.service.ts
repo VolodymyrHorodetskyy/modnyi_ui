@@ -128,6 +128,10 @@ export class RestService {
     return this.http.get(this.configuration.serverpath + 'company');
   }
 
+  public updateCanceled() {
+    return this.http.put(this.configuration.serverpath + 'CancelOrder/updateCanceled', this.getHttpOptions());
+  }
+
 
   getHttpOptions() {
     return {

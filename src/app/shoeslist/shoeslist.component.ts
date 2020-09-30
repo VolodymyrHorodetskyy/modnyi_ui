@@ -67,7 +67,7 @@ export class ShoeslistComponent implements OnInit {
       data: id
     });
     dialogRef.afterClosed().subscribe(value1 => {
-      this.updateShoesList();
+      this.updateShoesList(this.value);
     });
   }
 
