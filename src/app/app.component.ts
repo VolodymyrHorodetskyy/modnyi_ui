@@ -3,6 +3,8 @@ import {RestnotifService} from './rest/restnotif.service';
 import {RestorderService} from './rest/restorder.service';
 import {RestapporderService} from './rest/restapporder.service';
 import {RestService} from './rest/rest.service';
+import {RestuserService} from './rest/restuser.service';
+import {LocalstorageService} from './localstorage.service';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +16,10 @@ export class AppComponent implements OnInit {
   amount;
   showUpdate = true;
   showUpdateCanceled = true;
+  users;
 
-  constructor(public rest: RestService, public restNotif: RestnotifService, public restOrder: RestorderService, public restAppOrders: RestapporderService) {
+  constructor(public rest: RestService, public restNotif: RestnotifService, public restOrder: RestorderService, public restAppOrders: RestapporderService,
+              private userRest: RestuserService, public localStorageService: LocalstorageService) {
   }
 
   ngOnInit() {
@@ -23,6 +27,9 @@ export class AppComponent implements OnInit {
       this.amount = value;
     });
     this.restAppOrders.setAmounts();
+    this.userRest.getAllUsers().subscribe(value => {
+      this.users = value;
+    });
   }
 
   update() {
@@ -38,5 +45,10 @@ export class AppComponent implements OnInit {
       this.showUpdateCanceled = true;
     });
   }
+
+  onUserChange(event) {
+    this.localStorageService.writeUser(event);
+  }
+
 
 }

@@ -5,13 +5,14 @@ import {Shoe} from '../entity/Shoe';
 import {StatusDto} from '../entity/StatusDto';
 import {StringResponse} from '../entity/response/StringResponse';
 import {CancelOrderRequest} from '../entity/CancelOrderRequest';
+import {LocalstorageService} from '../localstorage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestService {
 
-  constructor(private http: HttpClient, private configuration: Configuration) {
+  constructor(private http: HttpClient, private configuration: Configuration, private localStorageService: LocalstorageService) {
   }
 
   public getItems(model) {
@@ -35,14 +36,16 @@ export class RestService {
       ttns3 = '';
     }
     return this.http.post<StringResponse>(this.configuration.serverpath + 'order/importOrdersByTTNsString', {
-        ttns: ttns3
+        ttns: ttns3,
+        userId: this.localStorageService.getUser()
       },
       this.getHttpOptions());
 
   }
 
   public needDelivery(updateFromDb = false) {
-    return this.http.get<StringResponse>(this.configuration.serverpath + 'statistic/needDeliveryFromDB?updateStatuses=' + updateFromDb, this.getHttpOptions());
+    return this.http.get<StringResponse>(this.configuration.serverpath + 'statistic/needDeliveryFromDB?updateStatuses='
+      + updateFromDb, this.getHttpOptions());
   }
 
   public getIssueOrders() {

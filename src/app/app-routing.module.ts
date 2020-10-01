@@ -15,8 +15,8 @@ import {CanceledordersComponent} from './canceledorders/canceledorders.component
 
 
 const routes: Routes = [
-  {path: '', component: ShoeslistComponent},
-  {path: 'orders', component: OrdersComponent},
+  {path: 'shoes', component: ShoeslistComponent},
+  {path: '', component: OrdersComponent},
   {path: 'import', component: ImportordersComponent},
   {path: 'finance', component: FinanceComponent},
   {path: 'canceled', component: CanceledComponent},

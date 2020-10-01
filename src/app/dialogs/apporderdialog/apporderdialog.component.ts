@@ -4,6 +4,7 @@ import {RestapporderService} from '../../rest/restapporder.service';
 import {AppordersComponent} from '../../apporders/apporders.component';
 import {RestuserService} from '../../rest/restuser.service';
 import {ReststatisticService} from '../../rest/reststatistic.service';
+import {LocalstorageService} from '../../localstorage.service';
 
 @Component({
   selector: 'app-apporderdialog',
@@ -22,7 +23,7 @@ export class ApporderdialogComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public item, private restAppOrder: RestapporderService,
               public dialogRef: MatDialogRef<AppordersComponent>, private _snackBar: MatSnackBar, private userRest: RestuserService,
-              public restStat: ReststatisticService) {
+              public restStat: ReststatisticService, private localStorageService: LocalstorageService) {
   }
 
   ngOnInit() {
@@ -34,7 +35,7 @@ export class ApporderdialogComponent implements OnInit {
       if (this.item.user != null) {
         this.userId = this.item.user.id;
       } else {
-        this.userId = this.users[0].id;
+        this.userId = this.localStorageService.getUser();
       }
     });
     this.statusSelected = this.item.status;
