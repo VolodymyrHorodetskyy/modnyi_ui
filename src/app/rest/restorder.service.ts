@@ -13,10 +13,11 @@ export class RestorderService {
   constructor(private http: HttpClient, private configuration: Configuration) {
   }
 
-  public getOrders(page, size, ttn = '', phone = '', withoutTTN = false, orderBy: string) {
+  public getOrders(page, size, ttn = '', phone = '', withoutTTN = false, orderBy: string, userId) {
     return this.http.get<GetAllOrderedResponse>(
       this.configuration.serverpath + 'order?page=' + page +
-      '&size=+' + size + '&ttn=' + ttn + '&phoneOrName=' + phone + '&withoutTTN=' + withoutTTN + '&orderBy=' + orderBy);
+      '&size=+' + size + '&ttn=' + ttn + '&phoneOrName=' + phone + '&withoutTTN=' + withoutTTN + '&orderBy=' + orderBy
+      + '&userId=' + userId);
   }
 
   public getOrderedNP(phone, ttn) {

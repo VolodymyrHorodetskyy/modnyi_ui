@@ -17,8 +17,10 @@ export class AppComponent implements OnInit {
   showUpdate = true;
   showUpdateCanceled = true;
   users;
+  userSelected = 1;
 
-  constructor(public rest: RestService, public restNotif: RestnotifService, public restOrder: RestorderService, public restAppOrders: RestapporderService,
+  constructor(public rest: RestService, public restNotif: RestnotifService, public restOrder: RestorderService,
+              public restAppOrders: RestapporderService,
               private userRest: RestuserService, public localStorageService: LocalstorageService) {
   }
 
@@ -30,6 +32,7 @@ export class AppComponent implements OnInit {
     this.userRest.getAllUsers().subscribe(value => {
       this.users = value;
     });
+    this.userSelected = this.localStorageService.getUser();
   }
 
   update() {

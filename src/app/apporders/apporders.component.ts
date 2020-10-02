@@ -4,6 +4,7 @@ import {RestapporderService} from '../rest/restapporder.service';
 import {MatDialog} from '@angular/material';
 import {ApporderdialogComponent} from '../dialogs/apporderdialog/apporderdialog.component';
 import {DatePipe} from '@angular/common';
+import {RestuserService} from '../rest/restuser.service';
 
 
 @Component({
@@ -29,10 +30,13 @@ export class AppordersComponent implements OnInit {
   fullPayment = [];
   doNotAnswer = [];
   canceled = [];
+  users;
+  user;
 
   widthOfCard = '400px';
 
-  constructor(private restAppOrder: RestapporderService, private matDialog: MatDialog, private datePipe: DatePipe) {
+  constructor(private restAppOrder: RestapporderService, private matDialog: MatDialog, private datePipe: DatePipe,
+              private restUser: RestuserService) {
   }
 
   ngOnInit() {
@@ -43,19 +47,22 @@ export class AppordersComponent implements OnInit {
     d.setDate(d.getDate() - 1);
     this.dateFromForReady = d;
     this.onFilterChange();
+    this.restUser.getAllUsers().subscribe(value => {
+      this.users = value;
+    });
   }
 
   onFilterChange() {
     this.initAppOrdersArrays(this.id, this.phoneOrName, this.comment, this.tranformDate(this.dateFromForNotReady),
-      this.tranformDate(this.dateFromForReady));
+      this.tranformDate(this.dateFromForReady), this.user);
   }
 
   private tranformDate(date) {
     return this.datePipe.transform(date, 'yyyy-MM-dd HH:mm');
   }
 
-  initAppOrdersArrays(id = '', phoneAndNumber = '', comment = '', fromForNotReady = '', fromForReady = '') {
-    this.restAppOrder.getAppOrders(id, phoneAndNumber, comment, fromForNotReady, fromForReady).subscribe(value => {
+  initAppOrdersArrays(id = '', phoneAndNumber = '', comment = '', fromForNotReady = '', fromForReady = '', userId = '') {
+    this.restAppOrder.getAppOrders(id, phoneAndNumber, comment, fromForNotReady, fromForReady, userId).subscribe(value => {
       // @ts-ignore
       this.new = this.initArray(value.Новий);
       this.restAppOrder.newAppOrders = this.new.length;
@@ -110,6 +117,10 @@ export class AppordersComponent implements OnInit {
   }
 
   updateAppOrders() {
+    this.onFilterChange();
+  }
+
+  onOperatorChange() {
     this.onFilterChange();
   }
 

@@ -1,15 +1,15 @@
 <p></p>
-<button style="margin-left: 2%; margin-top: 1%;display:inline-block; margin-right: 5em;" mat-raised-button color="warn"
+<button style="margin-left: 2%; margin-top: 1%;display:inline-block; margin-right: 3em;" mat-raised-button color="warn"
         (click)="onCreateOrderClick()">Створити
 </button>
-<mat-form-field style="display:inline-block; margin-right: 5em;" class="example-form-field">
+<mat-form-field style="display:inline-block; margin-right: 3em;" class="example-form-field">
   <mat-label>ТТН</mat-label>
   <input (input)="updateOnFilters()" matInput type="text" [(ngModel)]="ttn">
   <button mat-button *ngIf="ttn" matSuffix mat-icon-button aria-label="Clear" (click)="ttn=''; updateOnFilters()">
     <mat-icon>close</mat-icon>
   </button>
 </mat-form-field>
-<mat-form-field style="display:inline-block; margin-right: 5em;" class="example-form-field">
+<mat-form-field style="display:inline-block; margin-right: 3em;" class="example-form-field">
   <mat-label>Телефон, Ім'я, Прізвище</mat-label>
   <input (input)="updateOnFilters()" matInput type="text" [(ngModel)]="phoneOrName">
   <button mat-button *ngIf="phoneOrName" matSuffix mat-icon-button aria-label="Clear" (click)="phoneOrName=''; updateOnFilters()">
@@ -22,7 +22,7 @@
 </mat-checkbox>
 
 
-<mat-form-field style="display:inline-block; margin-right: 5em;">
+<mat-form-field style="display:inline-block; margin-right: 3em;">
   <mat-label> Сортувати</mat-label>
   <mat-select (selectionChange)="updateOnFilters()" [(ngModel)]="orderByValue">
     <mat-option *ngFor="let orderBy of orderByAr" [value]="orderBy.orderBy">
@@ -31,6 +31,15 @@
   </mat-select>
 </mat-form-field>
 
+<mat-form-field style="display:inline-block; margin-right: 3em;">
+  <mat-label> Оператор</mat-label>
+  <mat-select (selectionChange)="updateOnFilters()" [(ngModel)]="userId">
+    <mat-option></mat-option>
+    <mat-option *ngFor="let user of users" [value]="user.id">
+      {{user.name}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 
 <div class="example-container mat-elevation-z8">
   <table mat-table [dataSource]="orders" style="width: 100%" matSort>

@@ -13,7 +13,7 @@ export class RestapporderService {
   constructor(private http: HttpClient, private configuration: Configuration) {
   }
 
-  public getAppOrders(id, phoneAndName, comment, fromForNotReady, fromForReady) {
+  public getAppOrders(id, phoneAndName, comment, fromForNotReady, fromForReady, userId) {
     if (id == null) {
       id = '';
     }
@@ -21,7 +21,7 @@ export class RestapporderService {
       phoneAndName = '';
     }
     return this.http.get(this.configuration.serverpath + 'AppOrder?id=' + id + '&phoneAndName=' + phoneAndName + '&comment=' + comment +
-      '&fromForNotReady=' + fromForNotReady + '&fromForReady=' + fromForReady);
+      '&fromForNotReady=' + fromForNotReady + '&fromForReady=' + fromForReady + '&userId=' + userId);
   }
 
   public getStatuses() {

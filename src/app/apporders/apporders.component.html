@@ -20,6 +20,14 @@
       </mat-form-field>
     </td>
 
+    <mat-label>Оператор</mat-label>
+    <mat-select (selectionChange)="onOperatorChange()" [(ngModel)]="user">
+      <mat-option></mat-option>
+      <mat-option *ngFor="let user of users" [value]="user.id">
+        {{user.name}}
+      </mat-option>
+    </mat-select>
+
     <td>
       <mat-form-field appearance="fill">
         <mat-label>Від</mat-label>
@@ -39,6 +47,7 @@
     <td>
       <button style="margin-left: 5%" (click)="updateAppOrders()" mat-raised-button color="primary">Оновити</button>
     </td>
+
   </tr>
 </table>
 

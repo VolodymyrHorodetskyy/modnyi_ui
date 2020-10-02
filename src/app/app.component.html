@@ -12,7 +12,7 @@
     </div>
     <div style="margin-left: 50%">
       <mat-label>Оператор</mat-label>
-      <mat-select [value]="localStorageService.getUser()" (selectionChange)="onUserChange($event.value)" style="margin-left: 5%">
+      <mat-select [value]="userSelected" (selectionChange)="onUserChange($event.value)" style="margin-left: 5%">
         <mat-option  *ngFor="let user of users"
                     [value]="user.id">{{user.name}}</mat-option>
       </mat-select>

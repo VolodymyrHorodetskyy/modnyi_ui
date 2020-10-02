@@ -6,6 +6,7 @@ import {EditorderdialogComponent} from '../dialogs/editorderdialog/editorderdial
 import {GetAllOrderedResponse} from '../entity/response/GetAllOrderedResponse';
 import {RestorderService} from '../rest/restorder.service';
 import {ShoesdialogComponent} from '../dialogs/shoesdialog/shoesdialog.component';
+import {RestuserService} from '../rest/restuser.service';
 
 @Component({
   selector: 'app-orders',
@@ -26,12 +27,17 @@ export class OrdersComponent implements OnInit {
     {orderBy: 'dateEdited', orderByUkr: 'Дата зміни'}
   ];
   orderByValue: string;
+  users;
+  userId;
 
-  constructor(private rest: RestorderService, public dialog: MatDialog) {
+  constructor(private rest: RestorderService, public dialog: MatDialog, public restUser: RestuserService) {
   }
 
   ngOnInit() {
     this.updateOnFilters();
+    this.restUser.getAllUsers().subscribe(value => {
+      this.users = value;
+    });
   }
 
   onCreateOrderClick() {
@@ -59,8 +65,8 @@ export class OrdersComponent implements OnInit {
     this.updateOnFilters();
   }
 
-  updateOrders(page = 0, size = 10, ttn = '', phoneOrName = '', withoutTTN = false, orderByValue: string) {
-    this.rest.getOrders(page, size, ttn, phoneOrName, withoutTTN, orderByValue).subscribe(getAllOrdered => {
+  updateOrders(page = 0, size = 10, ttn = '', phoneOrName = '', withoutTTN = false, orderByValue: string, userId = '') {
+    this.rest.getOrders(page, size, ttn, phoneOrName, withoutTTN, orderByValue, userId).subscribe(getAllOrdered => {
       this.orders = getAllOrdered.orderedList;
       this.getAllOrdered = getAllOrdered;
     });
@@ -69,17 +75,7 @@ export class OrdersComponent implements OnInit {
   updateOnFilters() {
     this.updateOrders(this.pageEvent != null ?
       this.pageEvent.pageIndex : 0, this.pageEvent != null ?
-      this.pageEvent.pageSize : 10, this.ttn, this.phoneOrName, this.withoutTTN, this.orderByValue);
+      this.pageEvent.pageSize : 10, this.ttn, this.phoneOrName, this.withoutTTN, this.orderByValue, this.userId);
   }
-
-/*  shoeShoesClick(order) {
-    const dialogRef = this.dialog.open(ShoesdialogComponent, {
-      data: order
-    });
-    dialogRef.afterClosed().subscribe(value => {
-      this.updateOnFilters();
-    });
-  }*/
-
 
 }
