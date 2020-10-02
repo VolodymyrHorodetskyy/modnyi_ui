@@ -47,6 +47,10 @@ export class RestorderService {
     return this.http.patch(this.configuration.serverpath + 'order/updateStatuses', this.getHttpOptions());
   }
 
+  public updateStatusesWithoutResponse(){
+    return this.http.patch(this.configuration.serverpath + 'order/updateStatusesWithoutResponse', this.getHttpOptions());
+  }
+
   public setNewShoePrice(createShoePriceRequest) {
     return this.http.post(this.configuration.serverpath + 'shoePrice', createShoePriceRequest);
   }

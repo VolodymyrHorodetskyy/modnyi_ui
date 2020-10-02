@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
 
   update() {
     this.showUpdate = false;
-    this.restOrder.updateStatuses().subscribe(() => {
+    this.restOrder.updateStatusesWithoutResponse().subscribe(() => {
       this.showUpdate = true;
     });
   }
