@@ -56,7 +56,10 @@ export class ApporderdialogComponent implements OnInit {
       ttn: this.ttn,
       userId: this.userId
     }).subscribe(value => {
-      this.dialogRef.close();
+      // @ts-ignore
+      if (value.appOrder.status !== 'В_обробці'){
+        this.dialogRef.close();
+      }
       // @ts-ignore
       if (value.message != null) {
         // @ts-ignore
