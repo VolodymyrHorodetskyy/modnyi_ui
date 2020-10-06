@@ -57,8 +57,13 @@ export class ApporderdialogComponent implements OnInit {
       userId: this.userId
     }).subscribe(value => {
       // @ts-ignore
-      if (value.appOrder.status !== 'В_обробці'){
+      if (value.appOrder.status !== 'В_обробці') {
         this.dialogRef.close();
+      } else {
+        this._snackBar.open('Статус збережено', 'В обробці', {
+          duration: 2000,
+          verticalPosition: 'top'
+        });
       }
       // @ts-ignore
       if (value.message != null) {
