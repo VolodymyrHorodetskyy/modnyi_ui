@@ -3,6 +3,7 @@ import {RestService} from '../rest/rest.service';
 import {MatDialog} from '@angular/material';
 import {SetcanceledreasonComponent} from '../dialogs/setcanceledreason/setcanceledreason.component';
 import {RestapporderService} from '../rest/restapporder.service';
+import {RestuserService} from '../rest/restuser.service';
 
 @Component({
   selector: 'app-canceledorders',
@@ -17,17 +18,22 @@ export class CanceledordersComponent implements OnInit {
   phoneOrName;
   manual;
   withoutReason;
+  users;
+  user;
 
-  constructor(private rest: RestService, private matDialog: MatDialog, private appOrdersRest: RestapporderService) {
+  constructor(private restUser: RestuserService, private rest: RestService, private matDialog: MatDialog, private appOrdersRest: RestapporderService) {
   }
 
   ngOnInit() {
     this.getCanceled();
+    this.restUser.getAllUsers().subscribe(value => {
+      this.users = value;
+    });
   }
 
   getCanceled(page = 0, size = 10, phoneOrName = '', ttn = '', manual = '',
-              withoutReason = '') {
-    this.rest.getCanceledOrders(page, size, phoneOrName, ttn, manual, withoutReason).subscribe(value => {
+              withoutReason = '', userId = '') {
+    this.rest.getCanceledOrders(page, size, phoneOrName, ttn, manual, withoutReason, userId).subscribe(value => {
       // @ts-ignore
       this.canceledOrders = value.canceledOrderReasons;
       // @ts-ignore
@@ -40,7 +46,7 @@ export class CanceledordersComponent implements OnInit {
   }
 
   onInputsChange() {
-    this.getCanceled(0, 10, this.phoneOrName, this.ttn, this.manual, this.withoutReason);
+    this.getCanceled(0, 10, this.phoneOrName, this.ttn, this.manual, this.withoutReason, this.user);
   }
 
   onButtonChangeClick(id) {
@@ -51,6 +57,10 @@ export class CanceledordersComponent implements OnInit {
       this.onInputsChange();
       this.appOrdersRest.setAmounts();
     });
+  }
+
+  onOperatorChange() {
+    this.onInputsChange();
   }
 
 }

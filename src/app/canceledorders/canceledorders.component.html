@@ -1,11 +1,11 @@
 <div style="margin-left: 4%">
   <mat-form-field class="example-form-field">
-  <mat-label>ТТН</mat-label>
-  <input (input)="onInputsChange()" matInput type="text" [(ngModel)]="ttn">
-  <button mat-button *ngIf="ttn" matSuffix mat-icon-button aria-label="Clear" (click)="ttn=''">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field>
+    <mat-label>ТТН</mat-label>
+    <input (input)="onInputsChange()" matInput type="text" [(ngModel)]="ttn">
+    <button mat-button *ngIf="ttn" matSuffix mat-icon-button aria-label="Clear" (click)="ttn=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
   <mat-form-field style="margin-left: 2%" class="example-form-field">
     <mat-label>Ім'я, Прізвище або телефон</mat-label>
     <input (input)="onInputsChange()" matInput type="text" [(ngModel)]="phoneOrName">
@@ -13,18 +13,38 @@
       <mat-icon>close</mat-icon>
     </button>
   </mat-form-field>
-  <mat-checkbox (change)="onInputsChange()" style="margin-left: 2%" class="example-margin" [(ngModel)]="manual">Відмінено вручну</mat-checkbox>
+  <mat-checkbox (change)="onInputsChange()" style="margin-left: 2%" class="example-margin" [(ngModel)]="manual">
+    Відмінено вручну
+  </mat-checkbox>
 
-  <mat-checkbox (change)="onInputsChange()" style="margin-left: 2%" class="example-margin" [(ngModel)]="withoutReason">Без причини</mat-checkbox>
-
-
+  <mat-checkbox (change)="onInputsChange()" style="margin-left: 2%" class="example-margin" [(ngModel)]="withoutReason">
+    Без причини
+  </mat-checkbox>
+  <div>
+    <mat-label style="margin-left: 2%">Оператор</mat-label>
+    <mat-select style="margin-left: 2%;width: 7%" (selectionChange)="onOperatorChange()" [(ngModel)]="user">
+      <mat-option></mat-option>
+      <mat-option *ngFor="let user of users" [value]="user.id">
+        {{user.name}}
+      </mat-option>
+    </mat-select>
+  </div>
 </div>
 <h2>Відмови</h2>
 <mat-card *ngFor="let canceled of canceledOrders" class="example-card">
   <div style="display: flex; justify-content: space-around">
-   <div>{{canceled.ordered.ttn}} <p> Накладна повернення: {{canceled.returnTtn}} </p>
-   <p>Нова накладна: {{canceled.newTtn}} </p>
-   </div>  <div><div *ngFor="let shoe of canceled.ordered.orderedShoes">{{shoe.model}} {{shoe.color}}</div></div> <div>{{canceled.ordered.client.name}} {{canceled.ordered.client.lastName}} <p>{{canceled.ordered.client.phone}}</p> </div><div>Статус повернення: {{canceled.status}}</div> <div >Причина відмови: <div [ngStyle]="{'color': (canceled.reason == 'НЕ_ВИЗНАЧЕНО') ? 'red':'black'}">{{canceled.reason}}</div></div>
+    <div>{{canceled.ordered.ttn}} <p> Накладна повернення: {{canceled.returnTtn}} </p>
+      <p>Нова накладна: {{canceled.newTtn}} </p>
+    </div>
+    <div>
+      <div *ngFor="let shoe of canceled.ordered.orderedShoes">{{shoe.model}} {{shoe.color}}</div>
+    </div>
+    <div>{{canceled.ordered.client.name}} {{canceled.ordered.client.lastName}} <p>{{canceled.ordered.client.phone}}</p>
+    </div>
+    <div>Статус повернення: {{canceled.status}}</div>
+    <div>Причина відмови:
+      <div [ngStyle]="{'color': (canceled.reason == 'НЕ_ВИЗНАЧЕНО') ? 'red':'black'}">{{canceled.reason}}</div>
+    </div>
   </div>
   <button mat-raised-button color="primary" (click)="onButtonChangeClick(canceled.id)">Змінити</button>
 </mat-card>

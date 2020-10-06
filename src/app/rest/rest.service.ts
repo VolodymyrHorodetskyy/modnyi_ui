@@ -80,9 +80,9 @@ export class RestService {
     return this.http.patch(this.configuration.serverpath + 'CancelOrder/cancelOrder', request, this.getHttpOptions());
   }
 
-  public getCanceledOrders(page, size, phoneOrName, ttn, manual, withoutReason) {
+  public getCanceledOrders(page, size, phoneOrName, ttn, manual, withoutReason, userId) {
     return this.http.get(this.configuration.serverpath + 'CancelOrder?page=' + page + '&size=' + size +
-      '&phoneOrName=' + phoneOrName + '&ttn=' + ttn + '&manual=' + manual + '&withoutReason=' + withoutReason);
+      '&phoneOrName=' + phoneOrName + '&ttn=' + ttn + '&manual=' + manual + '&withoutReason=' + withoutReason + '&userId=' + userId);
   }
 
   public setCanceled(setCanceledRequest) {
