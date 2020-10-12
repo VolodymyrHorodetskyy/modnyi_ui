@@ -135,6 +135,10 @@ export class RestService {
     return this.http.put(this.configuration.serverpath + 'CancelOrder/updateCanceled', this.getHttpOptions());
   }
 
+  public getUserStats(userId) {
+    return this.http.get(this.configuration.serverpath + 'statistic/getAllOrdersByUser?userId=' + userId);
+  }
+
 
   getHttpOptions() {
     return {

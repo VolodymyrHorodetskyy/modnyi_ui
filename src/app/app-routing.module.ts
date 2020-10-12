@@ -12,6 +12,7 @@ import {StatisticComponent} from './statistic/statistic.component';
 import {NotificationsComponent} from './notifications/notifications.component';
 import {AppordersComponent} from './apporders/apporders.component';
 import {CanceledordersComponent} from './canceledorders/canceledorders.component';
+import {UserstatsComponent} from './userstats/userstats.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path: 'statistic', component: StatisticComponent},
   {path: 'notifications', component: NotificationsComponent},
   {path: 'apporders', component: AppordersComponent},
-  {path: 'canceledorders', component: CanceledordersComponent}
+  {path: 'canceledorders', component: CanceledordersComponent},
+  {path: 'user_stats', component: UserstatsComponent}
   ];
 
 @NgModule({
