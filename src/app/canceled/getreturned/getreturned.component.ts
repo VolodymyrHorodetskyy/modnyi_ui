@@ -10,7 +10,7 @@ export class GetreturnedComponent implements OnInit {
 
   returned: string;
   loaded = true;
-  excludeDeliveryFile: boolean;
+  excludeDeliveryFile: boolean = true;
 
   constructor(public rest: RestService) {
   }
