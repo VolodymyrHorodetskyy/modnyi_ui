@@ -43,7 +43,7 @@
     </div>
     <div>Статус повернення: {{canceled.status}}</div>
     <div>Причина відмови:
-      <div [ngStyle]="{'color': (canceled.reason == 'НЕ_ВИЗНАЧЕНО') ? 'red':'black'}">{{canceled.reason}}</div>
+      <div [ngStyle]="{'color': (canceled.reason == 'НЕ_ВИЗНАЧЕНО') ? 'red':'black'}">{{canceled.reason}}<div style="color: black"><p>{{canceled.ordered.user.name}}</p></div></div>
     </div>
   </div>
   <button mat-raised-button color="primary" (click)="onButtonChangeClick(canceled.id)">Змінити</button>

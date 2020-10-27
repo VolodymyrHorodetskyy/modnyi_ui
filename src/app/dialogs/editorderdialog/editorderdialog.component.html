@@ -45,6 +45,12 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
+
+  <mat-form-field style="display:inline-block; margin-right: 1em;" class="example-full-width">
+    <mat-label>Комент НП</mat-label>
+    <input formControlName="postComment" matInput>
+  </mat-form-field>
+
   <ul *ngFor="let shoe of this.editForm.controls['shoes'].value">
     <li>{{shoe.model}} {{shoe.color}}</li>
   </ul>
