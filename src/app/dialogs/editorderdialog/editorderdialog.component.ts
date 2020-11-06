@@ -39,7 +39,8 @@ export class EditorderdialogComponent implements OnInit {
     price: new FormControl('', Validators.required),
     prepayment: new FormControl('', Validators.required),
     fullpayment: new FormControl(''),
-    userId: new FormControl('')
+    userId: new FormControl(''),
+    urgent: new FormControl('')
   });
 
   constructor(public dialogRef: MatDialogRef<OrdersComponent>,
@@ -97,7 +98,8 @@ export class EditorderdialogComponent implements OnInit {
       price: data.price,
       prepayment: data.prePayment,
       // @ts-ignore
-      userId: data.user != null ? data.user.id : 1
+      userId: data.user != null ? data.user.id : 1,
+      urgent: data.urgent
     });
     if (data.fullPayment) {
       this.fullPaymentCheckBox = data.fullPayment;
