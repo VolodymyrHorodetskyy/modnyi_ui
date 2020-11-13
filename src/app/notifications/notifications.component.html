@@ -4,10 +4,11 @@
     <p matLine>
       <span> {{message.topic}} </span>
       <span class="demo-2">{{message.content}}  -- {{message.ttn}} ({{message.createdDate.dayOfMonth}}.{{message.createdDate.monthValue}}.{{message.createdDate.year}})</span>
+      <button mat-raised-button color="primary" (click)="makeRead(message)">Прочитати</button>
+
     </p>
     <mat-icon *ngIf="!message.read1" matListIcon>mark_email_unread</mat-icon>
     <mat-icon *ngIf="message.read1" matListIcon>mark_email_read</mat-icon>
-    <button mat-raised-button color="primary" (click)="makeRead(message)">Прочитати</button>
 
   </mat-list-item>
 
