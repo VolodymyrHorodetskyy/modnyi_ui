@@ -28,7 +28,7 @@ export class RestService {
     return this.http.get<StatusDto[]>(this.configuration.serverpath + 'order/getStatuses');
   }
 
-  public importTTNS(ttns2: string) {
+  public importTTNS(ttns2: string, discountId) {
     let ttns3;
     if (ttns2 != null) {
       ttns3 = ttns2.split('\n').join(' ');
@@ -37,7 +37,8 @@ export class RestService {
     }
     return this.http.post<StringResponse>(this.configuration.serverpath + 'order/importOrdersByTTNsString', {
         ttns: ttns3,
-        userId: this.localStorageService.getUser()
+        userId: this.localStorageService.getUser(),
+        discountId: discountId
       },
       this.getHttpOptions());
 

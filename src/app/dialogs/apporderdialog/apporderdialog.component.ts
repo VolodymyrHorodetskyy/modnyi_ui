@@ -5,6 +5,7 @@ import {AppordersComponent} from '../../apporders/apporders.component';
 import {RestuserService} from '../../rest/restuser.service';
 import {ReststatisticService} from '../../rest/reststatistic.service';
 import {LocalstorageService} from '../../localstorage.service';
+import {DiscountService} from '../../rest/discount.service';
 
 @Component({
   selector: 'app-apporderdialog',
@@ -20,10 +21,13 @@ export class ApporderdialogComponent implements OnInit {
   users;
   userId;
   response;
+  discounts;
+  discountMain;
 
   constructor(@Inject(MAT_DIALOG_DATA) public item, private restAppOrder: RestapporderService,
               public dialogRef: MatDialogRef<AppordersComponent>, private _snackBar: MatSnackBar, private userRest: RestuserService,
-              public restStat: ReststatisticService, private localStorageService: LocalstorageService) {
+              public restStat: ReststatisticService, private localStorageService: LocalstorageService,
+              private discountRest: DiscountService) {
   }
 
   ngOnInit() {
@@ -45,6 +49,14 @@ export class ApporderdialogComponent implements OnInit {
       // @ts-ignore
       this.response = value.result;
     });
+    this.discountRest.getAll().subscribe(value => {
+      this.discounts = value;
+      for (const disc of this.discounts) {
+        if (disc.main) {
+          this.discountMain = disc.id;
+        }
+      }
+    });
   }
 
 
@@ -54,7 +66,8 @@ export class ApporderdialogComponent implements OnInit {
       status: this.statusSelected,
       comment: this.comment,
       ttn: this.ttn,
-      userId: this.userId
+      userId: this.userId,
+      discountId: this.discountMain
     }).subscribe(value => {
       // @ts-ignore
       if (value.appOrder.status !== 'В_обробці') {
@@ -74,7 +87,10 @@ export class ApporderdialogComponent implements OnInit {
         });
       }
     });
+  }
 
+  onDiscountChange(discount) {
+    this.discountMain = discount;
   }
 
 }

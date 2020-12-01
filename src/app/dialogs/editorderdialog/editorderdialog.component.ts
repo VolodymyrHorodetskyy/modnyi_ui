@@ -10,6 +10,7 @@ import {StatusDto} from '../../entity/StatusDto';
 import {CancelorderComponent} from '../cancelorder/cancelorder.component';
 import {RestorderService} from '../../rest/restorder.service';
 import {RestuserService} from '../../rest/restuser.service';
+import {DiscountService} from '../../rest/discount.service';
 
 @Component({
   selector: 'app-editorderdialog',
@@ -23,6 +24,7 @@ export class EditorderdialogComponent implements OnInit {
   statuses: StatusDto[];
   shoeModel: Shoe[] = [];
   users;
+  discounts;
 
   editForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -40,13 +42,14 @@ export class EditorderdialogComponent implements OnInit {
     prepayment: new FormControl('', Validators.required),
     fullpayment: new FormControl(''),
     userId: new FormControl(''),
-    urgent: new FormControl('')
+    urgent: new FormControl(''),
+    discountId: new FormControl('')
   });
 
   constructor(public dialogRef: MatDialogRef<OrdersComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Ordered,
               public rest: RestService, private restOrder: RestorderService, public dialog: MatDialog,
-              private userRest: RestuserService) {
+              private userRest: RestuserService, private discountRest: DiscountService) {
   }
 
 
@@ -82,6 +85,7 @@ export class EditorderdialogComponent implements OnInit {
       this.users = value;
     });
     const data = this.data;
+    console.log(data);
     this.editForm.patchValue({
       address: data.address,
       postComment: data.postComment,
@@ -99,12 +103,16 @@ export class EditorderdialogComponent implements OnInit {
       prepayment: data.prePayment,
       // @ts-ignore
       userId: data.user != null ? data.user.id : 1,
-      urgent: data.urgent
+      urgent: data.urgent,
+      discountId: data.discount.id
     });
     if (data.fullPayment) {
       this.fullPaymentCheckBox = data.fullPayment;
       this.editForm.controls['prepayment'].disable();
     }
+    this.discountRest.getAll().subscribe(value => {
+      this.discounts = value;
+    });
   }
 
   onDenyClick(): void {

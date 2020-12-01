@@ -20,5 +20,6 @@ export class Ordered {
   fullPayment: boolean;
   withoutTTN: boolean;
   urgent: boolean;
+  discount;
 
 }
