@@ -27,6 +27,7 @@ export class OurttnsComponent implements OnInit {
   updateOnFilters() {
     this.ourttnsRest.getAll(0, 10, this.showDeletedAndReceived).subscribe(value => {
       this.ourttns = value;
+      // @ts-ignore
       this.ourttnsContent = value.content;
     });
   }
