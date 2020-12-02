@@ -5,7 +5,6 @@ import {CreateorderdialogComponent} from '../dialogs/createorderdialog/createord
 import {EditorderdialogComponent} from '../dialogs/editorderdialog/editorderdialog.component';
 import {GetAllOrderedResponse} from '../entity/response/GetAllOrderedResponse';
 import {RestorderService} from '../rest/restorder.service';
-import {ShoesdialogComponent} from '../dialogs/shoesdialog/shoesdialog.component';
 import {RestuserService} from '../rest/restuser.service';
 
 @Component({

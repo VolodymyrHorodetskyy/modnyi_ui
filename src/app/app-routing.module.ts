@@ -13,6 +13,7 @@ import {NotificationsComponent} from './notifications/notifications.component';
 import {AppordersComponent} from './apporders/apporders.component';
 import {CanceledordersComponent} from './canceledorders/canceledorders.component';
 import {UserstatsComponent} from './userstats/userstats.component';
+import {OurttnsComponent} from './ourttns/ourttns.component';
 
 
 const routes: Routes = [
@@ -28,8 +29,9 @@ const routes: Routes = [
   {path: 'notifications', component: NotificationsComponent},
   {path: 'apporders', component: AppordersComponent},
   {path: 'canceledorders', component: CanceledordersComponent},
-  {path: 'user_stats', component: UserstatsComponent}
-  ];
+  {path: 'user_stats', component: UserstatsComponent},
+  {path: 'our_ttns', component: OurttnsComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -59,6 +59,7 @@ import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
 import {CanceledordersComponent} from './canceledorders/canceledorders.component';
 import {SetcanceledreasonComponent} from './dialogs/setcanceledreason/setcanceledreason.component';
 import { UserstatsComponent } from './userstats/userstats.component';
+import { OurttnsComponent } from './ourttns/ourttns.component';
 
 
 @NgModule({
@@ -90,7 +91,8 @@ import { UserstatsComponent } from './userstats/userstats.component';
     NewshoepricedialogComponent,
     CanceledordersComponent,
     SetcanceledreasonComponent,
-    UserstatsComponent
+    UserstatsComponent,
+    OurttnsComponent
   ],
   imports: [
     BrowserModule,

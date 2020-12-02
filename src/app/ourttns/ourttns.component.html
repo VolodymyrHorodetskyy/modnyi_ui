@@ -1,0 +1,48 @@
+<mat-form-field appearance="fill">
+  <mat-label>Накладні</mat-label>
+  <textarea [(ngModel)]="ttns" matInput></textarea>
+</mat-form-field>
+
+<button mat-raised-button color="primary" (click)="onImportClick()" disabled="{{importButtonDisable}}">Імпортувати
+</button>
+
+<button mat-raised-button color="primary" (click)="onUpdateClick()" disabled="{{updateButtonDisable}}">Обновити
+</button>
+
+<mat-checkbox style="margin-left: 3em;" [(ngModel)]="showDeletedAndReceived" (change)="updateOnFilters()">
+  Показувати отримані і добавлені
+</mat-checkbox>
+
+<table mat-table [dataSource]="ourttnsContent" style="width: 100%" matSort>
+
+  <ng-container matColumnDef="ttn">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> ТТН</th>
+    <td mat-cell *matCellDef="let element"> {{element.ttn}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="senderPhone">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Телефон відправника</th>
+    <td mat-cell *matCellDef="let element"> {{element.senderPhone}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="receiverPhone">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Телефон отримувача</th>
+    <td mat-cell *matCellDef="let element"> {{element.receiverPhone}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="datePayedKeeping">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Платне зберігання з</th>
+    <td mat-cell *matCellDef="let element">
+      {{showDate(element.datePayedKeeping)}}
+
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Статус</th>
+    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
