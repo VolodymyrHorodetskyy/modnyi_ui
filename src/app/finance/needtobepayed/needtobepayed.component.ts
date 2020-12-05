@@ -27,6 +27,8 @@ export class NeedtobepayedComponent implements OnInit {
 
   makeAllPayed() {
     this.orderRest.makeAllPayed().subscribe(value => {
+      // @ts-ignore
+      this.response = value.result;
     });
   }
 

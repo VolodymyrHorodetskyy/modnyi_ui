@@ -17,7 +17,7 @@ export class OurttnsService {
       + '&size=' + size);
   }
 
-  public importOurTtns(ttns2: string) {
+  public importOurTtns(ttns2: string, npAccountId: number) {
     let ttns3;
     if (ttns2 != null) {
       ttns3 = ttns2.split('\n').join(' ');
@@ -26,13 +26,18 @@ export class OurttnsService {
     }
     return this.http.post<StringResponse>(this.configuration.serverpath + 'ourttn', {
         ttns: ttns3,
-        userId: this.localStorageService.getUser()
+        userId: this.localStorageService.getUser(),
+        npAccountId: npAccountId
       },
       this.getHttpOptions());
   }
 
   public updateOurTtns() {
     return this.http.patch(this.configuration.serverpath + 'ourttn/updateStatuses', this.getHttpOptions());
+  }
+
+  public getNpAccounts() {
+    return this.http.get(this.configuration.serverpath + 'npAccount');
   }
 
   getHttpOptions() {

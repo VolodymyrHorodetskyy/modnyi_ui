@@ -16,12 +16,17 @@ export class OurttnsComponent implements OnInit {
   importButtonDisable = false;
   updateButtonDisable = false;
   ttns;
+  npAccounts;
+  npAccount;
 
   constructor(public ourttnsRest: OurttnsService) {
   }
 
   ngOnInit() {
     this.updateOnFilters();
+    this.ourttnsRest.getNpAccounts().subscribe(value => {
+      this.npAccounts = value;
+    });
   }
 
   updateOnFilters() {
@@ -34,7 +39,7 @@ export class OurttnsComponent implements OnInit {
 
   onImportClick() {
     this.importButtonDisable = true;
-    this.ourttnsRest.importOurTtns(this.ttns).subscribe(value => {
+    this.ourttnsRest.importOurTtns(this.ttns, this.npAccount).subscribe(value => {
       this.ttns = value.result;
       this.updateOnFilters();
       this.importButtonDisable = false;

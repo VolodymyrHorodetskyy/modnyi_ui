@@ -2,7 +2,15 @@
   <mat-label>Накладні</mat-label>
   <textarea [(ngModel)]="ttns" matInput></textarea>
 </mat-form-field>
-
+<div style="margin-left: 2%">
+  <mat-label>Акаунт НП</mat-label>
+  <mat-select [(ngModel)]="npAccount">
+    <mat-option *ngFor="let npAccount of npAccounts" [value]="npAccount.id">
+      {{npAccount.name}}
+    </mat-option>
+  </mat-select>
+</div>
+<p></p>
 <button mat-raised-button color="primary" (click)="onImportClick()" disabled="{{importButtonDisable}}">Імпортувати
 </button>
 
