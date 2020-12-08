@@ -3,6 +3,14 @@
   <textarea [(ngModel)]="ttns" matInput></textarea>
 </mat-form-field>
 
+<mat-form-field appearance="fill">
+  <mat-label>Акція</mat-label>
+  <mat-select [value]="discountMain" (selectionChange)="onDiscountChange($event.value)">
+    <mat-option></mat-option>
+    <mat-option *ngFor="let discount of discounts" [value]="discount.id">{{discount.name}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
 <button mat-raised-button color="primary" (click)="onImportClick()" disabled="{{importButtonDisable}}">Імпортувати</button>
 <button mat-raised-button color="primary" (click)="onIssueOrders()">Помилки</button>
 
@@ -11,5 +19,7 @@
 <mat-list role="list">
   <mat-list-item role="listitem" *ngFor="let string of responses">{{string}}</mat-list-item>
 </mat-list>
+
+
 
 <textarea id="clipboard-example-textarea" cols="30" rows="10" [(ngModel)]="response"></textarea>
