@@ -21,5 +21,6 @@ export class Ordered {
   withoutTTN: boolean;
   urgent: boolean;
   discount;
+  returnSumNP;
 
 }

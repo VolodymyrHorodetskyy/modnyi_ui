@@ -29,7 +29,6 @@ export class SetcanceledreasonComponent implements OnInit {
     });
     this.rest.getCancelOrderReason(this.data).subscribe(data => {
       if (data != null) {
-        console.log(data);
         this.setCanceled.patchValue({
           // @ts-ignore
           reason: data.reason,

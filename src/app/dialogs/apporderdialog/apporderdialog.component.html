@@ -25,7 +25,8 @@
     <mat-option *ngFor="let status of statuses" value="{{status}}">{{status}}</mat-option>
   </mat-select>
 </mat-form-field>
-<mat-form-field appearance="fill">
+
+<mat-form-field style="margin-left: 2%" appearance="fill">
   <mat-label>Акція</mat-label>
   <mat-select [value]="discountMain" (selectionChange)="onDiscountChange($event.value)">
     <mat-option></mat-option>

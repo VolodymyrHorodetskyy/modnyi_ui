@@ -25,6 +25,7 @@ export class EditorderdialogComponent implements OnInit {
   shoeModel: Shoe[] = [];
   users;
   discounts;
+  discountId;
 
   editForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -53,14 +54,17 @@ export class EditorderdialogComponent implements OnInit {
   }
 
 
-  onShoeChange() {
+  onShoeOrDiscountChange() {
     const shoes = this.editForm.controls['shoes'].value;
-    let price = 0;
+    const shoesIds = new Array();
     for (const shoe of shoes) {
-      price += shoe.price;
+      shoesIds.push(shoe.id);
+      // price += shoe.price;
     }
-    this.editForm.patchValue({
-      price: price
+    this.discountRest.getShoePrice(shoesIds, this.discountId).subscribe(value => {
+      this.editForm.patchValue({
+        price: value
+      });
     });
   }
 
@@ -85,7 +89,6 @@ export class EditorderdialogComponent implements OnInit {
       this.users = value;
     });
     const data = this.data;
-    console.log(data);
     this.editForm.patchValue({
       address: data.address,
       postComment: data.postComment,
@@ -103,9 +106,9 @@ export class EditorderdialogComponent implements OnInit {
       prepayment: data.prePayment,
       // @ts-ignore
       userId: data.user != null ? data.user.id : 1,
-      urgent: data.urgent,
-      discountId: data.discount.id
+      urgent: data.urgent
     });
+    this.discountId = data.discount != null ? data.discount.id : null;
     if (data.fullPayment) {
       this.fullPaymentCheckBox = data.fullPayment;
       this.editForm.controls['prepayment'].disable();
