@@ -58,9 +58,9 @@ export class RestService {
       + updateStatuses, this.getHttpOptions());
   }
 
-  public getReturned(excludeFromDeliveryFile = false) {
+  public getReturned(excludeFromDeliveryFile = false, onlyImportant = false) {
     return this.http.get<StringResponse>(this.configuration.serverpath + 'statistic/returned?setNotForDelivery=' + excludeFromDeliveryFile
-      , this.getHttpOptions());
+      + '&onlyImportant=' + onlyImportant, this.getHttpOptions());
   }
 
   public getCanceled(updateStatuses = false) {

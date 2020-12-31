@@ -11,6 +11,7 @@ export class GetreturnedComponent implements OnInit {
   returned: string;
   loaded = true;
   excludeDeliveryFile: boolean = true;
+  onlyImportant: boolean = true;
 
   constructor(public rest: RestService) {
   }
@@ -20,7 +21,7 @@ export class GetreturnedComponent implements OnInit {
 
   showReturnedClick() {
     this.loaded = false;
-    this.rest.getReturned(this.excludeDeliveryFile).subscribe(data => {
+    this.rest.getReturned(this.excludeDeliveryFile, this.onlyImportant).subscribe(data => {
       this.returned = data.result;
       this.loaded = true;
     });
