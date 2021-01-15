@@ -60,6 +60,7 @@ import {CanceledordersComponent} from './canceledorders/canceledorders.component
 import {SetcanceledreasonComponent} from './dialogs/setcanceledreason/setcanceledreason.component';
 import { UserstatsComponent } from './userstats/userstats.component';
 import { OurttnsComponent } from './ourttns/ourttns.component';
+import { NpControlComponent } from './np-control/np-control.component';
 
 
 @NgModule({
@@ -92,7 +93,8 @@ import { OurttnsComponent } from './ourttns/ourttns.component';
     CanceledordersComponent,
     SetcanceledreasonComponent,
     UserstatsComponent,
-    OurttnsComponent
+    OurttnsComponent,
+    NpControlComponent
   ],
   imports: [
     BrowserModule,
