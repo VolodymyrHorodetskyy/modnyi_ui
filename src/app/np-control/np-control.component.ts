@@ -39,6 +39,7 @@ export class NpControlComponent implements OnInit {
         this.dateFrom = new Date(value2.from);
         // @ts-ignore
         this.dateTo = new Date(value2.to);
+        this.onGetNpAccountSum();
       });
     });
   }
