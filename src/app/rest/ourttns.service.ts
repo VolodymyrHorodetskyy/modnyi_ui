@@ -37,7 +37,7 @@ export class OurttnsService {
   }
 
   public getNpAccounts() {
-    return this.http.get(this.configuration.serverpath + 'npAccountAndCard');
+    return this.http.get(this.configuration.serverpath + 'npAccountAndCard/getNpAccounts');
   }
 
   getHttpOptions() {
