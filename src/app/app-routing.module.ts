@@ -15,6 +15,7 @@ import {CanceledordersComponent} from './canceledorders/canceledorders.component
 import {UserstatsComponent} from './userstats/userstats.component';
 import {OurttnsComponent} from './ourttns/ourttns.component';
 import {NpControlComponent} from "./np-control/np-control.component";
+import {AdsSpendsComponent} from "./ads-spends/ads-spends.component";
 
 
 const routes: Routes = [
@@ -32,7 +33,8 @@ const routes: Routes = [
   {path: 'canceledorders', component: CanceledordersComponent},
   {path: 'user_stats', component: UserstatsComponent},
   {path: 'our_ttns', component: OurttnsComponent},
-  {path: 'npcontrol', component: NpControlComponent}
+  {path: 'npcontrol', component: NpControlComponent},
+  {path: 'ads_spends', component: AdsSpendsComponent}
 ];
 
 @NgModule({

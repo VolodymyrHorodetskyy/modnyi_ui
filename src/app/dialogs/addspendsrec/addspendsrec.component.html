@@ -1,0 +1,26 @@
+
+<form class="example-form" [formGroup]="adsSpendRec" (ngSubmit)="onButtonSave()">
+
+<mat-form-field appearance="fill">
+  <mat-label>Choose a date</mat-label>
+  <input formControlName="start" matInput [matDatepicker]="picker">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Choose a date</mat-label>
+    <input formControlName="end" matInput [matDatepicker]="picker2">
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Сума</mat-label>
+    <input matInput formControlName="spends">
+  </mat-form-field>
+
+  <button mat-button type="submit" color="primary">Primary</button>
+
+</form>
+

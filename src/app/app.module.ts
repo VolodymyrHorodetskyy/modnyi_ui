@@ -61,6 +61,8 @@ import {SetcanceledreasonComponent} from './dialogs/setcanceledreason/setcancele
 import { UserstatsComponent } from './userstats/userstats.component';
 import { OurttnsComponent } from './ourttns/ourttns.component';
 import { NpControlComponent } from './np-control/np-control.component';
+import { AdsSpendsComponent } from './ads-spends/ads-spends.component';
+import { AddspendsrecComponent } from './dialogs/addspendsrec/addspendsrec.component';
 
 
 @NgModule({
@@ -94,7 +96,9 @@ import { NpControlComponent } from './np-control/np-control.component';
     SetcanceledreasonComponent,
     UserstatsComponent,
     OurttnsComponent,
-    NpControlComponent
+    NpControlComponent,
+    AdsSpendsComponent,
+    AddspendsrecComponent
   ],
   imports: [
     BrowserModule,
@@ -133,7 +137,7 @@ import { NpControlComponent } from './np-control/np-control.component';
   bootstrap: [AppComponent],
   entryComponents: [ClientdialogComponent, CreateorderdialogComponent, EditorderdialogComponent, CancelorderComponent,
     EditshoeComponent, YesnodialogComponent, PatternsComponent, CreatepatternComponent, ShoesdialogComponent, ApporderdialogComponent,
-    NewshoepricedialogComponent, SetcanceledreasonComponent]
+    NewshoepricedialogComponent, SetcanceledreasonComponent, AddspendsrecComponent]
 })
 export class AppModule {
 }
