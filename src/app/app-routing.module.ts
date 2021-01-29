@@ -16,6 +16,7 @@ import {UserstatsComponent} from './userstats/userstats.component';
 import {OurttnsComponent} from './ourttns/ourttns.component';
 import {NpControlComponent} from "./np-control/np-control.component";
 import {AdsSpendsComponent} from "./ads-spends/ads-spends.component";
+import {PrintingComponent} from "./printing/printing.component";
 
 
 const routes: Routes = [
@@ -34,7 +35,8 @@ const routes: Routes = [
   {path: 'user_stats', component: UserstatsComponent},
   {path: 'our_ttns', component: OurttnsComponent},
   {path: 'npcontrol', component: NpControlComponent},
-  {path: 'ads_spends', component: AdsSpendsComponent}
+  {path: 'ads_spends', component: AdsSpendsComponent},
+  {path: 'printing', component: PrintingComponent}
 ];
 
 @NgModule({

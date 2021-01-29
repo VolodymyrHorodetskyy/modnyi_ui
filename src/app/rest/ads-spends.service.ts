@@ -18,6 +18,10 @@ export class AdsSpendsService {
     return this.http.get(this.configuration.serverpath + 'AdsSpends/getFinanceStatsString?from=' + dateFrom + '&to=' + dateTo);
   }
 
+  getMarking(modelAndColor = '', size = '', ttn = '') {
+    return this.http.get(this.configuration.serverpath + 'markings?modelAndColor=' + modelAndColor + '&size=' + size + '&ttn=' + ttn);
+  }
+
   getHttpOptions() {
     return {
       headers: new HttpHeaders({

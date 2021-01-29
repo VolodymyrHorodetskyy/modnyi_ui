@@ -63,6 +63,7 @@ import { OurttnsComponent } from './ourttns/ourttns.component';
 import { NpControlComponent } from './np-control/np-control.component';
 import { AdsSpendsComponent } from './ads-spends/ads-spends.component';
 import { AddspendsrecComponent } from './dialogs/addspendsrec/addspendsrec.component';
+import { PrintingComponent } from './printing/printing.component';
 
 
 @NgModule({
@@ -98,7 +99,8 @@ import { AddspendsrecComponent } from './dialogs/addspendsrec/addspendsrec.compo
     OurttnsComponent,
     NpControlComponent,
     AdsSpendsComponent,
-    AddspendsrecComponent
+    AddspendsrecComponent,
+    PrintingComponent
   ],
   imports: [
     BrowserModule,

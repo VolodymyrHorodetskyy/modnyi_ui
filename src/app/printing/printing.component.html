@@ -1,0 +1,37 @@
+<table style="margin-left: 2%" class="example-full-width" cellspacing="0">
+
+  <tr>
+    <td>
+      <mat-form-field class="example-full-width">
+        <mat-label>Накладна</mat-label>
+        <input (input)="onFilterChange()" [(ngModel)]="ttn" matInput>
+      </mat-form-field>
+    </td>
+
+    <td>
+      <mat-form-field class="example-full-width">
+        <mat-label>Модель взуття</mat-label>
+        <input (input)="onFilterChange()" [(ngModel)]="modelAndColor" matInput>
+      </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field class="example-full-width">
+        <mat-label>Розмір</mat-label>
+        <input (input)="onFilterChange()" type="number" [(ngModel)]="size" matInput>
+      </mat-form-field>
+    </td>
+  </tr>
+</table>
+<div *ngFor="let marking of markings">
+  <mat-card>
+    <div style="display: flex; flex-flow: column wrap; justify-content: flex-start">
+      <div>{{marking.ordered.ttn}}</div>
+      <div>{{marking.ordered.postComment}}</div>
+      <div><p> <a target="_blank" rel="noopener noreferrer" href="{{marking.markingUrl}}">Накладна</a></p></div>
+    </div>
+  </mat-card>
+  <mat-divider></mat-divider>
+</div>
+
+
+
