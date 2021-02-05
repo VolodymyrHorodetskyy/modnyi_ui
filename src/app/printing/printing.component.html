@@ -5,6 +5,9 @@
       <mat-form-field class="example-full-width">
         <mat-label>Накладна</mat-label>
         <input (input)="onFilterChange()" [(ngModel)]="ttn" matInput>
+        <button mat-button *ngIf="ttn" matSuffix mat-icon-button aria-label="Clear" (click)="ttn=''">
+          <mat-icon>close</mat-icon>
+        </button>
       </mat-form-field>
     </td>
 
@@ -20,6 +23,11 @@
         <input (input)="onFilterChange()" type="number" [(ngModel)]="size" matInput>
       </mat-form-field>
     </td>
+    <td>
+      <mat-slide-toggle [checked]="printed" (change)="setValue($event)">
+       Показувати надруковані
+      </mat-slide-toggle>
+    </td>
   </tr>
 </table>
 <div *ngFor="let marking of markings">
@@ -27,7 +35,8 @@
     <div style="display: flex; flex-flow: column wrap; justify-content: flex-start">
       <div>{{marking.ordered.ttn}}</div>
       <div>{{marking.ordered.postComment}}</div>
-      <div><p> <a target="_blank" rel="noopener noreferrer" href="{{marking.markingUrl}}">Накладна</a></p></div>
+      <div><p><a target="_blank" rel="noopener noreferrer" href="{{marking.ttnPrintUrl}}"
+                 (click)="printMarking(marking.ordered.id)">Накладна</a></p><p *ngIf="marking.printed" style="color: red"><mark>Було Надруковано</mark></p></div>
     </div>
   </mat-card>
   <mat-divider></mat-divider>

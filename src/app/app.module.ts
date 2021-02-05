@@ -64,6 +64,7 @@ import { NpControlComponent } from './np-control/np-control.component';
 import { AdsSpendsComponent } from './ads-spends/ads-spends.component';
 import { AddspendsrecComponent } from './dialogs/addspendsrec/addspendsrec.component';
 import { PrintingComponent } from './printing/printing.component';
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 
 @NgModule({
@@ -133,7 +134,8 @@ import { PrintingComponent } from './printing/printing.component';
     MatToolbarModule,
     DragDropModule,
     MatSnackBarModule,
-    NgxMatSelectSearchModule
+    NgxMatSelectSearchModule,
+    MatSlideToggleModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],

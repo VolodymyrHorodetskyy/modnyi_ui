@@ -11,6 +11,7 @@ export class PrintingComponent implements OnInit {
   ttn;
   modelAndColor;
   size;
+  printed = true;
 
   markings;
 
@@ -25,9 +26,20 @@ export class PrintingComponent implements OnInit {
     if (this.size == null) {
       this.size = '';
     }
-    this.rest.getMarking(this.modelAndColor, this.size, this.ttn).subscribe(value => {
+    this.rest.getMarking(this.modelAndColor, this.size, this.ttn, this.printed).subscribe(value => {
       this.markings = value;
     });
+  }
+
+  printMarking(id) {
+    this.rest.setPrinted(id).subscribe(value => {
+      this.onFilterChange();
+    });
+  }
+
+  setValue(event) {
+    this.printed = event.checked;
+    this.onFilterChange();
   }
 
 }

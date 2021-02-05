@@ -18,8 +18,13 @@ export class AdsSpendsService {
     return this.http.get(this.configuration.serverpath + 'AdsSpends/getFinanceStatsString?from=' + dateFrom + '&to=' + dateTo);
   }
 
-  getMarking(modelAndColor = '', size = '', ttn = '') {
-    return this.http.get(this.configuration.serverpath + 'markings?modelAndColor=' + modelAndColor + '&size=' + size + '&ttn=' + ttn);
+  getMarking(modelAndColor = '', size = '', ttn = '', printed = false) {
+    return this.http.get(this.configuration.serverpath
+      + 'markings?modelAndColor=' + modelAndColor + '&size=' + size + '&ttn=' + ttn + '&showPrinted=' + printed);
+  }
+
+  setPrinted(orderId) {
+    return this.http.patch(this.configuration.serverpath + 'markings/setPrinted?id=' + orderId, this.getHttpOptions());
   }
 
   getHttpOptions() {
