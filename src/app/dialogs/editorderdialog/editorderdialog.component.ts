@@ -22,19 +22,17 @@ export class EditorderdialogComponent implements OnInit {
   shoes: Shoe[];
   fullPaymentCheckBox = false;
   statuses: StatusDto[];
-  shoeModel: Shoe[] = [];
   users;
   discounts;
   discountId;
 
   editForm = new FormGroup({
-    name: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
+    name: new FormControl(''),
+    lastName: new FormControl(''),
     middleName: new FormControl(''),
     mail: new FormControl(''),
-    status: new FormControl('', Validators.required),
     address: new FormControl(''),
-    phone: new FormControl('', Validators.required),
+    phone: new FormControl(''),
     size: new FormControl('', Validators.required),
     shoes: new FormControl('', Validators.required),
     notes: new FormControl(''),
@@ -94,7 +92,7 @@ export class EditorderdialogComponent implements OnInit {
       postComment: data.postComment,
       phone: data.client != null ? data.client.phone : '',
       // @ts-ignore
-      mail: data.client.mail,
+      mail: data.client != null ? data.client.mail : '',
       status: data.status,
       name: data.client != null ? data.client.name : '',
       lastName: data.client != null ? data.client.lastName : '',
