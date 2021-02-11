@@ -9,6 +9,7 @@ export class RestapporderService {
 
   public newAppOrders = 0;
   public canceledWithoutReason = 0;
+  public ourTtnsAmount;
 
   constructor(private http: HttpClient, private configuration: Configuration) {
   }
@@ -42,6 +43,8 @@ export class RestapporderService {
       this.newAppOrders = value.newAppOrders;
       // @ts-ignore
       this.canceledWithoutReason = value.canceledWithoutReason;
+      // @ts-ignore
+      this.ourTtnsAmount = value.ourTtnsAmount;
     });
   }
 }

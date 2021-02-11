@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {OurttnsService} from '../rest/ourttns.service';
+import {RestapporderService} from "../rest/restapporder.service";
 
 @Component({
   selector: 'app-ourttns',
@@ -19,7 +20,7 @@ export class OurttnsComponent implements OnInit {
   npAccounts;
   npAccount;
 
-  constructor(public ourttnsRest: OurttnsService) {
+  constructor(public ourttnsRest: OurttnsService, public rest: RestapporderService) {
   }
 
   ngOnInit() {
@@ -27,6 +28,7 @@ export class OurttnsComponent implements OnInit {
     this.ourttnsRest.getNpAccounts().subscribe(value => {
       this.npAccounts = value;
     });
+    this.rest.setAmounts();
   }
 
   updateOnFilters() {
