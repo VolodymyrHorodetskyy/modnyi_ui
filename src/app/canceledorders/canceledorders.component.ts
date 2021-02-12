@@ -21,11 +21,13 @@ export class CanceledordersComponent implements OnInit {
   users;
   user;
 
-  constructor(private restUser: RestuserService, private rest: RestService, private matDialog: MatDialog, private appOrdersRest: RestapporderService) {
+  constructor(private restUser: RestuserService, private rest: RestService,
+              private matDialog: MatDialog, private appOrdersRest: RestapporderService) {
   }
 
   ngOnInit() {
     this.getCanceled();
+    console.log(this.canceledOrders);
     this.restUser.getAllUsers().subscribe(value => {
       this.users = value;
     });

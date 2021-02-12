@@ -39,7 +39,7 @@
     <div>
       <div *ngFor="let shoe of canceled.ordered.orderedShoes">{{shoe.model}} {{shoe.color}}</div>
     </div>
-    <div>{{canceled.ordered.client.name}} {{canceled.ordered.client.lastName}} <p>{{canceled.ordered.client.phone}}</p>
+    <div *ngIf="canceled.ordered.client != null">{{canceled.ordered.client.name}} {{canceled.ordered.client.lastName}} <p>{{canceled.ordered.client.phone}}</p>
     </div>
     <div>Статус повернення: {{canceled.status}}</div>
     <div>Причина відмови:
