@@ -27,6 +27,10 @@ export class AdsSpendsService {
     return this.http.patch(this.configuration.serverpath + 'markings/setPrinted?id=' + orderId, this.getHttpOptions());
   }
 
+  getSpendTypes() {
+    return this.http.get(this.configuration.serverpath + 'AdsSpends/getSpendTypes');
+  }
+
   getHttpOptions() {
     return {
       headers: new HttpHeaders({

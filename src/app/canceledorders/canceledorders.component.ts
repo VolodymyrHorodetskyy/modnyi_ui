@@ -27,7 +27,6 @@ export class CanceledordersComponent implements OnInit {
 
   ngOnInit() {
     this.getCanceled();
-    console.log(this.canceledOrders);
     this.restUser.getAllUsers().subscribe(value => {
       this.users = value;
     });

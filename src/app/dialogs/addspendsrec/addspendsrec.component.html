@@ -15,12 +15,28 @@
     <mat-datepicker #picker2></mat-datepicker>
   </mat-form-field>
 
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Spend Type</mat-label>
+    <mat-select formControlName="spendType">
+      <mat-option *ngFor="let spendType of spendTypes" [value]="spendType">
+        {{spendType}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Опис</mat-label>
+    <input matInput formControlName="description">
+  </mat-form-field>
+
   <mat-form-field class="example-full-width">
     <mat-label>Сума</mat-label>
     <input matInput formControlName="spends">
   </mat-form-field>
 
-  <button mat-button type="submit" color="primary">Primary</button>
+  <button mat-button type="submit" color="primary">Добавити</button>
 
 </form>
 
