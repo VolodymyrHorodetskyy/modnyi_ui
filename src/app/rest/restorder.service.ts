@@ -1,9 +1,9 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Configuration} from '../configuration';
-import {GetAllOrderedResponse} from '../entity/response/GetAllOrderedResponse';
-import {FromNPToOrderRequest} from '../entity/FromNPToOrderRequest';
-import {Ordered} from '../entity/Ordered';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Configuration } from '../configuration';
+import { GetAllOrderedResponse } from '../entity/response/GetAllOrderedResponse';
+import { FromNPToOrderRequest } from '../entity/FromNPToOrderRequest';
+import { Ordered } from '../entity/Ordered';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,10 @@ export class RestorderService {
       this.configuration.serverpath + 'order?page=' + page +
       '&size=+' + size + '&ttn=' + ttn + '&phoneOrName=' + phone + '&withoutTTN=' + withoutTTN + '&orderBy=' + orderBy
       + '&userId=' + userId);
+  }
+
+  public getOrderById(id) {
+    return this.http.get<Ordered>(this.configuration.serverpath + 'order/' + id);
   }
 
   public getOrderedNP(phone, ttn) {
@@ -47,7 +51,7 @@ export class RestorderService {
     return this.http.patch(this.configuration.serverpath + 'order/updateStatuses', this.getHttpOptions());
   }
 
-  public updateStatusesWithoutResponse(){
+  public updateStatusesWithoutResponse() {
     return this.http.patch(this.configuration.serverpath + 'order/updateStatusesWithoutResponse', this.getHttpOptions());
   }
 

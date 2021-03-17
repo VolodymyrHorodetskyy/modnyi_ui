@@ -1,7 +1,9 @@
-<form class="example-form" [formGroup]="editForm" (ngSubmit)="onButtonUpdate()">
+<form style="margin-left: 2%" class="example-form" *ngIf="data!=null" [formGroup]="editForm" (ngSubmit)="onButtonUpdate()">
 
-  <mat-label style="display:inline-block; margin-right: 1em;">{{data.ttn}}<p>{{data.postComment}}</p>
-    <p>Сума повернення: {{data.returnSumNP}}</p></mat-label>
+
+  <mat-label style="display:inline-block; margin-right: 1em;" *ngIf="data!=null">{{data.ttn}}<p>{{data.postComment}}</p>
+    <p>Сума повернення: {{data.returnSumNP}}</p>
+  </mat-label>
 
 
   <mat-form-field style="display:inline-block; margin-right: 1em;" class="example-full-width">
@@ -36,11 +38,11 @@
 
   <mat-form-field style="display:inline-block; margin-right: 1em;">
     <mat-label> Модель взуття</mat-label>
-    <mat-select (selectionChange)="onShoeOrDiscountChange($event)" formControlName="shoes"
-                [multiple]="true" #multiSelect>
+    <mat-select (selectionChange)="onShoeOrDiscountChange($event)" formControlName="shoes" [multiple]="true"
+      #multiSelect>
       <mat-option>
-        <ngx-mat-select-search placeholderLabel="пошук"
-                               (input)="onSearchShoes($event.target.value)"></ngx-mat-select-search>
+        <ngx-mat-select-search placeholderLabel="пошук" (input)="onSearchShoes($event.target.value)">
+        </ngx-mat-select-search>
       </mat-option>
       <mat-option *ngFor="let shoe of shoes" [value]="shoe">
         {{shoe.model}} {{shoe.color}}
@@ -73,7 +75,7 @@
   </mat-form-field>
 
   <mat-checkbox (click)="onFullPaymentCheckboxClick(fullPaymentCheckBox)" formControlName="fullpayment"
-                [(ngModel)]="fullPaymentCheckBox" style="display:inline-block; margin-right: 1em;">Повна оплата
+    [(ngModel)]="fullPaymentCheckBox" style="display:inline-block; margin-right: 1em;">Повна оплата
   </mat-checkbox>
 
   <mat-form-field appearance="fill">
@@ -84,14 +86,13 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-checkbox formControlName="urgent"
-                style="display:inline-block; margin-right: 1em;">Терміново
+  <mat-checkbox formControlName="urgent" style="display:inline-block; margin-right: 1em;">Терміново
   </mat-checkbox>
 
   <mat-label style="display:inline-block; margin-right: 1em;">{{data.status}}</mat-label>
 
 
-  <mat-form-field *ngIf="data.withoutTTN" style="display:inline-block; margin-right: 1em;">
+  <mat-form-field *ngIf="data != null && data.withoutTTN" style="display:inline-block; margin-right: 1em;">
     <mat-label> Статус</mat-label>
     <mat-select formControlName="status">
       <mat-option *ngFor="let status of statuses" [value]="status.status">
@@ -112,7 +113,7 @@
     <button style="margin-right: 1em;" mat-raised-button color="warn" type="submit" [disabled]="!editForm.valid">
       Обновити
     </button>
-    <button style="float: right" mat-stroked-button (click)="onCancelOrderClick()" type="button">Зробити Відмову
+    <button style="float: right; margin-right: 3%;" mat-stroked-button (click)="onCancelOrderClick()" type="button">Зробити Відмову
     </button>
 
     <button style="float: right" mat-stroked-button (click)="onDenyClick()" type="button">Відміна</button>

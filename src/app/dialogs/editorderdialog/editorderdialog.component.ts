@@ -1,16 +1,17 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
-import {OrdersComponent} from '../../orders/orders.component';
-import {Ordered} from '../../entity/Ordered';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Shoe} from '../../entity/Shoe';
-import {RestService} from '../../rest/rest.service';
-import {EditOrderedRequest} from '../../entity/EditOrderedRequest';
-import {StatusDto} from '../../entity/StatusDto';
-import {CancelorderComponent} from '../cancelorder/cancelorder.component';
-import {RestorderService} from '../../rest/restorder.service';
-import {RestuserService} from '../../rest/restuser.service';
-import {DiscountService} from '../../rest/discount.service';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
+import { OrdersComponent } from '../../orders/orders.component';
+import { Ordered } from '../../entity/Ordered';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Shoe } from '../../entity/Shoe';
+import { RestService } from '../../rest/rest.service';
+import { EditOrderedRequest } from '../../entity/EditOrderedRequest';
+import { StatusDto } from '../../entity/StatusDto';
+import { CancelorderComponent } from '../cancelorder/cancelorder.component';
+import { RestorderService } from '../../rest/restorder.service';
+import { RestuserService } from '../../rest/restuser.service';
+import { DiscountService } from '../../rest/discount.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-editorderdialog',
@@ -25,6 +26,8 @@ export class EditorderdialogComponent implements OnInit {
   users;
   discounts;
   discountId;
+  data;
+  idOrder;
 
   editForm = new FormGroup({
     name: new FormControl(''),
@@ -45,10 +48,9 @@ export class EditorderdialogComponent implements OnInit {
     discountId: new FormControl('')
   });
 
-  constructor(public dialogRef: MatDialogRef<OrdersComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: Ordered,
-              public rest: RestService, private restOrder: RestorderService, public dialog: MatDialog,
-              private userRest: RestuserService, private discountRest: DiscountService) {
+  constructor(public rest: RestService, private restOrder: RestorderService, public dialog: MatDialog,
+    private userRest: RestuserService, private discountRest: DiscountService,
+    private route: ActivatedRoute) {
   }
 
 
@@ -67,6 +69,57 @@ export class EditorderdialogComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.idOrder = this.route.snapshot.paramMap.get('id');
+    this.restOrder.getOrderById(this.idOrder).subscribe(value => {
+      this.data = value;
+      this.rest.getStatuses().subscribe(data => {
+        this.statuses = data;
+      });
+      this.userRest.getAllUsers().subscribe(value => {
+        this.users = value;
+      });
+      this.updateForm(this.data);
+    });
+    this.discountRest.getAll().subscribe(value => {
+      this.discounts = value;
+    });
+  }
+
+  onCancelOrderClick() {
+    const dialogRef = this.dialog.open(CancelorderComponent, {
+      data: this.data.id.toString()
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.updateFormById();
+    });
+  }
+
+  updateForm(ordered){
+    console.log(ordered);
+    this.editForm.patchValue({
+      address: ordered.address,
+      postComment: ordered.postComment,
+      phone: ordered.client != null ? ordered.client.phone : '',
+      // @ts-ignore
+      mail: ordered.client != null ? ordered.client.mail : '',
+      status: ordered.status,
+      name: ordered.client != null ? ordered.client.name : '',
+      lastName: ordered.client != null ? ordered.client.lastName : '',
+      middleName: ordered.client != null ? ordered.client.middleName : '',
+      size: ordered.size,
+      shoes: ordered.orderedShoes,
+      notes: ordered.notes,
+      price: ordered.price,
+      prepayment: ordered.prePayment,
+      // @ts-ignore
+      userId: ordered.user != null ? ordered.user.id : 1,
+      urgent: ordered.urgent
+    });
+    this.discountId = ordered.discount != null ? ordered.discount.id : null;
+    if (ordered.fullPayment) {
+      this.fullPaymentCheckBox = ordered.fullPayment;
+      this.editForm.controls['prepayment'].disable();
+    }
     this.rest.getItems('').subscribe(data => {
       this.shoes = data;
       const selectedShoe = [];
@@ -80,54 +133,13 @@ export class EditorderdialogComponent implements OnInit {
       // @ts-ignore
       this.editForm.controls['shoes'].value = selectedShoe;
     });
-    this.rest.getStatuses().subscribe(data => {
-      this.statuses = data;
-    });
-    this.userRest.getAllUsers().subscribe(value => {
-      this.users = value;
-    });
-    const data = this.data;
-    this.editForm.patchValue({
-      address: data.address,
-      postComment: data.postComment,
-      phone: data.client != null ? data.client.phone : '',
-      // @ts-ignore
-      mail: data.client != null ? data.client.mail : '',
-      status: data.status,
-      name: data.client != null ? data.client.name : '',
-      lastName: data.client != null ? data.client.lastName : '',
-      middleName: data.client != null ? data.client.middleName : '',
-      size: data.size,
-      shoes: data.orderedShoes,
-      notes: data.notes,
-      price: data.price,
-      prepayment: data.prePayment,
-      // @ts-ignore
-      userId: data.user != null ? data.user.id : 1,
-      urgent: data.urgent
-    });
-    this.discountId = data.discount != null ? data.discount.id : null;
-    if (data.fullPayment) {
-      this.fullPaymentCheckBox = data.fullPayment;
-      this.editForm.controls['prepayment'].disable();
-    }
-    this.discountRest.getAll().subscribe(value => {
-      this.discounts = value;
-    });
   }
 
-  onDenyClick(): void {
-    this.dialogRef.close();
-  }
-
-  onCancelOrderClick() {
-    const dialogRef = this.dialog.open(CancelorderComponent, {
-      data: this.data.id.toString()
+  private updateFormById(){
+    this.restOrder.getOrderById(this.idOrder).subscribe(value => {
+      this.data = value;
+      this.updateForm(this.data);
     });
-    dialogRef.afterClosed().subscribe(result => {
-        this.dialogRef.close();
-      }
-    );
   }
 
   onButtonUpdate() {
@@ -140,7 +152,7 @@ export class EditorderdialogComponent implements OnInit {
     }
     this.editForm.value.shoes = shoesIds;
     this.restOrder.updateOrder(this.data.id, request).subscribe(value => {
-      this.dialogRef.close();
+      this.updateFormById();
     });
   }
 

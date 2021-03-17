@@ -139,7 +139,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent],
-  entryComponents: [ClientdialogComponent, CreateorderdialogComponent, EditorderdialogComponent, CancelorderComponent,
+  entryComponents: [ClientdialogComponent, CreateorderdialogComponent, CancelorderComponent,
     EditshoeComponent, YesnodialogComponent, PatternsComponent, CreatepatternComponent, ShoesdialogComponent, ApporderdialogComponent,
     NewshoepricedialogComponent, SetcanceledreasonComponent, AddspendsrecComponent]
 })

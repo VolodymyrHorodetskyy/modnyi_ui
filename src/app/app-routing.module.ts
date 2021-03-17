@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {ShoeslistComponent} from './shoeslist/shoeslist.component';
 import {OrdersComponent} from './orders/orders.component';
@@ -17,6 +17,7 @@ import {OurttnsComponent} from './ourttns/ourttns.component';
 import {NpControlComponent} from "./np-control/np-control.component";
 import {AdsSpendsComponent} from "./ads-spends/ads-spends.component";
 import {PrintingComponent} from "./printing/printing.component";
+import { EditorderdialogComponent } from './dialogs/editorderdialog/editorderdialog.component';
 
 
 const routes: Routes = [
@@ -36,7 +37,8 @@ const routes: Routes = [
   {path: 'our_ttns', component: OurttnsComponent},
   {path: 'npcontrol', component: NpControlComponent},
   {path: 'ads_spends', component: AdsSpendsComponent},
-  {path: 'printing', component: PrintingComponent}
+  {path: 'printing', component: PrintingComponent},
+  {path: 'order/:id', component: EditorderdialogComponent}
 ];
 
 @NgModule({

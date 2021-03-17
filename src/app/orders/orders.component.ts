@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {Ordered} from '../entity/Ordered';
-import {MatDialog, PageEvent} from '@angular/material';
-import {CreateorderdialogComponent} from '../dialogs/createorderdialog/createorderdialog.component';
-import {EditorderdialogComponent} from '../dialogs/editorderdialog/editorderdialog.component';
-import {GetAllOrderedResponse} from '../entity/response/GetAllOrderedResponse';
-import {RestorderService} from '../rest/restorder.service';
-import {RestuserService} from '../rest/restuser.service';
+import { Component, OnInit } from '@angular/core';
+import { Ordered } from '../entity/Ordered';
+import { MatDialog, PageEvent } from '@angular/material';
+import { CreateorderdialogComponent } from '../dialogs/createorderdialog/createorderdialog.component';
+import { EditorderdialogComponent } from '../dialogs/editorderdialog/editorderdialog.component';
+import { GetAllOrderedResponse } from '../entity/response/GetAllOrderedResponse';
+import { RestorderService } from '../rest/restorder.service';
+import { RestuserService } from '../rest/restuser.service';
 
 @Component({
   selector: 'app-orders',
@@ -22,8 +22,8 @@ export class OrdersComponent implements OnInit {
   phoneOrName: '';
   withoutTTN: false;
   orderByAr: { orderBy: string, orderByUkr: string }[] = [
-    {orderBy: 'dateCreated', orderByUkr: 'Дата створення'},
-    {orderBy: 'dateEdited', orderByUkr: 'Дата зміни'}
+    { orderBy: 'dateCreated', orderByUkr: 'Дата створення' },
+    { orderBy: 'dateEdited', orderByUkr: 'Дата зміни' }
   ];
   orderByValue: string;
   users;
@@ -46,17 +46,8 @@ export class OrdersComponent implements OnInit {
     });
   }
 
-  onRowClick(event, ordered) {
-    let dialogRef;
-    if (!event.toElement.className.includes('ttn') && !event.toElement.className.includes('button')
-      && !event.toElement.className.includes('phone')) {
-      dialogRef = this.dialog.open(EditorderdialogComponent, {
-        data: ordered
-      });
-      dialogRef.afterClosed().subscribe(result => {
-        this.updateOnFilters();
-      });
-    }
+  onRowClick(id) {
+    window.open('/order/' + id);
   }
 
   updatePage(pageEvent?: PageEvent) {
