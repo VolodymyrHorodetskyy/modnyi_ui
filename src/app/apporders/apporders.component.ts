@@ -33,7 +33,7 @@ export class AppordersComponent implements OnInit {
   users;
   user;
 
-  widthOfCard = '16%';
+  widthOfCard = '12%';
 
   constructor(private restAppOrder: RestapporderService, private matDialog: MatDialog, private datePipe: DatePipe,
               private restUser: RestuserService) {
