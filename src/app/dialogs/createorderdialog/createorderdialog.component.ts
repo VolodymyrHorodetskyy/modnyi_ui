@@ -1,7 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {RestService} from '../../rest/rest.service';
-import {MatDialogRef, MatSelect} from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatSelect } from '@angular/material/select';
 import {OrdersComponent} from '../../orders/orders.component';
 import {HttpErrorResponse} from '@angular/common/http';
 import {Shoe} from '../../entity/Shoe';

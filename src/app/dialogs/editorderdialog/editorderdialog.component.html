@@ -38,7 +38,7 @@
 
   <mat-form-field style="display:inline-block; margin-right: 1em;">
     <mat-label> Модель взуття</mat-label>
-    <mat-select (selectionChange)="onShoeOrDiscountChange($event)" formControlName="shoes" [multiple]="true"
+    <mat-select (selectionChange)="onShoeOrDiscountChange()" formControlName="shoes" [multiple]="true"
       #multiSelect>
       <mat-option>
         <ngx-mat-select-search placeholderLabel="пошук" (input)="onSearchShoes($event.target.value)">
@@ -115,7 +115,5 @@
     </button>
     <button style="float: right; margin-right: 3%;" mat-stroked-button (click)="onCancelOrderClick()" type="button">Зробити Відмову
     </button>
-
-    <button style="float: right" mat-stroked-button (click)="onDenyClick()" type="button">Відміна</button>
   </div>
 </form>

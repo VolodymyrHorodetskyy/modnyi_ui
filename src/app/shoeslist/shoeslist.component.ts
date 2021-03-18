@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RestService} from '../rest/rest.service';
-import {MatDialog} from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import {EditshoeComponent} from '../dialogs/editshoe/editshoe.component';
 import {CreatepatternComponent} from '../dialogs/createpattern/createpattern.component';
 import {PatternsComponent} from '../dialogs/patterns/patterns.component';

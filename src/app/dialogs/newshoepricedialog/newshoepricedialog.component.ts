@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import {EditshoeComponent} from '../editshoe/editshoe.component';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {RestorderService} from '../../rest/restorder.service';

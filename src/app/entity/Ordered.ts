@@ -10,6 +10,7 @@ export class Ordered {
   notes: string;
   status: string;
   prePayment: string;
+  // @ts-ignore
   nameAndSurname = this.client.name + ' ' + this.client.lastName + ' ' + this.client.phone;
   mail: string;
   address: string;

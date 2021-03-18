@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
+1import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { OrdersComponent } from '../../orders/orders.component';
 import { Ordered } from '../../entity/Ordered';
 import { FormControl, FormGroup, Validators } from '@angular/forms';

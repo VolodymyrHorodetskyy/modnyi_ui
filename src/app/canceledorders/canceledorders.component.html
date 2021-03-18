@@ -48,6 +48,8 @@
   </div>
   <button mat-raised-button color="primary" (click)="onButtonChangeClick(canceled.id)">Змінити</button>
 </mat-card>
+<google-chart [type]="myType" [data]="myData" ></google-chart>
+
 
 <mat-paginator [length]="total"
                [pageSize]="10"

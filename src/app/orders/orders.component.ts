@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Ordered } from '../entity/Ordered';
-import { MatDialog, PageEvent } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { PageEvent } from '@angular/material/paginator';
 import { CreateorderdialogComponent } from '../dialogs/createorderdialog/createorderdialog.component';
 import { EditorderdialogComponent } from '../dialogs/editorderdialog/editorderdialog.component';
 import { GetAllOrderedResponse } from '../entity/response/GetAllOrderedResponse';

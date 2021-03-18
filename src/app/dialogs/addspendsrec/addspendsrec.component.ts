@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AdsSpendsService} from "../../rest/ads-spends.service";
 import {DatePipe} from "@angular/common";
-import {MatDialogRef} from "@angular/material";
+import { MatDialogRef } from "@angular/material/dialog";
 import {AdsSpendsComponent} from "../../ads-spends/ads-spends.component";
 
 @Component({

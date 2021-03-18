@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {RestService} from '../rest/rest.service';
-import {MatDialog} from '@angular/material';
 import {SetcanceledreasonComponent} from '../dialogs/setcanceledreason/setcanceledreason.component';
 import {RestapporderService} from '../rest/restapporder.service';
 import {RestuserService} from '../rest/restuser.service';
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-canceledorders',
@@ -20,6 +21,15 @@ export class CanceledordersComponent implements OnInit {
   withoutReason;
   users;
   user;
+  myType = 'PieChart';
+
+myData = [
+    ['London', 8136000],
+    ['New York', 8538000],
+    ['Paris', 2244000],
+    ['Berlin', 3470000],
+    ['Kairo', 19500000]
+  ];
 
   constructor(private restUser: RestuserService, private rest: RestService,
               private matDialog: MatDialog, private appOrdersRest: RestapporderService) {

@@ -3,7 +3,8 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {ReststatisticService} from '../rest/reststatistic.service';
 import {DatePipe} from '@angular/common';
 import {RestService} from '../rest/rest.service';
-import {MatSort, MatTableDataSource} from '@angular/material';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({

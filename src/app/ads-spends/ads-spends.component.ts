@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MatDialog} from "@angular/material";
+import { MatDialog } from "@angular/material/dialog";
 import {AddspendsrecComponent} from "../dialogs/addspendsrec/addspendsrec.component";
 import {AdsSpendsService} from "../rest/ads-spends.service";
 import {DatePipe} from "@angular/common";
