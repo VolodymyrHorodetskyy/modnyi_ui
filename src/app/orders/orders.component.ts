@@ -17,7 +17,7 @@ export class OrdersComponent implements OnInit {
 
   orders: Ordered[];
   getAllOrdered: GetAllOrderedResponse;
-  displayedColumns: string[] = ['ttn', 'notes', 'nameAndSurname', 'phone', 'address', 'shoe', 'size', 'status', 'dateCreated'];
+  displayedColumns: string[] = ['link', 'ttn', 'notes', 'nameAndSurname', 'phone', 'address', 'shoe', 'size', 'status', 'dateCreated'];
   pageEvent: PageEvent;
   ttn: '';
   phoneOrName: '';
