@@ -30,8 +30,12 @@
           *ngIf="showResponse" style="margin-left: 3%" cols="30" rows="10"
           [(ngModel)]="response"></textarea>
 <mat-spinner *ngIf="loaded"></mat-spinner>
+<google-chart *ngIf="dataForGoogleChart != null" style="width: 900px; height: 500px;" [type]="typeForGoogleChart"
+              [data]="dataForGoogleChart"></google-chart>
 
-<mat-table *ngIf="dataSource" [dataSource]="dataSource" matSort (matSortChange)="sortData($event)" class="mat-elevation-z8">
+
+<mat-table *ngIf="dataSource" [dataSource]="dataSource" matSort (matSortChange)="sortData($event)"
+           class="mat-elevation-z8">
   <ng-container matColumnDef="shoe">
     <mat-header-cell *matHeaderCellDef> Взуття</mat-header-cell>
     <mat-cell *matCellDef="let stat"> {{stat.shoe.model}} {{stat.shoe.color}} </mat-cell>
