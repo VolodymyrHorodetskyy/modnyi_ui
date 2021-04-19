@@ -82,7 +82,7 @@ export class ApporderdialogComponent implements OnInit {
       // @ts-ignore
       if (value.message != null) {
         // @ts-ignore
-        this._snackBar.open(value.message, 'ттн додано', {
+        this._snackBar.open(value.message, '', {
           duration: 2000,
           verticalPosition: 'top'
         });
