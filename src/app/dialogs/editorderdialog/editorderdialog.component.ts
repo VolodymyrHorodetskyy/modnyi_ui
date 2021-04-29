@@ -45,7 +45,8 @@ export class EditorderdialogComponent implements OnInit {
     fullpayment: new FormControl(''),
     userId: new FormControl(''),
     urgent: new FormControl(''),
-    discountId: new FormControl('')
+    discountId: new FormControl(''),
+    city: new FormControl('')
   });
 
   constructor(public rest: RestService, private restOrder: RestorderService, public dialog: MatDialog,
@@ -113,7 +114,8 @@ export class EditorderdialogComponent implements OnInit {
       prepayment: ordered.prePayment,
       // @ts-ignore
       userId: ordered.user != null ? ordered.user.id : 1,
-      urgent: ordered.urgent
+      urgent: ordered.urgent,
+      city: ordered.city
     });
     this.discountId = ordered.discount != null ? ordered.discount.id : null;
     if (ordered.fullPayment) {

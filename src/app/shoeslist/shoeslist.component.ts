@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RestService} from '../rest/rest.service';
-import { MatDialog } from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {EditshoeComponent} from '../dialogs/editshoe/editshoe.component';
 import {CreatepatternComponent} from '../dialogs/createpattern/createpattern.component';
 import {PatternsComponent} from '../dialogs/patterns/patterns.component';
@@ -31,8 +31,12 @@ export class ShoeslistComponent implements OnInit {
     });
   }
 
-  onInput(value) {
-    this.updateShoesList(value);
+  updateListWithValue() {
+    this.updateShoesList(this.value);
+  }
+
+  onInput() {
+    this.updateListWithValue();
   }
 
   onCreateOrEdit(shoe = null) {
@@ -40,7 +44,7 @@ export class ShoeslistComponent implements OnInit {
       data: shoe
     });
     dialogRef.afterClosed().subscribe(value1 => {
-      this.updateShoesList();
+      this.updateListWithValue();
     });
   }
 
@@ -49,16 +53,16 @@ export class ShoeslistComponent implements OnInit {
       data: row.id
     });
     dialogRef.afterClosed().subscribe(value1 => {
-      this.updateShoesList();
+      this.updateListWithValue();
     });
   }
 
   removePattern(row) {
-    const diaalogRef = this.matDialog.open(PatternsComponent, {
+    const dialogRef = this.matDialog.open(PatternsComponent, {
       data: {id: row.id, patterns: row.patterns}
     });
-    diaalogRef.afterClosed().subscribe(value1 => {
-      this.updateShoesList();
+    dialogRef.afterClosed().subscribe(value1 => {
+      this.updateListWithValue();
     });
   }
 
@@ -67,7 +71,7 @@ export class ShoeslistComponent implements OnInit {
       data: id
     });
     dialogRef.afterClosed().subscribe(value1 => {
-      this.updateShoesList(this.value);
+      this.updateListWithValue();
     });
   }
 

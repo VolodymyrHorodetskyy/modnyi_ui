@@ -2,8 +2,8 @@
 
 <label>Модель</label>
 <mat-form-field style="left: 1%" class="example-form-field">
-  <input matInput type="text" [(ngModel)]="value" (input)="onInput(value)">
-  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''; onInput(value)" >
+  <input matInput type="text" [(ngModel)]="value" (input)="onInput()">
+  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''; onInput()" >
     <mat-icon>close</mat-icon>
   </button>
 </mat-form-field>
