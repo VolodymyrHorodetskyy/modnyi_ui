@@ -1,7 +1,7 @@
 
 <button style="float: left; margin-right: 1%" mat-raised-button color="primary" (click)="showReturnedClick()">Показати повернення</button>
-<mat-checkbox style="float: left; margin-right: 1%" class="example-margin" [(ngModel)]="excludeDeliveryFile">Виключити з доставки якщо є в поверненнях</mat-checkbox>
-<mat-checkbox style="float: left; margin-right: 1%" class="example-margin" [(ngModel)]="onlyImportant">Тільки важливі</mat-checkbox>
+<mat-checkbox style="float: left; margin-right: 1%" class="example-margin" [(ngModel)]="showClientTTN">Показати накладну клієнта</mat-checkbox>
+<mat-checkbox style="float: left; margin-right: 1%" class="example-margin" [(ngModel)]="showOnlyDelivered">Тільки доставлені</mat-checkbox>
 
 
 <textarea style="float: left;" id="clipboard-example-textarea" cols="30" rows="10" [(ngModel)]="returned"></textarea>
