@@ -64,6 +64,7 @@ import { AdsSpendsComponent } from './ads-spends/ads-spends.component';
 import { AddspendsrecComponent } from './dialogs/addspendsrec/addspendsrec.component';
 import { PrintingComponent } from './printing/printing.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import { AddShoeToOrderComponent } from './dialogs/add-shoe-to-order/add-shoe-to-order.component';
 
 
 @NgModule({
@@ -100,7 +101,8 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     NpControlComponent,
     AdsSpendsComponent,
     AddspendsrecComponent,
-    PrintingComponent
+    PrintingComponent,
+    AddShoeToOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -141,7 +143,7 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
   bootstrap: [AppComponent],
   entryComponents: [ClientdialogComponent, CreateorderdialogComponent, CancelorderComponent,
     EditshoeComponent, YesnodialogComponent, PatternsComponent, CreatepatternComponent, ShoesdialogComponent, ApporderdialogComponent,
-    NewshoepricedialogComponent, SetcanceledreasonComponent, AddspendsrecComponent]
+    NewshoepricedialogComponent, SetcanceledreasonComponent, AddspendsrecComponent, AddShoeToOrderComponent]
 })
 export class AppModule {
 }

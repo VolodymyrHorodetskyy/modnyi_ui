@@ -1,5 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {RestService} from "../../rest/rest.service";
 
 @Component({
   selector: 'app-yesnodialog',
@@ -8,22 +9,27 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class YesnodialogComponent implements OnInit {
 
-  dialogData;
-  title: string;
+  title = 'Видалити';
   message: string;
 
   constructor(
     public dialogRef: MatDialogRef<YesnodialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data
+    @Inject(MAT_DIALOG_DATA) public data,
+    private rest: RestService
   ) {
   }
 
   ngOnInit() {
-
+    this.message = this.data.shoeTitle;
   }
 
   onConfirm(): void {
-    this.dialogRef.close(true);
+    this.rest.removeShoeFromOrder({
+      orderId: this.data.orderId,
+      shoeId: this.data.shoeId
+    }).subscribe(value => {
+      this.dialogRef.close(true);
+    });
   }
 
   onDismiss(): void {

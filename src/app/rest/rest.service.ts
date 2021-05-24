@@ -140,6 +140,14 @@ export class RestService {
     return this.http.get(this.configuration.serverpath + 'statistic/getAllOrdersByUser?userId=' + userId);
   }
 
+  public addShoeToOrder(addShoeToOrderRequest) {
+    return this.http.patch(this.configuration.serverpath + 'shoe/addShoeToOrder', addShoeToOrderRequest);
+  }
+
+  public removeShoeFromOrder(removeShoeFromOrder) {
+    return this.http.patch(this.configuration.serverpath + 'shoe/removeShoeFromOrder', removeShoeFromOrder);
+  }
+
 
   getHttpOptions() {
     return {

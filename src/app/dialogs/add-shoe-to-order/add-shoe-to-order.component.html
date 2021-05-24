@@ -1,0 +1,33 @@
+<form class="example-form" [formGroup]="addShoeToOrderForm" (ngSubmit)="onSubmit()">
+
+  <mat-form-field style="margin-right: 2em;" class="example-full-width" >
+    <mat-label>Пошук взуття</mat-label>
+    <input matInput (input)="onShoeInput($event.target.value)">
+  </mat-form-field>
+
+  <mat-form-field style="margin-right: 2em;">
+    <mat-label> Модель </mat-label>
+    <mat-select formControlName="shoeId">
+      <mat-option></mat-option>
+      <mat-option *ngFor="let shoe of shoes" [value]="shoe.id">
+        {{shoe != null ? shoe.model : ''}} {{shoe != null ? shoe.color : ''}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field style="margin-right: 2em;" class="example-full-width">
+    <mat-label>Розмір</mat-label>
+    <input formControlName="size" matInput>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Коментарій</mat-label>
+    <input formControlName="comment" matInput>
+  </mat-form-field>
+
+  <div align="center">
+    <p></p>
+    <button mat-raised-button color="warn" type="submit">Додати</button>
+  </div>
+
+</form>
