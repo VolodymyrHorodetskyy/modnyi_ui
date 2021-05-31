@@ -40,6 +40,7 @@ export class EditorderdialogComponent implements OnInit {
     address: new FormControl(''),
     phone: new FormControl(''),
     notes: new FormControl(''),
+    status:new FormControl(''),
     postComment: new FormControl(''),
     price: new FormControl('', Validators.required),
     prepayment: new FormControl('', Validators.required),
@@ -57,30 +58,42 @@ export class EditorderdialogComponent implements OnInit {
 
 
   onShoeOrDiscountChange() {
-/*    this.discountRest.getShoePrice(shoesIds, this.discountId).subscribe(value => {
-      this.editForm.patchValue({
-        price: value
-      });
-    });*/
+    /*    this.discountRest.getShoePrice(shoesIds, this.discountId).subscribe(value => {
+          this.editForm.patchValue({
+            price: value
+          });
+        });*/
   }
 
   ngOnInit() {
     this.idOrder = this.route.snapshot.paramMap.get('id');
-    this.restOrder.getOrderById(this.idOrder).subscribe(value => {
-      this.data = value;
+    if (this.idOrder != null) {
+      this.restOrder.getOrderById(this.idOrder).subscribe(value => {
+        this.data = value;
+        this.rest.getStatuses().subscribe(data => {
+          this.statuses = data;
+        });
+        this.userRest.getAllUsers().subscribe(value => {
+          this.users = value;
+        });
+        this.updateForm(this.data);
+        // @ts-ignore
+        this.dataSource = value.orderedShoeList;
+      });
+      this.discountRest.getAll().subscribe(value => {
+        this.discounts = value;
+      });
+    } else {
       this.rest.getStatuses().subscribe(data => {
         this.statuses = data;
       });
       this.userRest.getAllUsers().subscribe(value => {
         this.users = value;
       });
-      this.updateForm(this.data);
-      // @ts-ignore
-      this.dataSource = value.orderedShoeList;
-    });
-    this.discountRest.getAll().subscribe(value => {
-      this.discounts = value;
-    });
+      this.discountRest.getAll().subscribe(value => {
+        this.discounts = value;
+      });
+    }
   }
 
   onCancelOrderClick() {
@@ -127,12 +140,17 @@ export class EditorderdialogComponent implements OnInit {
     });
   }
 
-  onButtonUpdate() {
+  onButtonCreateOrUpdate() {
     const request: EditOrderedRequest = this.editForm.value;
     request.full_payment = this.fullPaymentCheckBox;
-    this.restOrder.updateOrder(this.data.id, request).subscribe(value => {
-      this.updateFormById();
-    });
+    console.log(this.idOrder);
+    if (this.idOrder != null) {
+      this.restOrder.updateOrder(this.data.id, request).subscribe(value => {
+        this.updateFormById();
+      });
+    } else {
+      this.restOrder.saveOrder(request);
+    }
   }
 
   onFullPaymentCheckboxClick(event) {

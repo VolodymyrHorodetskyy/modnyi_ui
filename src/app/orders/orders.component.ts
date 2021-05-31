@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Ordered } from '../entity/Ordered';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
-import { CreateorderdialogComponent } from '../dialogs/createorderdialog/createorderdialog.component';
-import { EditorderdialogComponent } from '../dialogs/editorderdialog/editorderdialog.component';
 import { GetAllOrderedResponse } from '../entity/response/GetAllOrderedResponse';
 import { RestorderService } from '../rest/restorder.service';
 import { RestuserService } from '../rest/restuser.service';
@@ -17,7 +15,7 @@ export class OrdersComponent implements OnInit {
 
   orders: Ordered[];
   getAllOrdered: GetAllOrderedResponse;
-  displayedColumns: string[] = ['link', 'ttn', 'notes', 'nameAndSurname', 'phone', 'address', 'shoe', 'size', 'status', 'dateCreated'];
+  displayedColumns: string[] = ['link', 'ttn', 'notes', 'nameAndSurname', 'phone', 'address', 'shoe', 'status', 'dateCreated'];
   pageEvent: PageEvent;
   ttn: '';
   phoneOrName: '';
@@ -41,10 +39,7 @@ export class OrdersComponent implements OnInit {
   }
 
   onCreateOrderClick() {
-    const dialogRef = this.dialog.open(CreateorderdialogComponent, {});
-    dialogRef.afterClosed().subscribe(result => {
-      this.updateOnFilters();
-    });
+    window.open('/order/');
   }
 
   onRowClick(id) {

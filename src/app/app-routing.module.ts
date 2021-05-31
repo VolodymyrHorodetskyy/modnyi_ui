@@ -38,7 +38,8 @@ const routes: Routes = [
   {path: 'npcontrol', component: NpControlComponent},
   {path: 'ads_spends', component: AdsSpendsComponent},
   {path: 'printing', component: PrintingComponent},
-  {path: 'order/:id', component: EditorderdialogComponent}
+  {path: 'order/:id', component: EditorderdialogComponent},
+  {path: 'order', component: EditorderdialogComponent}
 ];
 
 @NgModule({
