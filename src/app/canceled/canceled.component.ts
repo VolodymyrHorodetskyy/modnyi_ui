@@ -10,11 +10,15 @@ export class CanceledComponent implements OnInit {
 
   canceled: string;
   loaded = false;
+  last20History;
 
   constructor(public rest: RestService) {
   }
 
   ngOnInit() {
+    this.rest.getLast20History().subscribe(value => {
+      this.last20History = value;
+    });
   }
 
   showCanceledClick() {

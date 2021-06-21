@@ -10,6 +10,33 @@
       </mat-select>
     </div>
     <p></p>
+    <div>
+      <mat-label style="margin-left: 2%">Акаунт</mat-label>
+      <mat-select style="margin-left: 2%" [(ngModel)]="npAccountSelected2">
+        <mat-option></mat-option>
+        <mat-option *ngFor="let npAccount of npAccounts" [value]="npAccount.id">
+          {{npAccount.name}}
+        </mat-option>
+      </mat-select>
+    </div>
+    <p></p>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Від</mat-label>
+        <input [(ngModel)]="dateFrom2" matInput [matDatepicker]="picker" required>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>Від</mat-label>
+        <input [(ngModel)]="dateTo2" matInput [matDatepicker]="picker2" required>
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <p></p>
     <textarea cols="30" rows="10" [(ngModel)]="responseCardSum"
               style="float: left"></textarea>
     <p></p>
@@ -40,7 +67,7 @@
 
 
       <div>
-        <mat-label style="margin-left: 2%">Картка</mat-label>
+        <mat-label style="margin-left: 2%">Акаунт</mat-label>
         <mat-select style="margin-left: 2%" [(ngModel)]="npAccountSelected">
           <mat-option></mat-option>
           <mat-option *ngFor="let npAccount of npAccounts" [value]="npAccount.id">
@@ -48,7 +75,7 @@
           </mat-option>
         </mat-select>
       </div>
-<p></p>
+      <p></p>
 
       <div>
     <textarea id="clipboard-example-textarea" cols="30" rows="10" [(ngModel)]="responseNpAccountSum"

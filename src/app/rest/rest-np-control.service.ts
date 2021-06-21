@@ -19,8 +19,9 @@ export class RestNpControlService {
     return this.http.get(this.configuration.serverpath + 'npAccountAndCard/getActualCard');
   }
 
-  getCardSum(cardId) {
-    return this.http.get(this.configuration.serverpath + 'npAccountAndCard/cardSpends?cardId=' + cardId);
+  getCardSum(cardId, npAccountId, from, to) {
+    return this.http.get(this.configuration.serverpath + 'npAccountAndCard/cardSpends?cardId=' + cardId
+      + '&from=' + from + '&to=' + to + '&npAccountId=' + npAccountId);
   }
 
   getNpAccounts() {

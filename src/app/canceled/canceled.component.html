@@ -1,6 +1,19 @@
+<div style="display: flex">
+  <div style="flex-direction: column">
+    <button style="float: left; margin-right: 1%" mat-raised-button color="primary" (click)="showCanceledClick()">
+      Показати відмови
+    </button>
+    <button style="float: left; margin-right: 1%" mat-raised-button color="primary" (click)="makeReturnClick()">Зробити
+      повернення
+    </button>
 
-<button style="float: left; margin-right: 1%" mat-raised-button color="primary" (click)="showCanceledClick()">Показати відмови</button>
-<button style="float: left; margin-right: 1%" mat-raised-button color="primary" (click)="makeReturnClick()">Зробити повернення</button>
-
-<textarea style="float: left;" id="clipboard-example-textarea" cols="30" rows="10" [(ngModel)]="canceled"></textarea>
-<mat-spinner style="float: left;" *ngIf="loaded"></mat-spinner>
+    <textarea style="float: left;" id="clipboard-example-textarea" cols="30" rows="10"
+              [(ngModel)]="canceled"></textarea>
+    <mat-spinner style="float: left;" *ngIf="loaded"></mat-spinner>
+  </div>
+  <div style="flex-direction: column">
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let history of last20History">{{history.createdDate.dayOfMonth}}.{{history.createdDate.monthValue}}.{{history.createdDate.year}} {{history.record}}</mat-list-item>
+    </mat-list>
+  </div>
+</div>

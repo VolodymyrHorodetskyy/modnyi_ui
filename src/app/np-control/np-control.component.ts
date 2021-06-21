@@ -18,6 +18,11 @@ export class NpControlComponent implements OnInit {
   npAccounts;
   npAccountSelected;
 
+  npAccountSelected2;
+  dateFrom2;
+  dateTo2;
+
+
   constructor(private restNpControl: RestNpControlService, private datePipe: DatePipe) {
   }
 
@@ -45,10 +50,12 @@ export class NpControlComponent implements OnInit {
   }
 
   onGetCardSum() {
-    this.restNpControl.getCardSum(this.cardSelected).subscribe(value => {
-      // @ts-ignore
-      this.responseCardSum = value.result;
-    });
+    this.restNpControl.getCardSum(this.cardSelected, this.npAccountSelected2,
+      this.tranformDate(this.dateFrom2), this.tranformDate(this.dateTo2))
+      .subscribe(value => {
+        // @ts-ignore
+        this.responseCardSum = value.result;
+      });
   }
 
   onGetNpAccountSum() {
