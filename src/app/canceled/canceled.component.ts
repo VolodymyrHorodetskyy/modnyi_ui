@@ -16,7 +16,7 @@ export class CanceledComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.rest.getLast20History().subscribe(value => {
+    this.rest.getLast20History('CARGO_RETURN').subscribe(value => {
       this.last20History = value;
     });
   }

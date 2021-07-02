@@ -148,8 +148,8 @@ export class RestService {
     return this.http.patch(this.configuration.serverpath + 'shoe/removeShoeFromOrder', removeShoeFromOrder);
   }
 
-  public getLast20History() {
-    return this.http.get(this.configuration.serverpath + 'history/getLast20');
+  public getLast20History(type: string) {
+    return this.http.get(this.configuration.serverpath + 'history/getLast20?type=' + type);
   }
 
   getHttpOptions() {
