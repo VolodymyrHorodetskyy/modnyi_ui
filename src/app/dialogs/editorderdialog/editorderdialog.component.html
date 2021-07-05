@@ -2,6 +2,7 @@
       (ngSubmit)="onButtonCreateOrUpdate()">
   <mat-label style="display:inline-block; margin-right: 1em;" *ngIf="data!=null">{{data.ttn}}<p>{{data.postComment}}</p>
     <p>Сума повернення: {{data.returnSumNP}}</p>
+    <p>Вартість доставки: {{data.deliveryCost}}</p>
   </mat-label>
 
   <mat-form-field style="display:inline-block; margin-right: 1em;" class="example-full-width">
