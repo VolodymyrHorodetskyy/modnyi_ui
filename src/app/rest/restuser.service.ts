@@ -18,4 +18,8 @@ export class RestuserService {
     return this.http.post(this.configuration.serverpath + 'user', userLogInRequest);
   }
 
+  public checkIfUserLoggedIn(id: number) {
+    return this.http.get(this.configuration.serverpath + 'user/userLoggedIn?id=' + id);
+  }
+
 }

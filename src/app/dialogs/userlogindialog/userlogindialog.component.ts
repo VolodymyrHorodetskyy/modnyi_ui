@@ -2,7 +2,6 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {RestuserService} from "../../rest/restuser.service";
-import {ShoeslistComponent} from "../../shoeslist/shoeslist.component";
 import {ApporderdialogComponent} from "../apporderdialog/apporderdialog.component";
 
 @Component({
@@ -25,7 +24,7 @@ export class UserlogindialogComponent implements OnInit {
   }
 
   logIn() {
-    this.logInForm.value.id = this.data.id;
+    this.logInForm.value.id = this.data;
     this.userRest.logIn(this.logInForm.value).subscribe(value => {
       // @ts-ignore
       this.dialogRef.close(value != null && value.active);

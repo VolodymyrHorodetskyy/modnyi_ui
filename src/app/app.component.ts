@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   showUpdate = true;
   showUpdateCanceled = true;
   users;
-  userSelected = 1;
+  userSelected;
 
   constructor(public rest: RestService, public restNotif: RestnotifService, public restOrder: RestorderService,
               public restAppOrders: RestapporderService, public matDialog: MatDialog,
@@ -34,7 +34,12 @@ export class AppComponent implements OnInit {
     this.userRest.getAllUsers().subscribe(value => {
       this.users = value;
     });
-    this.userSelected = this.localStorageService.getUser();
+    // @ts-ignore
+    this.userRest.checkIfUserLoggedIn(this.localStorageService.getUser()).subscribe(value => {
+      // @ts-ignore
+      this.userSelected = this.localStorageService.getUser();
+    });
+    // this.userSelected = this.localStorageService.getUser();
   }
 
   update() {
@@ -55,12 +60,11 @@ export class AppComponent implements OnInit {
     const loginUserDialog = this.matDialog.open(UserlogindialogComponent, {data: event});
     loginUserDialog.afterClosed().subscribe(value => {
       if (value) {
-        this.localStorageService.writeUser(event.id);
+        this.localStorageService.writeUser(event);
       } else {
         this.userSelected = null;
       }
     });
   }
-
 
 }
