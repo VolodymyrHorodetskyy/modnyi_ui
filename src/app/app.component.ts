@@ -5,6 +5,8 @@ import {RestapporderService} from './rest/restapporder.service';
 import {RestService} from './rest/rest.service';
 import {RestuserService} from './rest/restuser.service';
 import {LocalstorageService} from './localstorage.service';
+import {MatDialog} from "@angular/material/dialog";
+import {UserlogindialogComponent} from "./dialogs/userlogindialog/userlogindialog.component";
 
 @Component({
   selector: 'app-root',
@@ -20,7 +22,7 @@ export class AppComponent implements OnInit {
   userSelected = 1;
 
   constructor(public rest: RestService, public restNotif: RestnotifService, public restOrder: RestorderService,
-              public restAppOrders: RestapporderService,
+              public restAppOrders: RestapporderService, public matDialog: MatDialog,
               private userRest: RestuserService, public localStorageService: LocalstorageService) {
   }
 
@@ -50,7 +52,14 @@ export class AppComponent implements OnInit {
   }
 
   onUserChange(event) {
-    this.localStorageService.writeUser(event);
+    const loginUserDialog = this.matDialog.open(UserlogindialogComponent, {data: event});
+    loginUserDialog.afterClosed().subscribe(value => {
+      if (value) {
+        this.localStorageService.writeUser(event.id);
+      } else {
+        this.userSelected = null;
+      }
+    });
   }
 
 

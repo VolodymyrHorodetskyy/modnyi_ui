@@ -3,10 +3,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {RestService} from '../../rest/rest.service';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import {ShoeslistComponent} from '../../shoeslist/shoeslist.component';
-import {YesnodialogComponent} from '../yesnodialog/yesnodialog.component';
 import {PatternsComponent} from '../patterns/patterns.component';
 import {CreatepatternComponent} from '../createpattern/createpattern.component';
-import {NewshoepricedialogComponent} from '../newshoepricedialog/newshoepricedialog.component';
 
 @Component({
   selector: 'app-editshoe',

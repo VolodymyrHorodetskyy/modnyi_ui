@@ -14,4 +14,8 @@ export class RestuserService {
     return this.http.get(this.configuration.serverpath + 'user');
   }
 
+  public logIn(userLogInRequest) {
+    return this.http.post(this.configuration.serverpath + 'user', userLogInRequest);
+  }
+
 }

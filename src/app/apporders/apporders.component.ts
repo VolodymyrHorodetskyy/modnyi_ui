@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import {RestapporderService} from '../rest/restapporder.service';
-import { MatDialog } from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 import {ApporderdialogComponent} from '../dialogs/apporderdialog/apporderdialog.component';
 import {DatePipe} from '@angular/common';
 import {RestuserService} from '../rest/restuser.service';

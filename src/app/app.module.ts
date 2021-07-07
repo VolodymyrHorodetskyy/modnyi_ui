@@ -1,4 +1,4 @@
-import { GoogleChartsModule } from 'angular-google-charts';
+import {GoogleChartsModule} from 'angular-google-charts';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
@@ -6,27 +6,27 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatBadgeModule } from '@angular/material/badge';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { MatListModule } from '@angular/material/list';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatSelectModule } from '@angular/material/select';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatSortModule } from '@angular/material/sort';
-import { MatTableModule } from '@angular/material/table';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
+import {MatInputModule} from '@angular/material/input';
+import {MatListModule} from '@angular/material/list';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTableModule} from '@angular/material/table';
+import {MatToolbarModule} from '@angular/material/toolbar';
 import {ShoeslistComponent} from './shoeslist/shoeslist.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {OrdersComponent} from './orders/orders.component';
@@ -57,14 +57,15 @@ import {NewshoepricedialogComponent} from './dialogs/newshoepricedialog/newshoep
 import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
 import {CanceledordersComponent} from './canceledorders/canceledorders.component';
 import {SetcanceledreasonComponent} from './dialogs/setcanceledreason/setcanceledreason.component';
-import { UserstatsComponent } from './userstats/userstats.component';
-import { OurttnsComponent } from './ourttns/ourttns.component';
-import { NpControlComponent } from './np-control/np-control.component';
-import { AdsSpendsComponent } from './ads-spends/ads-spends.component';
-import { AddspendsrecComponent } from './dialogs/addspendsrec/addspendsrec.component';
-import { PrintingComponent } from './printing/printing.component';
+import {UserstatsComponent} from './userstats/userstats.component';
+import {OurttnsComponent} from './ourttns/ourttns.component';
+import {NpControlComponent} from './np-control/np-control.component';
+import {AdsSpendsComponent} from './ads-spends/ads-spends.component';
+import {AddspendsrecComponent} from './dialogs/addspendsrec/addspendsrec.component';
+import {PrintingComponent} from './printing/printing.component';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
-import { AddShoeToOrderComponent } from './dialogs/add-shoe-to-order/add-shoe-to-order.component';
+import {AddShoeToOrderComponent} from './dialogs/add-shoe-to-order/add-shoe-to-order.component';
+import {UserlogindialogComponent} from './dialogs/userlogindialog/userlogindialog.component';
 
 
 @NgModule({
@@ -102,7 +103,8 @@ import { AddShoeToOrderComponent } from './dialogs/add-shoe-to-order/add-shoe-to
     AdsSpendsComponent,
     AddspendsrecComponent,
     PrintingComponent,
-    AddShoeToOrderComponent
+    AddShoeToOrderComponent,
+    UserlogindialogComponent
   ],
   imports: [
     BrowserModule,
@@ -143,7 +145,8 @@ import { AddShoeToOrderComponent } from './dialogs/add-shoe-to-order/add-shoe-to
   bootstrap: [AppComponent],
   entryComponents: [ClientdialogComponent, CreateorderdialogComponent, CancelorderComponent,
     EditshoeComponent, YesnodialogComponent, PatternsComponent, CreatepatternComponent, ShoesdialogComponent, ApporderdialogComponent,
-    NewshoepricedialogComponent, SetcanceledreasonComponent, AddspendsrecComponent, AddShoeToOrderComponent]
+    NewshoepricedialogComponent, SetcanceledreasonComponent, AddspendsrecComponent, AddShoeToOrderComponent,
+    UserlogindialogComponent]
 })
 export class AppModule {
 }
