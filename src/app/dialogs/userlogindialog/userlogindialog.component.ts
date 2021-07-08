@@ -28,8 +28,7 @@ export class UserlogindialogComponent implements OnInit {
     this.userRest.logIn(this.logInForm.value).subscribe(value => {
       // @ts-ignore
       if (value != null && value.user != null) {
-        // @ts-ignore
-        this.dialogRef.close(value.user.id);
+        this.dialogRef.close(value);
       } else {
         this.dialogRef.close(null);
       }

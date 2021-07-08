@@ -58,6 +58,7 @@ export class AppComponent implements OnInit {
       if (value) {
         this.loggedIn = true;
         this.localStorageService.writeUser(value);
+        this.userLoggedIn = value.user.name;
       }
     });
   }
