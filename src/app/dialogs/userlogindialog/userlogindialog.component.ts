@@ -12,11 +12,12 @@ import {ApporderdialogComponent} from "../apporderdialog/apporderdialog.componen
 export class UserlogindialogComponent implements OnInit {
 
   logInForm = new FormGroup({
+    name: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
   });
 
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data, private userRest: RestuserService,
+  constructor(private userRest: RestuserService,
               public dialogRef: MatDialogRef<ApporderdialogComponent>) {
   }
 
@@ -24,10 +25,14 @@ export class UserlogindialogComponent implements OnInit {
   }
 
   logIn() {
-    this.logInForm.value.id = this.data;
     this.userRest.logIn(this.logInForm.value).subscribe(value => {
       // @ts-ignore
-      this.dialogRef.close(value != null && value.active);
+      if (value != null && value.user != null) {
+        // @ts-ignore
+        this.dialogRef.close(value.user.id);
+      } else {
+        this.dialogRef.close(null);
+      }
     });
   }
 

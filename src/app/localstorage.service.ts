@@ -19,4 +19,8 @@ export class LocalstorageService {
     localStorage.setItem(this.user, id.toString());
   }
 
+  emptyUser(){
+    localStorage.setItem(this.user, null);
+  }
+
 }

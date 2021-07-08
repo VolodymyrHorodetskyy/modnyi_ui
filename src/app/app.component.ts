@@ -6,7 +6,7 @@ import {RestService} from './rest/rest.service';
 import {RestuserService} from './rest/restuser.service';
 import {LocalstorageService} from './localstorage.service';
 import {MatDialog} from "@angular/material/dialog";
-import {UserlogindialogComponent} from "./dialogs/userlogindialog/userlogindialog.component";
+import {UserlogindialogComponent} from './dialogs/userlogindialog/userlogindialog.component';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +19,8 @@ export class AppComponent implements OnInit {
   showUpdate = true;
   showUpdateCanceled = true;
   users;
-  userSelected;
+  loggedIn = false;
+  userLoggedIn;
 
   constructor(public rest: RestService, public restNotif: RestnotifService, public restOrder: RestorderService,
               public restAppOrders: RestapporderService, public matDialog: MatDialog,
@@ -34,12 +35,7 @@ export class AppComponent implements OnInit {
     this.userRest.getAllUsers().subscribe(value => {
       this.users = value;
     });
-    // @ts-ignore
-    this.userRest.checkIfUserLoggedIn(this.localStorageService.getUser()).subscribe(value => {
-      // @ts-ignore
-      this.userSelected = this.localStorageService.getUser();
-    });
-    // this.userSelected = this.localStorageService.getUser();
+    this.checkIfUserLoggedIng();
   }
 
   update() {
@@ -56,15 +52,31 @@ export class AppComponent implements OnInit {
     });
   }
 
-  onUserChange(event) {
-    const loginUserDialog = this.matDialog.open(UserlogindialogComponent, {data: event});
+  logIn() {
+    const loginUserDialog = this.matDialog.open(UserlogindialogComponent);
     loginUserDialog.afterClosed().subscribe(value => {
       if (value) {
-        this.localStorageService.writeUser(event);
-      } else {
-        this.userSelected = null;
+        this.loggedIn = true;
+        this.localStorageService.writeUser(value);
       }
     });
+  }
+
+  checkIfUserLoggedIng() {
+    if (!isNaN(this.localStorageService.getUser()) && this.localStorageService.getUser() != null) {
+      // @ts-ignore
+      this.userRest.checkIfUserLoggedIn(this.localStorageService.getUser()).subscribe(value => {
+        if (value) {
+          // @ts-ignore
+          this.loggedIn = value;
+          // @ts-ignore
+          this.userLoggedIn = value.user.name;
+        } else {
+          this.localStorageService.emptyUser();
+          this.loggedIn = false;
+        }
+      });
+    }
   }
 
 }

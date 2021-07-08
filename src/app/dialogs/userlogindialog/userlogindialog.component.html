@@ -1,5 +1,9 @@
 <form class="example-form" [formGroup]="logInForm" (ngSubmit)="logIn()">
   <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Логін</mat-label>
+    <input formControlName="name" matInput>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
     <mat-label>Пароль</mat-label>
     <input formControlName="password" matInput>
   </mat-form-field>
